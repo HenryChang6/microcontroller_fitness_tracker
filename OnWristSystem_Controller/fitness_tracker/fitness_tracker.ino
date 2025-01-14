@@ -94,7 +94,7 @@ void handleRoot()
 void loop()
 {
   server.handleClient();
-  irValue = particleSensor.getIR();
+  irValue = particleSensor.getIR();   // infrared light intensity
 
   if (checkForBeat(irValue) == true)
   {
@@ -106,10 +106,10 @@ void loop()
 
     if (beatsPerMinute < 255 && beatsPerMinute > 20)
     {
-      rates[rateSpot++] = (byte)beatsPerMinute; //Store this reading in the array
-      rateSpot %= RATE_SIZE; //Wrap variable
+      rates[rateSpot++] = (byte)beatsPerMinute; // Store this reading in the array
+      rateSpot %= RATE_SIZE; // Wrap variable
 
-      //Take average of readings
+      // Take average of readings
       beatAvg = 0;
       for (byte x = 0 ; x < RATE_SIZE ; x++)
         beatAvg += rates[x];
@@ -125,7 +125,7 @@ void loop()
   Serial.print(beatAvg);
 
   if (irValue < 50000)
-    Serial.print(" No finger?");
+    Serial.print("Place the sensor closer to your wrist!!!");
 
   Serial.println();
 }
