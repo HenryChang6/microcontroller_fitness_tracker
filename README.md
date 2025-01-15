@@ -1,5 +1,5 @@
 ## About this project
-// TODO
+Our project features a standalone, watch-like embedded system incorporating the MAX30102 sensor, the MPU-6050 gyroscope sensor, and the ESP8266 NodeMCU Wi-Fi module for wireless data transmission to a computer. The system is equipped with its own power supply, allowing users to wear and use it wirelessly, like a traditional watch. Data collected by the sensors is sent via Wi-Fi to a computer and then relayed to a PIC18F4520 microcontroller, which drives an SSD1306 OLED display. Due to the limited size of the OLED screen, users can toggle between different data views (e.g., heart rate, temperature) using a button.
 
 ## Project Struture
 // TODO: Add struture image 
