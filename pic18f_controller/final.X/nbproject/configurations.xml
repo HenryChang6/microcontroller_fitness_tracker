@@ -28,7 +28,7 @@
         <targetDevice>PIC18F4520</targetDevice>
         <targetHeader></targetHeader>
         <targetPluginBoard></targetPluginBoard>
-        <platformTool>pk4hybrid</platformTool>
+        <platformTool>Simulator</platformTool>
         <languageToolchain>XC8</languageToolchain>
         <languageToolchainVersion>2.50</languageToolchainVersion>
         <platform>4</platform>
@@ -1194,6 +1194,8 @@
         <property key="memories.programmemory" value="true"/>
         <property key="memories.programmemory.ranges" value="0-7fff"/>
         <property key="poweroptions.powerenable" value="true"/>
+        <property key="programmerToGoFilePath"
+                  value="/Users/jyunanchen/MPLABXProjects/final.X/debug/default/final_ptg"/>
         <property key="programmerToGoImageName" value="final_ptg"/>
         <property key="programoptions.donoteraseauxmem" value="false"/>
         <property key="programoptions.eraseb4program" value="true"/>

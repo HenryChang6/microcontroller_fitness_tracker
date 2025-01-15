@@ -376,10 +376,22 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;/Applications/microchip/mplabx/v6.00/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8/pic/include/proc/pic18f4520.h: 5316: extern volatile unsigned char T2CON __attribute__((address(0xFCA)));
 [v _T2CON `Vuc ~T0 @X0 0 e@4042 ]
 [t T42 __interrupt high_priority ]
+"4909
+[; ;/Applications/microchip/mplabx/v6.00/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8/pic/include/proc/pic18f4520.h: 4909: extern volatile unsigned char ADRESH __attribute__((address(0xFC4)));
+[v _ADRESH `Vuc ~T0 @X0 0 e@4036 ]
+"4902
+[; ;/Applications/microchip/mplabx/v6.00/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8/pic/include/proc/pic18f4520.h: 4902: extern volatile unsigned char ADRESL __attribute__((address(0xFC3)));
+[v _ADRESL `Vuc ~T0 @X0 0 e@4035 ]
+"221 newmain.c
+[; ;newmain.c: 221:         variable_register_changed(value);
+[v _variable_register_changed `(i ~T0 @X0 0 e? ]
 [v F3070 `(v ~T0 @X0 1 tf1`ul ]
 "12 /Applications/microchip/mplabx/v6.00/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8/pic/include/builtins.h
 [v __delay `JF3070 ~T0 @X0 0 e ]
 [p i __delay ]
+"227 newmain.c
+[; ;newmain.c: 227:         button_pressed();
+[v _button_pressed `(i ~T0 @X0 0 e? ]
 "54 /Applications/microchip/xc8/v2.50/pic/include/c99/string.h
 [; ;/Applications/microchip/xc8/v2.50/pic/include/c99/string.h: 54: size_t strlen (const char *);
 [v _strlen `(ui ~T0 @X0 0 ef1`*Cuc ]
@@ -390,6 +402,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;/Applications/microchip/xc8/v2.50/pic/include/c99/stdlib.h: 23: int atoi (const char *);
 [v _atoi `(i ~T0 @X0 0 ef1`*Cuc ]
 [p mainexit ]
+"353 newmain.c
+[; ;newmain.c: 353:         if (GetString(str)) keyboard_input(str);
+[v _keyboard_input `(i ~T0 @X0 0 e? ]
 "2 newmain.c
 [p x OSC  =  INTIO67   ]
 "3
@@ -1253,527 +1268,556 @@ Version 4.0 HI-TECH Software Intermediate Code
 {
 [e :U _H_ISR ]
 [f ]
-"220
-[; ;newmain.c: 220:     if (INTCONbits.INT0IF) {
-[e $ ! != -> . . _INTCONbits 0 1 `i -> 0 `i 310  ]
+"219
+[; ;newmain.c: 219:     if (PIR1bits.ADIF) {
+[e $ ! != -> . . _PIR1bits 0 6 `i -> 0 `i 310  ]
 {
+"220
+[; ;newmain.c: 220:         int value = (ADRESH << 8) + ADRESL;
+[v _value `i ~T0 @X0 1 a ]
+[e = _value + << -> _ADRESH `i -> 8 `i -> _ADRESL `i ]
 "221
-[; ;newmain.c: 221:         _delay((unsigned long)((50)*(4000000/4000.0)));
-[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
+[; ;newmain.c: 221:         variable_register_changed(value);
+[e ( _variable_register_changed _value ]
 "222
-[; ;newmain.c: 222:         btn_interr = 1;
-[e = _btn_interr -> -> 1 `i `a ]
+[; ;newmain.c: 222:         PIR1bits.ADIF = 0;
+[e = . . _PIR1bits 0 6 -> -> 0 `i `uc ]
 "223
-[; ;newmain.c: 223:         INTCONbits.INT0IF = 0;
-[e = . . _INTCONbits 0 1 -> -> 0 `i `uc ]
+[; ;newmain.c: 223:         _delay((unsigned long)((5)*(4000000/4000.0)));
+[e ( __delay (1 -> * -> -> 5 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
 "224
 [; ;newmain.c: 224:     }
 }
 [e :U 310 ]
 "226
-[; ;newmain.c: 226:     if (PIR1bits.TMR2IF) {
-[e $ ! != -> . . _PIR1bits 0 1 `i -> 0 `i 311  ]
+[; ;newmain.c: 226:     if (INTCONbits.INT0IF) {
+[e $ ! != -> . . _INTCONbits 0 1 `i -> 0 `i 311  ]
 {
 "227
-[; ;newmain.c: 227:         cnt++;
-[e ++ _cnt -> 1 `i ]
+[; ;newmain.c: 227:         button_pressed();
+[e ( _button_pressed ..  ]
 "228
-[; ;newmain.c: 228:         PIR1bits.TMR2IF = 0;
-[e = . . _PIR1bits 0 1 -> -> 0 `i `uc ]
+[; ;newmain.c: 228:         _delay((unsigned long)((50)*(4000000/4000.0)));
+[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
+"229
+[; ;newmain.c: 229:         btn_interr = 1;
+[e = _btn_interr -> -> 1 `i `a ]
 "230
-[; ;newmain.c: 230:     }
+[; ;newmain.c: 230:         INTCONbits.INT0IF = 0;
+[e = . . _INTCONbits 0 1 -> -> 0 `i `uc ]
+"231
+[; ;newmain.c: 231:     }
 }
 [e :U 311 ]
-"231
-[; ;newmain.c: 231: }
+"233
+[; ;newmain.c: 233:     if (PIR1bits.TMR2IF) {
+[e $ ! != -> . . _PIR1bits 0 1 `i -> 0 `i 312  ]
+{
+"234
+[; ;newmain.c: 234:         cnt++;
+[e ++ _cnt -> 1 `i ]
+"235
+[; ;newmain.c: 235:         PIR1bits.TMR2IF = 0;
+[e = . . _PIR1bits 0 1 -> -> 0 `i `uc ]
+"237
+[; ;newmain.c: 237:     }
+}
+[e :U 312 ]
+"238
+[; ;newmain.c: 238: }
 [e :UE 309 ]
 }
-"233
-[; ;newmain.c: 233: int delay(double sec) {
+"240
+[; ;newmain.c: 240: int delay(double sec) {
 [v _delay `(i ~T0 @X0 1 ef1`d ]
 {
 [e :U _delay ]
 [v _sec `d ~T0 @X0 1 r1 ]
 [f ]
-"234
-[; ;newmain.c: 234:     btn_interr = 0;
+"241
+[; ;newmain.c: 241:     btn_interr = 0;
 [e = _btn_interr -> -> 0 `i `a ]
-"235
-[; ;newmain.c: 235:     for (int i = 0; i < sec * 1000 / 10; i++) {
+"242
+[; ;newmain.c: 242:     for (int i = 0; i < sec * 1000 / 10; i++) {
 {
 [v _i `i ~T0 @X0 1 a ]
 [e = _i -> 0 `i ]
-[e $U 316  ]
-[e :U 313 ]
+[e $U 317  ]
+[e :U 314 ]
 {
-"236
-[; ;newmain.c: 236:         if (btn_interr) return -1;
-[e $ ! != -> _btn_interr `i -> 0 `i 317  ]
+"243
+[; ;newmain.c: 243:         if (btn_interr) return -1;
+[e $ ! != -> _btn_interr `i -> 0 `i 318  ]
 [e ) -U -> 1 `i ]
-[e $UE 312  ]
-[e :U 317 ]
-"237
-[; ;newmain.c: 237:         _delay((unsigned long)((10)*(4000000/4000.0)));
+[e $UE 313  ]
+[e :U 318 ]
+"244
+[; ;newmain.c: 244:         _delay((unsigned long)((10)*(4000000/4000.0)));
 [e ( __delay (1 -> * -> -> 10 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
-"238
-[; ;newmain.c: 238:     }
+"245
+[; ;newmain.c: 245:     }
 }
 [e ++ _i -> 1 `i ]
-[e :U 316 ]
-[e $ < -> _i `d / * _sec -> -> 1000 `i `d -> -> 10 `i `d 313  ]
-[e :U 314 ]
+[e :U 317 ]
+[e $ < -> _i `d / * _sec -> -> 1000 `i `d -> -> 10 `i `d 314  ]
+[e :U 315 ]
 }
-"239
-[; ;newmain.c: 239:     return 0;
+"246
+[; ;newmain.c: 246:     return 0;
 [e ) -> 0 `i ]
-[e $UE 312  ]
-"240
-[; ;newmain.c: 240: }
-[e :UE 312 ]
+[e $UE 313  ]
+"247
+[; ;newmain.c: 247: }
+[e :UE 313 ]
 }
-"243
-[; ;newmain.c: 243: void Start_Timer() {
+"250
+[; ;newmain.c: 250: void Start_Timer() {
 [v _Start_Timer `(v ~T0 @X0 1 ef ]
 {
 [e :U _Start_Timer ]
 [f ]
-"244
-[; ;newmain.c: 244:     cnt = 0;
+"251
+[; ;newmain.c: 251:     cnt = 0;
 [e = _cnt -> 0 `i ]
-"245
-[; ;newmain.c: 245: }
-[e :UE 318 ]
+"252
+[; ;newmain.c: 252: }
+[e :UE 319 ]
 }
-"246
-[; ;newmain.c: 246: int End_Timer() {
+"253
+[; ;newmain.c: 253: int End_Timer() {
 [v _End_Timer `(i ~T0 @X0 1 ef ]
 {
 [e :U _End_Timer ]
 [f ]
-"247
-[; ;newmain.c: 247:    return cnt / 42;
+"254
+[; ;newmain.c: 254:    return cnt / 42;
 [e ) / _cnt -> 42 `i ]
-[e $UE 319  ]
-"248
-[; ;newmain.c: 248: }
-[e :UE 319 ]
+[e $UE 320  ]
+"255
+[; ;newmain.c: 255: }
+[e :UE 320 ]
 }
-"249
-[; ;newmain.c: 249: void reverse(char *first, char *last) {
+"256
+[; ;newmain.c: 256: void reverse(char *first, char *last) {
 [v _reverse `(v ~T0 @X0 1 ef2`*uc`*uc ]
 {
 [e :U _reverse ]
 [v _first `*uc ~T0 @X0 1 r1 ]
 [v _last `*uc ~T0 @X0 1 r2 ]
 [f ]
-"250
-[; ;newmain.c: 250:     for (;first < last; first++,last--) {
+"257
+[; ;newmain.c: 257:     for (;first < last; first++,last--) {
 {
-[e $U 324  ]
-[e :U 321 ]
+[e $U 325  ]
+[e :U 322 ]
 {
-"252
-[; ;newmain.c: 252:         char tmp = *first;
+"259
+[; ;newmain.c: 259:         char tmp = *first;
 [v _tmp `uc ~T0 @X0 1 a ]
 [e = _tmp *U _first ]
-"253
-[; ;newmain.c: 253:         *first = *last;
+"260
+[; ;newmain.c: 260:         *first = *last;
 [e = *U _first *U _last ]
-"254
-[; ;newmain.c: 254:         *last = tmp;
+"261
+[; ;newmain.c: 261:         *last = tmp;
 [e = *U _last _tmp ]
-"255
-[; ;newmain.c: 255:     }
+"262
+[; ;newmain.c: 262:     }
 }
 [e ; ++ _first * -> -> 1 `i `x -> -> # *U _first `i `x -- _last * -> -> 1 `i `x -> -> # *U _last `i `x ]
-[e :U 324 ]
-[e $ < _first _last 321  ]
-[e :U 322 ]
+[e :U 325 ]
+[e $ < _first _last 322  ]
+[e :U 323 ]
 }
-"256
-[; ;newmain.c: 256: }
-[e :UE 320 ]
+"263
+[; ;newmain.c: 263: }
+[e :UE 321 ]
 }
-"258
-[; ;newmain.c: 258: void itoa(int n, char *s) {
+"265
+[; ;newmain.c: 265: void itoa(int n, char *s) {
 [v _itoa `(v ~T0 @X0 1 ef2`i`*uc ]
 {
 [e :U _itoa ]
 [v _n `i ~T0 @X0 1 r1 ]
 [v _s `*uc ~T0 @X0 1 r2 ]
 [f ]
-"259
-[; ;newmain.c: 259:     int sign = 1;
+"266
+[; ;newmain.c: 266:     int sign = 1;
 [v _sign `i ~T0 @X0 1 a ]
 [e = _sign -> 1 `i ]
-"260
-[; ;newmain.c: 260:     if (n < 0) {
-[e $ ! < _n -> 0 `i 326  ]
-{
-"261
-[; ;newmain.c: 261:         sign = -1;
-[e = _sign -U -> 1 `i ]
-"262
-[; ;newmain.c: 262:         n = -n;
-[e = _n -U _n ]
-"263
-[; ;newmain.c: 263:     }
-}
-[e :U 326 ]
-"264
-[; ;newmain.c: 264:     int i = 0;
-[v _i `i ~T0 @X0 1 a ]
-[e = _i -> 0 `i ]
-"265
-[; ;newmain.c: 265:     while (n != 0) {
-[e $U 327  ]
-[e :U 328 ]
-{
-"266
-[; ;newmain.c: 266:         s[i++] = n%10 + '0';
-[e = *U + _s * -> ++ _i -> 1 `i `x -> -> # *U _s `i `x -> + -> % _n -> 10 `i `ui -> 48 `ui `uc ]
 "267
-[; ;newmain.c: 267:         n = n/10;
-[e = _n / _n -> 10 `i ]
+[; ;newmain.c: 267:     if (n < 0) {
+[e $ ! < _n -> 0 `i 327  ]
+{
 "268
-[; ;newmain.c: 268:     }
+[; ;newmain.c: 268:         sign = -1;
+[e = _sign -U -> 1 `i ]
+"269
+[; ;newmain.c: 269:         n = -n;
+[e = _n -U _n ]
+"270
+[; ;newmain.c: 270:     }
 }
 [e :U 327 ]
-"265
-[; ;newmain.c: 265:     while (n != 0) {
-[e $ != _n -> 0 `i 328  ]
-[e :U 329 ]
-"270
-[; ;newmain.c: 270:     if (sign < 0)
-[e $ ! < _sign -> 0 `i 330  ]
 "271
-[; ;newmain.c: 271:         s[i++] = '-';
-[e = *U + _s * -> ++ _i -> 1 `i `x -> -> # *U _s `i `x -> -> 45 `ui `uc ]
-[e :U 330 ]
+[; ;newmain.c: 271:     int i = 0;
+[v _i `i ~T0 @X0 1 a ]
+[e = _i -> 0 `i ]
 "272
-[; ;newmain.c: 272:     s[i] = '\0';
-[e = *U + _s * -> _i `x -> -> # *U _s `i `x -> -> 0 `ui `uc ]
+[; ;newmain.c: 272:     while (n != 0) {
+[e $U 328  ]
+[e :U 329 ]
+{
+"273
+[; ;newmain.c: 273:         s[i++] = n%10 + '0';
+[e = *U + _s * -> ++ _i -> 1 `i `x -> -> # *U _s `i `x -> + -> % _n -> 10 `i `ui -> 48 `ui `uc ]
 "274
-[; ;newmain.c: 274:     reverse(s, s+i-1);
-[e ( _reverse (2 , _s - + _s * -> _i `x -> -> # *U _s `i `x * -> -> 1 `i `x -> -> # *U + _s * -> _i `x -> -> # *U _s `i `x `i `x ]
+[; ;newmain.c: 274:         n = n/10;
+[e = _n / _n -> 10 `i ]
 "275
-[; ;newmain.c: 275: }
-[e :UE 325 ]
+[; ;newmain.c: 275:     }
 }
-"276
-[; ;newmain.c: 276: int get_StepLength() {
+[e :U 328 ]
+"272
+[; ;newmain.c: 272:     while (n != 0) {
+[e $ != _n -> 0 `i 329  ]
+[e :U 330 ]
+"277
+[; ;newmain.c: 277:     if (sign < 0)
+[e $ ! < _sign -> 0 `i 331  ]
+"278
+[; ;newmain.c: 278:         s[i++] = '-';
+[e = *U + _s * -> ++ _i -> 1 `i `x -> -> # *U _s `i `x -> -> 45 `ui `uc ]
+[e :U 331 ]
+"279
+[; ;newmain.c: 279:     s[i] = '\0';
+[e = *U + _s * -> _i `x -> -> # *U _s `i `x -> -> 0 `ui `uc ]
+"281
+[; ;newmain.c: 281:     reverse(s, s+i-1);
+[e ( _reverse (2 , _s - + _s * -> _i `x -> -> # *U _s `i `x * -> -> 1 `i `x -> -> # *U + _s * -> _i `x -> -> # *U _s `i `x `i `x ]
+"282
+[; ;newmain.c: 282: }
+[e :UE 326 ]
+}
+"283
+[; ;newmain.c: 283: int get_StepLength() {
 [v _get_StepLength `(i ~T0 @X0 1 ef ]
 {
 [e :U _get_StepLength ]
 [f ]
-"277
-[; ;newmain.c: 277:     char ask[100];
+"284
+[; ;newmain.c: 284:     char ask[100];
 [v _ask `uc ~T0 @X0 -> 100 `i a ]
-"278
-[; ;newmain.c: 278:     strcpy(ask, "Input Step Length: ");
+"285
+[; ;newmain.c: 285:     strcpy(ask, "Input Step Length: ");
 [e ( _strcpy (2 , &U _ask :s 1C ]
-"279
-[; ;newmain.c: 279:     for(int i=0;i<strlen(ask);i++) putch(ask[i]);
+"286
+[; ;newmain.c: 286:     for(int i=0;i<strlen(ask);i++) putch(ask[i]);
 {
 [v _i `i ~T0 @X0 1 a ]
 [e = _i -> 0 `i ]
-[e $U 335  ]
-[e :U 332 ]
+[e $U 336  ]
+[e :U 333 ]
 [e ( _putch (1 *U + &U _ask * -> -> _i `ui `ux -> -> # *U &U _ask `ui `ux ]
 [e ++ _i -> 1 `i ]
-[e :U 335 ]
-[e $ < -> _i `ui ( _strlen (1 -> &U _ask `*Cuc 332  ]
-[e :U 333 ]
+[e :U 336 ]
+[e $ < -> _i `ui ( _strlen (1 -> &U _ask `*Cuc 333  ]
+[e :U 334 ]
 }
-"280
-[; ;newmain.c: 280:     int input = 0;
+"287
+[; ;newmain.c: 287:     int input = 0;
 [v _input `i ~T0 @X0 1 a ]
 [e = _input -> 0 `i ]
-"281
-[; ;newmain.c: 281:     char str[100];
+"288
+[; ;newmain.c: 288:     char str[100];
 [v _str `uc ~T0 @X0 -> 100 `i a ]
-"282
-[; ;newmain.c: 282:     ClearBuffer();
+"289
+[; ;newmain.c: 289:     ClearBuffer();
 [e ( _ClearBuffer ..  ]
-"283
-[; ;newmain.c: 283:     while( input == 0 ) {
-[e $U 336  ]
-[e :U 337 ]
+"290
+[; ;newmain.c: 290:     while( input == 0 ) {
+[e $U 337  ]
+[e :U 338 ]
 {
-"284
-[; ;newmain.c: 284:         for(int i=0;i<strlen(str);i++) {
+"291
+[; ;newmain.c: 291:         for(int i=0;i<strlen(str);i++) {
 {
 [v _i `i ~T0 @X0 1 a ]
 [e = _i -> 0 `i ]
-[e $U 342  ]
-[e :U 339 ]
+[e $U 343  ]
+[e :U 340 ]
 {
-"285
-[; ;newmain.c: 285:             ClearBuffer();
+"292
+[; ;newmain.c: 292:             ClearBuffer();
 [e ( _ClearBuffer ..  ]
-"286
-[; ;newmain.c: 286:             if( str[i] >= '0' && str[i] <= '9' ) {
-[e $ ! && >= -> *U + &U _str * -> -> _i `ui `ux -> -> # *U &U _str `ui `ux `ui -> 48 `ui <= -> *U + &U _str * -> -> _i `ui `ux -> -> # *U &U _str `ui `ux `ui -> 57 `ui 343  ]
+"293
+[; ;newmain.c: 293:             if( str[i] >= '0' && str[i] <= '9' ) {
+[e $ ! && >= -> *U + &U _str * -> -> _i `ui `ux -> -> # *U &U _str `ui `ux `ui -> 48 `ui <= -> *U + &U _str * -> -> _i `ui `ux -> -> # *U &U _str `ui `ux `ui -> 57 `ui 344  ]
 {
-"287
-[; ;newmain.c: 287:                 input *= 10, input += str[i] - '0';
+"294
+[; ;newmain.c: 294:                 input *= 10, input += str[i] - '0';
 [e ; =* _input -> 10 `i =+ _input -> - -> *U + &U _str * -> -> _i `ui `ux -> -> # *U &U _str `ui `ux `ui -> 48 `ui `i ]
-"288
-[; ;newmain.c: 288:             }
+"295
+[; ;newmain.c: 295:             }
 }
-[e :U 343 ]
-"289
-[; ;newmain.c: 289:         }
+[e :U 344 ]
+"296
+[; ;newmain.c: 296:         }
 }
 [e ++ _i -> 1 `i ]
-[e :U 342 ]
-[e $ < -> _i `ui ( _strlen (1 -> &U _str `*Cuc 339  ]
-[e :U 340 ]
+[e :U 343 ]
+[e $ < -> _i `ui ( _strlen (1 -> &U _str `*Cuc 340  ]
+[e :U 341 ]
 }
+"297
+[; ;newmain.c: 297:     }
+}
+[e :U 337 ]
 "290
-[; ;newmain.c: 290:     }
-}
-[e :U 336 ]
-"283
-[; ;newmain.c: 283:     while( input == 0 ) {
-[e $ == _input -> 0 `i 337  ]
-[e :U 338 ]
-"292
-[; ;newmain.c: 292:     if( input == 0 ) input = 45;
-[e $ ! == _input -> 0 `i 344  ]
+[; ;newmain.c: 290:     while( input == 0 ) {
+[e $ == _input -> 0 `i 338  ]
+[e :U 339 ]
+"299
+[; ;newmain.c: 299:     if( input == 0 ) input = 45;
+[e $ ! == _input -> 0 `i 345  ]
 [e = _input -> 45 `i ]
-[e :U 344 ]
-"293
-[; ;newmain.c: 293:     return input;
+[e :U 345 ]
+"300
+[; ;newmain.c: 300:     return input;
 [e ) _input ]
-[e $UE 331  ]
-"294
-[; ;newmain.c: 294: }
-[e :UE 331 ]
+[e $UE 332  ]
+"301
+[; ;newmain.c: 301: }
+[e :UE 332 ]
 }
-"295
-[; ;newmain.c: 295: void output_total_dis(int num, int step) {
+"302
+[; ;newmain.c: 302: void output_total_dis(int num, int step) {
 [v _output_total_dis `(v ~T0 @X0 1 ef2`i`i ]
 {
 [e :U _output_total_dis ]
 [v _num `i ~T0 @X0 1 r1 ]
 [v _step `i ~T0 @X0 1 r2 ]
 [f ]
-[v F3131 `uc ~T0 @X0 -> 100 `i s ]
-[i F3131
+[v F3136 `uc ~T0 @X0 -> 100 `i s ]
+[i F3136
 :U ..
 ..
 ]
-"296
-[; ;newmain.c: 296:     char output[100] = {};
+"303
+[; ;newmain.c: 303:     char output[100] = {};
 [v _output `uc ~T0 @X0 -> 100 `i a ]
-[e = _output F3131 ]
-"297
-[; ;newmain.c: 297:     strcpy(output, "Total Length: ");
+[e = _output F3136 ]
+"304
+[; ;newmain.c: 304:     strcpy(output, "Total Length: ");
 [e ( _strcpy (2 , &U _output :s 2C ]
-"298
-[; ;newmain.c: 298:     for(int i=0;i<strlen(output);i++) putch(output[i]);
+"305
+[; ;newmain.c: 305:     for(int i=0;i<strlen(output);i++) putch(output[i]);
 {
 [v _i `i ~T0 @X0 1 a ]
 [e = _i -> 0 `i ]
-[e $U 349  ]
-[e :U 346 ]
+[e $U 350  ]
+[e :U 347 ]
 [e ( _putch (1 *U + &U _output * -> -> _i `ui `ux -> -> # *U &U _output `ui `ux ]
 [e ++ _i -> 1 `i ]
-[e :U 349 ]
-[e $ < -> _i `ui ( _strlen (1 -> &U _output `*Cuc 346  ]
-[e :U 347 ]
+[e :U 350 ]
+[e $ < -> _i `ui ( _strlen (1 -> &U _output `*Cuc 347  ]
+[e :U 348 ]
 }
-[v F3134 `uc ~T0 @X0 -> 100 `i s ]
-[i F3134
+[v F3139 `uc ~T0 @X0 -> 100 `i s ]
+[i F3139
 :U ..
 ..
 ]
-"299
-[; ;newmain.c: 299:     char tmp[100] = {};
+"306
+[; ;newmain.c: 306:     char tmp[100] = {};
 [v _tmp `uc ~T0 @X0 -> 100 `i a ]
-[e = _tmp F3134 ]
-"300
-[; ;newmain.c: 300:     itoa(num * step, tmp);
+[e = _tmp F3139 ]
+"307
+[; ;newmain.c: 307:     itoa(num * step, tmp);
 [e ( _itoa (2 , * _num _step &U _tmp ]
-"301
-[; ;newmain.c: 301:     for(int i=0;i<strlen(tmp);i++) putch(tmp[i]);
+"308
+[; ;newmain.c: 308:     for(int i=0;i<strlen(tmp);i++) putch(tmp[i]);
 {
 [v _i `i ~T0 @X0 1 a ]
 [e = _i -> 0 `i ]
-[e $U 353  ]
-[e :U 350 ]
+[e $U 354  ]
+[e :U 351 ]
 [e ( _putch (1 *U + &U _tmp * -> -> _i `ui `ux -> -> # *U &U _tmp `ui `ux ]
 [e ++ _i -> 1 `i ]
-[e :U 353 ]
-[e $ < -> _i `ui ( _strlen (1 -> &U _tmp `*Cuc 350  ]
-[e :U 351 ]
+[e :U 354 ]
+[e $ < -> _i `ui ( _strlen (1 -> &U _tmp `*Cuc 351  ]
+[e :U 352 ]
 }
-"302
-[; ;newmain.c: 302:     putch('\r');
+"309
+[; ;newmain.c: 309:     putch('\r');
 [e ( _putch (1 -> -> 13 `ui `uc ]
-"303
-[; ;newmain.c: 303:     putch('\n');
+"310
+[; ;newmain.c: 310:     putch('\n');
 [e ( _putch (1 -> -> 10 `ui `uc ]
-"304
-[; ;newmain.c: 304:     return;
-[e $UE 345  ]
-"305
-[; ;newmain.c: 305: }
-[e :UE 345 ]
+"311
+[; ;newmain.c: 311:     return;
+[e $UE 346  ]
+"312
+[; ;newmain.c: 312: }
+[e :UE 346 ]
 }
-"306
-[; ;newmain.c: 306: void print_number(int num) {
+"313
+[; ;newmain.c: 313: void print_number(int num) {
 [v _print_number `(v ~T0 @X0 1 ef1`i ]
 {
 [e :U _print_number ]
 [v _num `i ~T0 @X0 1 r1 ]
 [f ]
-"307
-[; ;newmain.c: 307:     char tmp[100];
+"314
+[; ;newmain.c: 314:     char tmp[100];
 [v _tmp `uc ~T0 @X0 -> 100 `i a ]
-"308
-[; ;newmain.c: 308:     itoa(num, tmp);
+"315
+[; ;newmain.c: 315:     itoa(num, tmp);
 [e ( _itoa (2 , _num &U _tmp ]
-"309
-[; ;newmain.c: 309:     for(int i=0;i<strlen(tmp);i++) putch(tmp[i]);
+"316
+[; ;newmain.c: 316:     for(int i=0;i<strlen(tmp);i++) putch(tmp[i]);
 {
 [v _i `i ~T0 @X0 1 a ]
 [e = _i -> 0 `i ]
-[e $U 358  ]
-[e :U 355 ]
+[e $U 359  ]
+[e :U 356 ]
 [e ( _putch (1 *U + &U _tmp * -> -> _i `ui `ux -> -> # *U &U _tmp `ui `ux ]
 [e ++ _i -> 1 `i ]
-[e :U 358 ]
-[e $ < -> _i `ui ( _strlen (1 -> &U _tmp `*Cuc 355  ]
-[e :U 356 ]
+[e :U 359 ]
+[e $ < -> _i `ui ( _strlen (1 -> &U _tmp `*Cuc 356  ]
+[e :U 357 ]
 }
-"310
-[; ;newmain.c: 310:     putch('\r');
+"317
+[; ;newmain.c: 317:     putch('\r');
 [e ( _putch (1 -> -> 13 `ui `uc ]
-"311
-[; ;newmain.c: 311:     putch('\n');
+"318
+[; ;newmain.c: 318:     putch('\n');
 [e ( _putch (1 -> -> 10 `ui `uc ]
-"312
-[; ;newmain.c: 312: }
-[e :UE 354 ]
+"319
+[; ;newmain.c: 319: }
+[e :UE 355 ]
 }
-"313
-[; ;newmain.c: 313: void ParsingData() {
+"320
+[; ;newmain.c: 320: void ParsingData() {
 [v _ParsingData `(v ~T0 @X0 1 ef ]
 {
 [e :U _ParsingData ]
 [f ]
-"314
-[; ;newmain.c: 314:     char str[100];
+"321
+[; ;newmain.c: 321:     char str[100];
 [v _str `uc ~T0 @X0 -> 100 `i a ]
-"315
-[; ;newmain.c: 315:     ClearBuffer();
+"322
+[; ;newmain.c: 322:     ClearBuffer();
 [e ( _ClearBuffer ..  ]
-"316
-[; ;newmain.c: 316:     int step = -1, heartRate = -1, temp = -1;
+"323
+[; ;newmain.c: 323:     int step = -1, heartRate = -1, temp = -1;
 [v _step `i ~T0 @X0 1 a ]
 [e = _step -U -> 1 `i ]
 [v _heartRate `i ~T0 @X0 1 a ]
 [e = _heartRate -U -> 1 `i ]
 [v _temp `i ~T0 @X0 1 a ]
 [e = _temp -U -> 1 `i ]
-"317
-[; ;newmain.c: 317:     while( GetString(str) && ( step == -1 || heartRate == -1 || temp == -1 ) ) {
-[e $U 360  ]
-[e :U 361 ]
-{
-"318
-[; ;newmain.c: 318:         char *token;
-[v _token `*uc ~T0 @X0 1 a ]
-"319
-[; ;newmain.c: 319:         char input[100];
-[v _input `uc ~T0 @X0 -> 100 `i a ]
-"320
-[; ;newmain.c: 320:         strcpy(input, str);
-[e ( _strcpy (2 , &U _input -> &U _str `*Cuc ]
-"321
-[; ;newmain.c: 321:         ClearBuffer();
-[e ( _ClearBuffer ..  ]
-"322
-[; ;newmain.c: 322:         token = strtok(input, " ");
-[e = _token ( _strtok (2 , &U _input :s 3C ]
-"323
-[; ;newmain.c: 323:         step = atoi(token);
-[e = _step ( _atoi (1 -> _token `*Cuc ]
-"325
-[; ;newmain.c: 325:         token = strtok(((void*)0), " ");
-[e = _token ( _strtok (2 , -> -> -> 0 `i `*v `*uc :s 4C ]
-"326
-[; ;newmain.c: 326:         heartRate = atoi(token);
-[e = _heartRate ( _atoi (1 -> _token `*Cuc ]
-"328
-[; ;newmain.c: 328:         token = strtok(((void*)0), " ");
-[e = _token ( _strtok (2 , -> -> -> 0 `i `*v `*uc :s 5C ]
-"329
-[; ;newmain.c: 329:         temp = atoi(token);
-[e = _temp ( _atoi (1 -> _token `*Cuc ]
-"330
-[; ;newmain.c: 330:     }
-}
-[e :U 360 ]
-"317
-[; ;newmain.c: 317:     while( GetString(str) && ( step == -1 || heartRate == -1 || temp == -1 ) ) {
-[e $ && != ( _GetString (1 &U _str -> 0 `i || || == _step -U -> 1 `i == _heartRate -U -> 1 `i == _temp -U -> 1 `i 361  ]
+"324
+[; ;newmain.c: 324:     while( GetString(str) && ( step == -1 || heartRate == -1 || temp == -1 ) ) {
+[e $U 361  ]
 [e :U 362 ]
-"331
-[; ;newmain.c: 331:     print_number(step);
-[e ( _print_number (1 _step ]
+{
+"325
+[; ;newmain.c: 325:         char *token;
+[v _token `*uc ~T0 @X0 1 a ]
+"326
+[; ;newmain.c: 326:         char input[100];
+[v _input `uc ~T0 @X0 -> 100 `i a ]
+"327
+[; ;newmain.c: 327:         strcpy(input, str);
+[e ( _strcpy (2 , &U _input -> &U _str `*Cuc ]
+"328
+[; ;newmain.c: 328:         ClearBuffer();
+[e ( _ClearBuffer ..  ]
+"329
+[; ;newmain.c: 329:         token = strtok(input, " ");
+[e = _token ( _strtok (2 , &U _input :s 3C ]
+"330
+[; ;newmain.c: 330:         step = atoi(token);
+[e = _step ( _atoi (1 -> _token `*Cuc ]
 "332
-[; ;newmain.c: 332:     print_number(heartRate);
-[e ( _print_number (1 _heartRate ]
+[; ;newmain.c: 332:         token = strtok(((void*)0), " ");
+[e = _token ( _strtok (2 , -> -> -> 0 `i `*v `*uc :s 4C ]
 "333
-[; ;newmain.c: 333:     print_number(temp);
-[e ( _print_number (1 _temp ]
+[; ;newmain.c: 333:         heartRate = atoi(token);
+[e = _heartRate ( _atoi (1 -> _token `*Cuc ]
 "335
-[; ;newmain.c: 335:     return;
-[e $UE 359  ]
+[; ;newmain.c: 335:         token = strtok(((void*)0), " ");
+[e = _token ( _strtok (2 , -> -> -> 0 `i `*v `*uc :s 5C ]
 "336
-[; ;newmain.c: 336: }
-[e :UE 359 ]
+[; ;newmain.c: 336:         temp = atoi(token);
+[e = _temp ( _atoi (1 -> _token `*Cuc ]
+"337
+[; ;newmain.c: 337:     }
+}
+[e :U 361 ]
+"324
+[; ;newmain.c: 324:     while( GetString(str) && ( step == -1 || heartRate == -1 || temp == -1 ) ) {
+[e $ && != ( _GetString (1 &U _str -> 0 `i || || == _step -U -> 1 `i == _heartRate -U -> 1 `i == _temp -U -> 1 `i 362  ]
+[e :U 363 ]
+"338
+[; ;newmain.c: 338:     print_number(step);
+[e ( _print_number (1 _step ]
+"339
+[; ;newmain.c: 339:     print_number(heartRate);
+[e ( _print_number (1 _heartRate ]
+"340
+[; ;newmain.c: 340:     print_number(temp);
+[e ( _print_number (1 _temp ]
+"342
+[; ;newmain.c: 342:     return;
+[e $UE 360  ]
+"343
+[; ;newmain.c: 343: }
+[e :UE 360 ]
 }
 [v $root$_main `(v ~T0 @X0 0 e ]
-"337
-[; ;newmain.c: 337: void main() {
+"344
+[; ;newmain.c: 344: void main() {
 [v _main `(v ~T0 @X0 1 ef ]
 {
 [e :U _main ]
 [f ]
-"338
-[; ;newmain.c: 338:     Initialize();
-[e ( _Initialize ..  ]
-"340
-[; ;newmain.c: 340:     char str[100];
-[v _str `uc ~T0 @X0 -> 100 `i a ]
-"341
-[; ;newmain.c: 341:     ClearBuffer();
-[e ( _ClearBuffer ..  ]
-"343
-[; ;newmain.c: 343:     while (1) {
-[e :U 365 ]
-{
 "345
-[; ;newmain.c: 345:         ParsingData();
-[e ( _ParsingData ..  ]
-"346
-[; ;newmain.c: 346:         if (ADCON0bits.GO == 0) ADCON0bits.GO = 1;
-[e $ ! == -> . . _ADCON0bits 2 1 `i -> 0 `i 367  ]
-[e = . . _ADCON0bits 2 1 -> -> 1 `i `uc ]
-[e :U 367 ]
+[; ;newmain.c: 345:     Initialize();
+[e ( _Initialize ..  ]
 "347
-[; ;newmain.c: 347:     }
-}
-[e :U 364 ]
-[e $U 365  ]
-[e :U 366 ]
+[; ;newmain.c: 347:     char str[100];
+[v _str `uc ~T0 @X0 -> 100 `i a ]
 "348
-[; ;newmain.c: 348: }
-[e :UE 363 ]
+[; ;newmain.c: 348:     ClearBuffer();
+[e ( _ClearBuffer ..  ]
+"350
+[; ;newmain.c: 350:     while (1) {
+[e :U 366 ]
+{
+"352
+[; ;newmain.c: 352:         ParsingData();
+[e ( _ParsingData ..  ]
+"353
+[; ;newmain.c: 353:         if (GetString(str)) keyboard_input(str);
+[e $ ! != ( _GetString (1 &U _str -> 0 `i 368  ]
+[e ( _keyboard_input &U _str ]
+[e :U 368 ]
+"354
+[; ;newmain.c: 354:         if (ADCON0bits.GO == 0) ADCON0bits.GO = 1;
+[e $ ! == -> . . _ADCON0bits 2 1 `i -> 0 `i 369  ]
+[e = . . _ADCON0bits 2 1 -> -> 1 `i `uc ]
+[e :U 369 ]
+"355
+[; ;newmain.c: 355:     }
+}
+[e :U 365 ]
+[e $U 366  ]
+[e :U 367 ]
+"356
+[; ;newmain.c: 356: }
+[e :UE 364 ]
 }
 [a 1C 73 110 112 117 116 32 83 116 101 112 32 76 101 110 103 116 104 58 32 0 ]
 [a 2C 84 111 116 97 108 32 76 101 110 103 116 104 58 32 0 ]

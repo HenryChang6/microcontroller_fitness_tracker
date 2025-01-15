@@ -3,6 +3,8 @@
 [d edition pro ]
 [d chip 18F4520 ]
 [d frameptr 4065 ]
+"5 /Applications/microchip/xc8/v2.50/pic/sources/c99/common/atoi.c
+[v _atoi atoi `(i  1 e 2 0 ]
 "7 /Applications/microchip/xc8/v2.50/pic/sources/c99/common/awdiv.c
 [v ___awdiv __awdiv `(i  1 e 2 0 ]
 "7 /Applications/microchip/xc8/v2.50/pic/sources/c99/common/awmod.c
@@ -13,8 +15,6 @@
 [v ___flge __flge `(b  1 e 0 0 ]
 "62 /Applications/microchip/xc8/v2.50/pic/sources/c99/common/float.c
 [v ___ftpack __ftpack `(f  1 e 4 0 ]
-"43 /Applications/microchip/xc8/v2.50/pic/sources/c99/common/fltol.c
-[v ___fltol __fltol `(l  1 e 4 0 ]
 "86 /Applications/microchip/xc8/v2.50/pic/sources/c99/common/ftadd.c
 [v ___ftadd __ftadd `(f  1 e 4 0 ]
 "54 /Applications/microchip/xc8/v2.50/pic/sources/c99/common/ftdiv.c
@@ -31,10 +31,18 @@
 [v ___fldiv __fldiv `(d  1 e 4 0 ]
 "8 /Applications/microchip/xc8/v2.50/pic/sources/c99/common/sprcmul.c
 [v ___flmul __flmul `(d  1 e 4 0 ]
+"3 /Applications/microchip/xc8/v2.50/pic/sources/c99/common/strchr.c
+[v _strchr strchr `(*.31uc  1 e 2 0 ]
 "3 /Applications/microchip/xc8/v2.50/pic/sources/c99/common/strcpy.c
 [v _strcpy strcpy `(*.39uc  1 e 2 0 ]
+"3 /Applications/microchip/xc8/v2.50/pic/sources/c99/common/strcspn.c
+[v _strcspn strcspn `(ui  1 e 2 0 ]
 "5 /Applications/microchip/xc8/v2.50/pic/sources/c99/common/strlen.c
 [v _strlen strlen `(ui  1 e 2 0 ]
+"3 /Applications/microchip/xc8/v2.50/pic/sources/c99/common/strspn.c
+[v _strspn strspn `(ui  1 e 2 0 ]
+"3 /Applications/microchip/xc8/v2.50/pic/sources/c99/common/strtok.c
+[v _strtok strtok `(*.39uc  1 e 2 0 ]
 "15 /Applications/microchip/xc8/v2.50/pic/sources/c99/common/Umul16.c
 [v ___wmul __wmul `(ui  1 e 2 0 ]
 "15 /Applications/microchip/xc8/v2.50/pic/sources/c99/common/Umul32.c
@@ -56,23 +64,17 @@
 [v _Lo_ISR Lo_ISR `IIL(v  1 e 1 0 ]
 "128
 [v _Initialize Initialize `(v  1 e 1 0 ]
-"275
+"218
 [v _H_ISR H_ISR `IIH(v  1 e 1 0 ]
-"308
-[v _button_pressed button_pressed `(v  1 e 1 0 ]
-"317
-[v _variable_register_changed variable_register_changed `(v  1 e 1 0 ]
-"328
-[v _keyboard_input keyboard_input `(v  1 e 1 0 ]
-"347
+"249
 [v _reverse reverse `(v  1 e 1 0 ]
-"356
+"258
 [v _itoa itoa `(v  1 e 1 0 ]
-"374
-[v _get_StepLength get_StepLength `(i  1 e 2 0 ]
-"393
-[v _output_total_dis output_total_dis `(v  1 e 1 0 ]
-"404
+"306
+[v _print_number print_number `(v  1 e 1 0 ]
+"313
+[v _ParsingData ParsingData `(v  1 e 1 0 ]
+"337
 [v _main main `(v  1 e 1 0 ]
 "978 /Applications/microchip/mplabx/v6.00/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8/pic/include/proc/pic18f4520.h
 [v _LATA LATA `VEuc  1 e 1 @3977 ]
@@ -275,8 +277,6 @@
 ]
 [u S405 . 1 `S388 1 . 1 0 `S392 1 . 1 0 `S401 1 . 1 0 ]
 [v _CCP1CONbits CCP1CONbits `VES405  1 e 1 @4029 ]
-"4606
-[v _CCPR1L CCPR1L `VEuc  1 e 1 @4030 ]
 [s S319 . 1 `uc 1 ADCS 1 0 :3:0 
 `uc 1 ACQT 1 0 :3:3 
 `uc 1 . 1 0 :1:6 
@@ -342,10 +342,6 @@
 ]
 [u S280 . 1 `S251 1 . 1 0 `S254 1 . 1 0 `S258 1 . 1 0 `S265 1 . 1 0 `S268 1 . 1 0 `S271 1 . 1 0 `S274 1 . 1 0 `S277 1 . 1 0 ]
 [v _ADCON0bits ADCON0bits `VES280  1 e 1 @4034 ]
-"4902
-[v _ADRESL ADRESL `VEuc  1 e 1 @4035 ]
-"4909
-[v _ADRESH ADRESH `VEuc  1 e 1 @4036 ]
 "5316
 [v _T2CON T2CON `VEuc  1 e 1 @4042 ]
 [s S347 . 1 `uc 1 T2CKPS 1 0 :2:0 
@@ -457,107 +453,80 @@
 [v _btn_interr btn_interr `a  1 e 1 0 ]
 "71
 [v _cnt cnt `i  1 e 2 0 ]
-"238
-[v _current_servo_angle current_servo_angle `i  1 e 2 0 ]
-"404
+"337
 [v _main main `(v  1 e 1 0 ]
 {
-"424
-[v main@str str `[100]uc  1 a 100 0 ]
-"427
-[v main@num num `i  1 a 2 100 ]
-"438
+"348
 } 0
-"393
-[v _output_total_dis output_total_dis `(v  1 e 1 0 ]
+"313
+[v _ParsingData ParsingData `(v  1 e 1 0 ]
 {
-"399
-[v output_total_dis@i_957 i `i  1 a 2 202 ]
-"396
-[v output_total_dis@i i `i  1 a 2 200 ]
-"397
-[v output_total_dis@tmp tmp `[100]uc  1 a 100 100 ]
-"394
-[v output_total_dis@output output `[100]uc  1 a 100 0 ]
-"393
-[v output_total_dis@num num `i  1 p 2 32 ]
-[v output_total_dis@step step `i  1 p 2 34 ]
-"403
+"319
+[v ParsingData@input input `[100]uc  1 a 100 100 ]
+"318
+[v ParsingData@token token `*.39uc  1 a 2 206 ]
+"314
+[v ParsingData@str str `[100]uc  1 a 100 0 ]
+"316
+[v ParsingData@temp temp `i  1 a 2 204 ]
+[v ParsingData@heartRate heartRate `i  1 a 2 202 ]
+[v ParsingData@step step `i  1 a 2 200 ]
+"336
 } 0
-"356
-[v _itoa itoa `(v  1 e 1 0 ]
+"3 /Applications/microchip/xc8/v2.50/pic/sources/c99/common/strtok.c
+[v _strtok strtok `(*.39uc  1 e 2 0 ]
 {
-"362
-[v itoa@i i `i  1 a 2 30 ]
-"357
-[v itoa@sign sign `i  1 a 2 28 ]
-"356
-[v itoa@n n `i  1 p 2 22 ]
-[v itoa@s s `*.39uc  1 p 2 24 ]
-"373
+[v strtok@s s `*.39uc  1 p 2 19 ]
+[v strtok@sep sep `*.31Cuc  1 p 1 21 ]
+"5
+[v strtok@p p `*.39uc  1 s 2 p ]
+"13
 } 0
-"347
-[v _reverse reverse `(v  1 e 1 0 ]
+"3 /Applications/microchip/xc8/v2.50/pic/sources/c99/common/strspn.c
+[v _strspn strspn `(ui  1 e 2 0 ]
 {
-"350
-[v reverse@tmp tmp `uc  1 a 1 18 ]
-"347
-[v reverse@first first `*.39uc  1 p 2 14 ]
-[v reverse@last last `*.39uc  1 p 2 16 ]
-"354
+"5
+[v strspn@i i `ui  1 a 2 17 ]
+"3
+[v strspn@s s `*.39Cuc  1 p 2 13 ]
+[v strspn@c c `*.31Cuc  1 p 1 15 ]
+"13
 } 0
-"7 /Applications/microchip/xc8/v2.50/pic/sources/c99/common/awmod.c
-[v ___awmod __awmod `(i  1 e 2 0 ]
+"3 /Applications/microchip/xc8/v2.50/pic/sources/c99/common/strcspn.c
+[v _strcspn strcspn `(ui  1 e 2 0 ]
 {
-"10
-[v ___awmod@sign sign `uc  1 a 1 19 ]
-[v ___awmod@counter counter `uc  1 a 1 18 ]
-"7
-[v ___awmod@dividend dividend `i  1 p 2 14 ]
-[v ___awmod@divisor divisor `i  1 p 2 16 ]
-"34
+"5
+[v strcspn@i i `ui  1 a 2 17 ]
+"3
+[v strcspn@s s `*.39Cuc  1 p 2 13 ]
+[v strcspn@c c `*.31Cuc  1 p 1 15 ]
+"13
 } 0
-"7 /Applications/microchip/xc8/v2.50/pic/sources/c99/common/awdiv.c
-[v ___awdiv __awdiv `(i  1 e 2 0 ]
+"3 /Applications/microchip/xc8/v2.50/pic/sources/c99/common/strchr.c
+[v _strchr strchr `(*.31uc  1 e 2 0 ]
 {
-"10
-[v ___awdiv@quotient quotient `i  1 a 2 20 ]
+[v strchr@s s `*.31Cuc  1 p 1 9 ]
+[v strchr@c c `i  1 p 2 10 ]
 "11
-[v ___awdiv@sign sign `uc  1 a 1 19 ]
-[v ___awdiv@counter counter `uc  1 a 1 18 ]
-"7
-[v ___awdiv@dividend dividend `i  1 p 2 14 ]
-[v ___awdiv@divisor divisor `i  1 p 2 16 ]
-"41
 } 0
-"328 /Users/jyunanchen/MPLABXProjects/final.X/newmain.c
-[v _keyboard_input keyboard_input `(v  1 e 1 0 ]
+"306 /Users/jyunanchen/MPLABXProjects/final.X/newmain.c
+[v _print_number print_number `(v  1 e 1 0 ]
 {
-[v keyboard_input@str str `*.30uc  1 p 1 14 ]
-"339
-} 0
-"374
-[v _get_StepLength get_StepLength `(i  1 e 2 0 ]
-{
-"382
-[v get_StepLength@i_945 i `i  1 a 2 202 ]
-"377
-[v get_StepLength@i i `i  1 a 2 200 ]
-"379
-[v get_StepLength@str str `[100]uc  1 a 100 100 ]
-"375
-[v get_StepLength@ask ask `[100]uc  1 a 100 0 ]
-"378
-[v get_StepLength@input input `i  1 a 2 204 ]
-"392
+"309
+[v print_number@i i `i  1 a 2 100 ]
+"307
+[v print_number@tmp tmp `[100]uc  1 a 100 0 ]
+"306
+[v print_number@num num `i  1 p 2 25 ]
+"312
 } 0
 "5 /Applications/microchip/xc8/v2.50/pic/sources/c99/common/strlen.c
 [v _strlen strlen `(ui  1 e 2 0 ]
 {
 "7
-[v strlen@a a `*.39Cuc  1 a 2 16 ]
+[v strlen@a a `*.30Cuc  1 a 1 11 ]
 "5
-[v strlen@s s `*.39Cuc  1 p 2 14 ]
+[v strlen@s s `*.30Cuc  1 p 1 9 ]
 "12
 } 0
 "74 /Users/jyunanchen/MPLABXProjects/final.X/newmain.c
@@ -565,40 +534,87 @@
 {
 [v putch@data data `uc  1 p 1 wreg ]
 [v putch@data data `uc  1 p 1 wreg ]
-[v putch@data data `uc  1 p 1 14 ]
+[v putch@data data `uc  1 p 1 9 ]
 "84
 } 0
-"15 /Applications/microchip/xc8/v2.50/pic/sources/c99/common/Umul16.c
-[v ___wmul __wmul `(ui  1 e 2 0 ]
+"258
+[v _itoa itoa `(v  1 e 1 0 ]
 {
-"17
-[v ___wmul@product product `ui  1 a 2 18 ]
-"15
-[v ___wmul@multiplier multiplier `ui  1 p 2 14 ]
-[v ___wmul@multiplicand multiplicand `ui  1 p 2 16 ]
-"53
+"264
+[v itoa@i i `i  1 a 2 23 ]
+"259
+[v itoa@sign sign `i  1 a 2 21 ]
+"258
+[v itoa@n n `i  1 p 2 17 ]
+[v itoa@s s `*.30uc  1 p 1 19 ]
+"275
+} 0
+"249
+[v _reverse reverse `(v  1 e 1 0 ]
+{
+"252
+[v reverse@tmp tmp `uc  1 a 1 11 ]
+"249
+[v reverse@first first `*.30uc  1 p 1 9 ]
+[v reverse@last last `*.30uc  1 p 1 10 ]
+"256
+} 0
+"7 /Applications/microchip/xc8/v2.50/pic/sources/c99/common/awmod.c
+[v ___awmod __awmod `(i  1 e 2 0 ]
+{
+"10
+[v ___awmod@sign sign `uc  1 a 1 14 ]
+[v ___awmod@counter counter `uc  1 a 1 13 ]
+"7
+[v ___awmod@dividend dividend `i  1 p 2 9 ]
+[v ___awmod@divisor divisor `i  1 p 2 11 ]
+"34
+} 0
+"7 /Applications/microchip/xc8/v2.50/pic/sources/c99/common/awdiv.c
+[v ___awdiv __awdiv `(i  1 e 2 0 ]
+{
+"10
+[v ___awdiv@quotient quotient `i  1 a 2 15 ]
+"11
+[v ___awdiv@sign sign `uc  1 a 1 14 ]
+[v ___awdiv@counter counter `uc  1 a 1 13 ]
+"7
+[v ___awdiv@dividend dividend `i  1 p 2 9 ]
+[v ___awdiv@divisor divisor `i  1 p 2 11 ]
+"41
+} 0
+"5 /Applications/microchip/xc8/v2.50/pic/sources/c99/common/atoi.c
+[v _atoi atoi `(i  1 e 2 0 ]
+{
+"7
+[v atoi@n n `i  1 a 2 15 ]
+"8
+[v atoi@neg neg `a  1 a 1 14 ]
+"5
+[v atoi@s s `*.39Cuc  1 p 2 9 ]
+"24
 } 0
 "99 /Users/jyunanchen/MPLABXProjects/final.X/newmain.c
 [v _GetString GetString `(i  1 e 2 0 ]
 {
-[v GetString@str str `*.39uc  1 p 2 22 ]
+[v GetString@str str `*.39uc  1 p 2 17 ]
 "109
 } 0
 "3 /Applications/microchip/xc8/v2.50/pic/sources/c99/common/strcpy.c
 [v _strcpy strcpy `(*.39uc  1 e 2 0 ]
 {
 "5
-[v strcpy@d d `*.39uc  1 a 2 20 ]
+[v strcpy@d d `*.39uc  1 a 2 15 ]
 "3
-[v strcpy@dest dest `*.39uc  1 p 2 14 ]
-[v strcpy@src src `*.35Cuc  1 p 2 16 ]
+[v strcpy@dest dest `*.39uc  1 p 2 9 ]
+[v strcpy@src src `*.35Cuc  1 p 2 11 ]
 "8
 } 0
 "86 /Users/jyunanchen/MPLABXProjects/final.X/newmain.c
 [v _ClearBuffer ClearBuffer `(v  1 e 1 0 ]
 {
 "87
-[v ClearBuffer@i i `i  1 a 2 14 ]
+[v ClearBuffer@i i `i  1 a 2 9 ]
 "90
 } 0
 "128
@@ -615,7 +631,7 @@
 [v _MyusartRead MyusartRead `(v  1 e 1 0 ]
 {
 "93
-[v MyusartRead@data data `uc  1 a 1 8 ]
+[v MyusartRead@data data `uc  1 a 1 3 ]
 "97
 } 0
 "74
@@ -623,24 +639,11 @@
 {
 [v i1putch@data data `uc  1 p 1 wreg ]
 [v i1putch@data data `uc  1 p 1 wreg ]
-[v i1putch@data data `uc  1 p 1 6 ]
+[v i1putch@data data `uc  1 p 1 1 ]
 "84
 } 0
-"275
+"218
 [v _H_ISR H_ISR `IIH(v  1 e 1 0 ]
 {
-"277
-[v H_ISR@value value `i  1 a 2 4 ]
-"295
-} 0
-"317
-[v _variable_register_changed variable_register_changed `(v  1 e 1 0 ]
-{
-[v variable_register_changed@value value `i  1 p 2 0 ]
-"326
-} 0
-"308
-[v _button_pressed button_pressed `(v  1 e 1 0 ]
-{
-"315
+"231
 } 0

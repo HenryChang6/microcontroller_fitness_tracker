@@ -5036,73 +5036,9 @@ void Initialize(void) {
     PIE1bits.TMR2IE = 1;
     IPR1bits.TMR2IP = 1;
 }
-
-
-
-int get_LED() {
-    return (LATA >> 1);
-}
-
-void set_LED(int value) {
-    LATA = (value << 1);
-}
-
-void set_LED_separately(int a, int b, int c) {
-    LATA = (a << 3) + (b << 2) + (c << 1);
-}
-
-void set_LED_analog(int value) {
-    CCPR1L = (value >> 2);
-    CCP1CONbits.DC1B = (value & 0b11);
-}
-
-int current_servo_angle = 0;
-int get_servo_angle() {
-
-
-    return current_servo_angle;
-}
-
-int set_servo_angle(int angle) {
-    int current = (CCPR1L << 2) + CCP1CONbits.DC1B;
-    int target = (int)((500 + (double)(angle + 90) / 180 * (2400 - 500)) / 8 / 4) * 8;
-    btn_interr = 0;
-    while (current != target) {
-        if (btn_interr) return -1;
-        if (current < target)
-            current++;
-        else
-            current--;
-
-        CCPR1L = (current >> 2);
-        CCP1CONbits.DC1B = (current & 0b11);
-        _delay((unsigned long)((1)*(4000000/4000.0)));
-    }
-    current_servo_angle = angle;
-    return 0;
-}
-
-int VR_value_to_servo_angle(int value) {
-    return (int)(((double)value / ((1 << 10) - 1) * 180) - 90);
-}
-
-int VR_value_to_LED_analog(int value) {
-    return value;
-}
-
-void variable_register_changed(int value);
-void button_pressed();
-
 void __attribute__((picinterrupt(("high_priority")))) H_ISR() {
-    if (PIR1bits.ADIF) {
-        int value = (ADRESH << 8) + ADRESL;
-        variable_register_changed(value);
-        PIR1bits.ADIF = 0;
-        _delay((unsigned long)((5)*(4000000/4000.0)));
-    }
 
     if (INTCONbits.INT0IF) {
-        button_pressed();
         _delay((unsigned long)((50)*(4000000/4000.0)));
         btn_interr = 1;
         INTCONbits.INT0IF = 0;
@@ -5124,24 +5060,6 @@ int delay(double sec) {
     return 0;
 }
 
-
-
-void button_pressed() {
-
-
-
-
-
-
-}
-
-void variable_register_changed(int value) {
-# 326 "newmain.c"
-}
-
-void keyboard_input(char *str) {
-# 339 "newmain.c"
-}
 
 void Start_Timer() {
     cnt = 0;
@@ -5183,7 +5101,7 @@ int get_StepLength() {
     int input = 0;
     char str[100];
     ClearBuffer();
-    while( GetString(str) || input == 0 ) {
+    while( input == 0 ) {
         for(int i=0;i<strlen(str);i++) {
             ClearBuffer();
             if( str[i] >= '0' && str[i] <= '9' ) {
@@ -5206,21 +5124,46 @@ void output_total_dis(int num, int step) {
     putch('\n');
     return;
 }
+void print_number(int num) {
+    char tmp[100];
+    itoa(num, tmp);
+    for(int i=0;i<strlen(tmp);i++) putch(tmp[i]);
+    putch('\r');
+    putch('\n');
+}
+void ParsingData() {
+    char str[100];
+    ClearBuffer();
+    int step = -1, heartRate = -1, temp = -1;
+    while( GetString(str) && ( step == -1 || heartRate == -1 || temp == -1 ) ) {
+        char *token;
+        char input[100];
+        strcpy(input, str);
+        ClearBuffer();
+        token = strtok(input, " ");
+        step = atoi(token);
+
+        token = strtok(((void*)0), " ");
+        heartRate = atoi(token);
+
+        token = strtok(((void*)0), " ");
+        temp = atoi(token);
+    }
+    print_number(step);
+    print_number(heartRate);
+    print_number(temp);
+
+    return;
+}
 void main() {
     Initialize();
-# 424 "newmain.c"
+
     char str[100];
     ClearBuffer();
 
-    int num = get_StepLength();
-    output_total_dis(num, 100);
-
     while (1) {
 
-
-        if (GetString(str)) keyboard_input(str);
+        ParsingData();
         if (ADCON0bits.GO == 0) ADCON0bits.GO = 1;
-
-
     }
 }

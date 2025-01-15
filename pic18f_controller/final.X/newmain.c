@@ -215,73 +215,9 @@ void Initialize(void) {
     PIE1bits.TMR2IE = 1; // Enable Timer2 interrupt
     IPR1bits.TMR2IP = 1; // Set Timer2 interrupt as high priority
 }
-
-// ---------------- OOP --------------------
-
-int get_LED() {
-    return (LATA >> 1);
-}
-
-void set_LED(int value) {
-    LATA = (value << 1);
-}
-
-void set_LED_separately(int a, int b, int c) {
-    LATA = (a << 3) + (b << 2) + (c << 1);
-}
-
-void set_LED_analog(int value) {
-    CCPR1L = (value >> 2);
-    CCP1CONbits.DC1B = (value & 0b11);
-}
-
-int current_servo_angle = 0;
-int get_servo_angle() {
-    // double duty_cycle = ((CCPR1L << 2) + CCP1CONbits.DC1B) * 4;
-    // return (int)((duty_cycle - 500) / (2400 - 500) * 180 - 90);
-    return current_servo_angle;
-}
-
-int set_servo_angle(int angle) {
-    int current = (CCPR1L << 2) + CCP1CONbits.DC1B;
-    int target = (int)((500 + (double)(angle + 90) / 180 * (2400 - 500)) / 8 / 4) * 8;  // angle to pwn
-    btn_interr = false;
-    while (current != target) {
-        if (btn_interr) return -1;
-        if (current < target)
-            current++;
-        else
-            current--;
-
-        CCPR1L = (current >> 2);
-        CCP1CONbits.DC1B = (current & 0b11);
-        __delay_ms(1);
-    }
-    current_servo_angle = angle;
-    return 0;
-}
-
-int VR_value_to_servo_angle(int value) {
-    return (int)(((double)value / VR_MAX * 180) - 90);
-}
-
-int VR_value_to_LED_analog(int value) {
-    return value;
-}
-
-void variable_register_changed(int value);
-void button_pressed();
-
 void __interrupt(high_priority) H_ISR() {
-    if (PIR1bits.ADIF) {  // Handle variable register interrupt
-        int value = (ADRESH << 8) + ADRESL;
-        variable_register_changed(value);
-        PIR1bits.ADIF = 0;
-        __delay_ms(5);
-    }
 
     if (INTCONbits.INT0IF) {  // Handle button interrupt
-        button_pressed();
         __delay_ms(50);  // bouncing problem
         btn_interr = true;
         INTCONbits.INT0IF = 0;
@@ -303,40 +239,6 @@ int delay(double sec) {
     return 0;
 }
 
-// --------------- TODO ------------------
-
-void button_pressed() {
-    // Do sth when the button is pressed
-    /* Example:
-     * set_LED(get_LED() + 1);
-     */
-
-
-}
-
-void variable_register_changed(int value) {  // value: 0 ~ 1023
-    // Do sth when the variable register changes
-    /* Example:
-     * set_servo_angle(VR_value_to_servo_angle(value));
-     * set_LED_analog(VR_value_to_LED_analog(value));
-     * printf("%d\n", value); // print the variable register value on uart terminal
-     */
-
-
-}
-
-void keyboard_input(char *str) {  // get line from keyboard: this function will be called after you click enter
-    // Do sth when typing on keyboard
-    /* Example:
-        if(strcmp(str, "mode1") == 0) {
-            mode = 1;
-        } else if(strcmp(str, "mode2") == 0) {
-            mode = 2;
-        }
-     */
-
-
-}
 
 void Start_Timer() {
     cnt = 0;
@@ -378,7 +280,7 @@ int get_StepLength() {
     int input = 0;
     char str[STR_MAX];
     ClearBuffer();
-    while( GetString(str) || input == 0 ) {
+    while( input == 0 ) {
         for(int i=0;i<strlen(str);i++) {
             ClearBuffer();
             if( str[i] >= '0' && str[i] <= '9' ) {
@@ -401,38 +303,46 @@ void output_total_dis(int num, int step) {
     putch('\n');
     return;
 }
+void print_number(int num) {
+    char tmp[100];
+    itoa(num, tmp);
+    for(int i=0;i<strlen(tmp);i++) putch(tmp[i]);
+    putch('\r');
+    putch('\n');
+}
+void ParsingData() {
+    char str[STR_MAX];
+    ClearBuffer();
+    int step = -1, heartRate = -1, temp = -1;
+    while( GetString(str) && ( step == -1 || heartRate == -1 || temp == -1 ) ) {
+        char *token;
+        char input[STR_MAX];
+        strcpy(input, str);
+        ClearBuffer();
+        token = strtok(input, " ");
+        step = atoi(token);
+        
+        token = strtok(NULL, " ");
+        heartRate = atoi(token);
+        
+        token = strtok(NULL, " ");
+        temp = atoi(token);
+    }
+    print_number(step);
+    print_number(heartRate);
+    print_number(temp);
+    
+    return;
+}
 void main() {
     Initialize();
-    /* Usage:
-     * set_servo_angle(-90); // input: -90 ~ 90, return value: -1 represents interrupt with button press, else 0
-     * get_servo_angle(); // return value: -90 ~ 90
-     *
-     * set_LED(5); // 5 = 0b101, set LED1 and LED3 on, LED2 off
-     * get_LED(); // return value: an integer, bit 0 -> LED1, bit 1 -> LED2, bit 2 -> LED3
-     *
-     * set_LED_separately(1, 1, 0); // set LED1 and LED2 on, LED3 off
-     * set_LED_analog(512); // input: 0 ~ 1023, represent brightness. NOTICE: LED need to be plugged into the CCP1 pin.
-     *
-     * VR_value_to_servo_angle(1024); // return value: -90 ~ 90. Change the variable register value to servo angle
-     * VR_value_to_LED_analog(1024); // return value: 0 ~ 1023. Change the variable register value to LED brightness
-     *
-     * delay(1); // delay 1 second, return value: -1 represents interrupt with button press, else 0
-     *
-     * printf(); // print on uart terminal
-     */
 
     char str[STR_MAX];
     ClearBuffer();
     
-    int num = get_StepLength();
-    output_total_dis(num, 100);
-    
     while (1) {
         // Do sth in main
-
-        if (GetString(str)) keyboard_input(str);
+        ParsingData();
         if (ADCON0bits.GO == 0) ADCON0bits.GO = 1;
-        
-       // output_total_dis(num, 100);
     }
 }
