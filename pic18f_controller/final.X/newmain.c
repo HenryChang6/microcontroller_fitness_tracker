@@ -55,6 +55,9 @@
 
 #include <ctype.h>
 #include <pic18f4520.h>
+#include "uart.h"
+#include "init.h"
+#include "parsing.h"
 #include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -65,49 +68,13 @@
 #define VR_MAX ((1 << 10) - 1)
 // #define delay(t) __delay_ms(t * 1000);
 
-char buffer[STR_MAX];
-int buffer_size = 0;
 bool btn_interr = false;
 int cnt = 0;
-// ---------------- Uart --------------------
-
-void putch(char data) {  // Output on Terminal
-    if (data == '\n' || data == '\r') {
-        while (!TXSTAbits.TRMT);
-        TXREG = '\r';
-        while (!TXSTAbits.TRMT);
-        TXREG = '\n';
-    } else {
-        while (!TXSTAbits.TRMT);
-        TXREG = data;
-    }
-}
-
-void ClearBuffer() {
-    for (int i = 0; i < STR_MAX; i++)
-        buffer[i] = '\0';
-    buffer_size = 0;
-}
-
-void MyusartRead() {
-    char data = RCREG;
-    if (!isprint(data) && data != '\r') return;
-    buffer[buffer_size++] = data;
-    putch(data);
-}
-
-int GetString(char *str) {
-    if (buffer[buffer_size - 1] == '\r') {
-        buffer[--buffer_size] = '\0';
-        strcpy(str, buffer);
-        ClearBuffer();
-        return 1;
-    } else {
-        str[0] = '\0';
-        return 0;
-    }
-}
-
+struct Data {
+    int step;
+    int heartRate;
+    int temp;
+};
 void __interrupt(low_priority) Lo_ISR(void) {
     if (RCIF) {
         if (RCSTAbits.OERR) {
@@ -125,96 +92,6 @@ void __interrupt(low_priority) Lo_ISR(void) {
 
 // ---------------- Settings --------------------
 
-void Initialize(void) {
-    // Configure oscillator
-    OSCCONbits.IRCF = 0b110;  // 4 MHz
-    // Configure ADC
-    TRISAbits.RA0 = 1;         // Set RA0 as input port
-    ADCON1bits.PCFG = 0b1110;  // AN0 as analog input
-    ADCON0bits.CHS = 0b0000;   // Select AN0 channel
-    ADCON1bits.VCFG0 = 0;      // Vref+ = Vdd
-    ADCON1bits.VCFG1 = 0;      // Vref- = Vss
-    ADCON2bits.ADCS = 0b000;   // ADC clock Fosc/2
-    ADCON2bits.ACQT = 0b001;   // 2Tad acquisition time
-    ADCON0bits.ADON = 1;       // Enable ADC
-    ADCON2bits.ADFM = 1;       // Right justified
-
-    // Configure servo (PWM)
-    T2CONbits.TMR2ON = 0b1;      // Timer2 on
-    T2CONbits.T2CKPS = 0b11;     // Prescaler 16
-    CCP1CONbits.CCP1M = 0b1100;  // PWM mode
-    PR2 = 0x9b;                  // Set PWM period
-
-    TRISCbits.TRISC2 = 0;
-
-    // Configure I/O ports
-    TRISA &= 0xF1;  // Set RA1-RA3 as outputs for LED
-    TRISB = 1;      // RB0 as input for button
-    TRISC = 0;      // PORTC as output for servo
-    LATA &= 0xF1;   // Clear RA1-RA3
-    LATC = 0;       // Clear PORTC
-
-    // Configure interrupts
-    INTCONbits.INT0IF = 0;  // Clear INT0 flag
-    INTCONbits.INT0IE = 1;  // Enable INT0 interrupt
-    PIE1bits.ADIE = 1;      // Enable ADC interrupt
-    PIR1bits.ADIF = 0;      // Clear ADC flag
-    INTCONbits.PEIE = 1;    // Enable peripheral interrupt
-    INTCONbits.GIE = 1;     // Enable global interrupt
-    RCONbits.IPEN = 1;      // enable Interrupt Priority mode
-    INTCONbits.GIEH = 1;    // enable high priority interrupt
-    INTCONbits.GIEL = 1;    // disable low priority interrupt
-
-    // Configure UART
-    /*
-           TODObasic
-           Serial Setting
-        1.   Setting Baud rate
-        2.   choose sync/async mode
-        3.   enable Serial port (configures RX/DT and TX/CK pins as serial port pins)
-        3.5  enable Tx, Rx Interrupt(optional)
-        4.   Enable Tx & RX
-    */
-    TRISCbits.TRISC6 = 1;  // RC6(TX) : Transmiter set 1 (output)
-    TRISCbits.TRISC7 = 1;  // RC7(RX) : Receiver set 1   (input)
-
-    // Setting Baud rate
-    // Baud rate = 1200 (Look up table)
-    TXSTAbits.SYNC = 0;     // Synchronus or Asynchronus
-    BAUDCONbits.BRG16 = 0;  // 16 bits or 8 bits
-    TXSTAbits.BRGH = 0;     // High Baud Rate Select bit
-    SPBRG = 51;             // Control the period
-
-    // Serial enable
-    RCSTAbits.SPEN = 1;  // Enable asynchronus serial port (must be set to 1)
-    PIR1bits.TXIF = 0;   // Set when TXREG is empty
-    PIR1bits.RCIF = 0;   // Will set when reception is complete
-    TXSTAbits.TXEN = 1;  // Enable transmission
-    RCSTAbits.CREN = 1;  // Continuous receive enable bit, will be cleared when error occured
-    PIE1bits.TXIE = 0;   // Wanna use Interrupt (Transmit)
-    IPR1bits.TXIP = 0;   // Interrupt Priority bit
-    PIE1bits.RCIE = 1;   // Wanna use Interrupt (Receive)
-    IPR1bits.RCIP = 0;   // Interrupt Priority bit
-    /* Transmitter (output)
-     TSR   : Current Data
-     TXREG : Next Data
-     TXSTAbits.TRMT will set when TSR is empty
-    */
-    /* Reiceiver (input)
-     RSR   : Current Data
-     RCREG : Correct Data (have been processed) : read data by reading the RCREG Register
-    */
-
-    // Start ADC conversion
-    ADCON0bits.GO = 1;
-    
-    // Configure Timer2
-    T2CON = 0b01111111; // Prescaler 1:16, Postscaler 1:16, Timer2 ON
-    PR2 = 122;          // Set Timer2 period to achieve 0.5s delay
-    PIR1bits.TMR2IF = 0; // Clear Timer2 interrupt flag
-    PIE1bits.TMR2IE = 1; // Enable Timer2 interrupt
-    IPR1bits.TMR2IP = 1; // Set Timer2 interrupt as high priority
-}
 void __interrupt(high_priority) H_ISR() {
 
     if (INTCONbits.INT0IF) {  // Handle button interrupt
@@ -228,23 +105,6 @@ void __interrupt(high_priority) H_ISR() {
         PIR1bits.TMR2IF = 0; // Clear the interrupt flag
         
     }
-}
-
-int delay(double sec) {
-    btn_interr = false;
-    for (int i = 0; i < sec * 1000 / 10; i++) {
-        if (btn_interr) return -1;
-        __delay_ms(10);
-    }
-    return 0;
-}
-
-
-void Start_Timer() {
-    cnt = 0;
-}
-int End_Timer() {
-   return cnt / 42; 
 }
 void reverse(char *first, char *last) {
     for (;first < last; first++,last--) {
@@ -273,76 +133,35 @@ void itoa(int n, char *s) {
 
     reverse(s, s+i-1);
 }
-int get_StepLength() {
-    char ask[100];
-    strcpy(ask, "Input Step Length: ");
-    for(int i=0;i<strlen(ask);i++) putch(ask[i]);
-    int input = 0;
-    char str[STR_MAX];
-    ClearBuffer();
-    while( input == 0 ) {
-        for(int i=0;i<strlen(str);i++) {
-            ClearBuffer();
-            if( str[i] >= '0' && str[i] <= '9' ) {
-                input *= 10, input += str[i] - '0';
-            }
-        }
-    }
-    
-    if( input == 0 ) input = 45;
-    return input;
+void Start_Timer() {
+    cnt = 0;
 }
-void output_total_dis(int num, int step) {
-    char output[100] = {};
-    strcpy(output, "Total Length: ");
-    for(int i=0;i<strlen(output);i++) putch(output[i]);
-    char tmp[100] = {};
-    itoa(num * step, tmp);
-    for(int i=0;i<strlen(tmp);i++) putch(tmp[i]);
-    putch('\r');
-    putch('\n');
-    return;
+void Get_Timer_H(char* str) {
+    int result = cnt / 42;
+    int h = result / 60;
+    char str2[100];
+    itoa(h, str2);
+    if( h < 10 ) strcpy(str, "0");
+    strcat(str, str2);
 }
-void print_number(int num) {
-    char tmp[100];
-    itoa(num, tmp);
-    for(int i=0;i<strlen(tmp);i++) putch(tmp[i]);
-    putch('\r');
-    putch('\n');
-}
-void ParsingData() {
-    char str[STR_MAX];
-    ClearBuffer();
-    int step = -1, heartRate = -1, temp = -1;
-    while( GetString(str) && ( step == -1 || heartRate == -1 || temp == -1 ) ) {
-        char *token;
-        char input[STR_MAX];
-        strcpy(input, str);
-        ClearBuffer();
-        token = strtok(input, " ");
-        step = atoi(token);
-        
-        token = strtok(NULL, " ");
-        heartRate = atoi(token);
-        
-        token = strtok(NULL, " ");
-        temp = atoi(token);
-    }
-    print_number(step);
-    print_number(heartRate);
-    print_number(temp);
-    
-    return;
+void Get_Timer_M(char* str) {
+    int result = cnt / 42;
+    int m = result % 60;
+    char str2[100];
+    itoa(m, str2);
+    if( m < 10 ) strcpy(str, "0");
+    strcat(str, str2);  
 }
 void main() {
+    
     Initialize();
-
     char str[STR_MAX];
     ClearBuffer();
     
     while (1) {
-        // Do sth in main
-        ParsingData();
+        if( GetString(str) ) {
+            struct Data return_val = ParsingData(str);
+        }
         if (ADCON0bits.GO == 0) ADCON0bits.GO = 1;
     }
 }
