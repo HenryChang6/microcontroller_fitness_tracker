@@ -1,4 +1,4 @@
-# 1 "newmain.c"
+# 1 "init.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,89 +6,260 @@
 # 1 "<built-in>" 2
 # 1 "/Applications/microchip/mplabx/v6.00/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8/pic/include/language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "newmain.c" 2
-
-#pragma config OSC = INTIO67
-#pragma config FCMEN = OFF
-#pragma config IESO = ON
+# 1 "init.c" 2
 
 
-#pragma config PWRT = OFF
-#pragma config BOREN = SBORDIS
-#pragma config BORV = 3
 
 
-#pragma config WDT = OFF
-#pragma config WDTPS = 1
 
 
-#pragma config CCP2MX = PORTC
-#pragma config PBADEN = ON
-#pragma config LPT1OSC = OFF
-#pragma config MCLRE = ON
 
 
-#pragma config STVREN = ON
-#pragma config LVP = OFF
-#pragma config XINST = OFF
+# 1 "/Applications/microchip/mplabx/v6.00/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8/pic/include/xc.h" 1 3
+# 18 "/Applications/microchip/mplabx/v6.00/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8/pic/include/xc.h" 3
+extern const char __xc8_OPTIM_SPEED;
+
+extern double __fpnormalize(double);
 
 
-#pragma config CP0 = OFF
-#pragma config CP1 = OFF
-#pragma config CP2 = OFF
-#pragma config CP3 = OFF
+
+# 1 "/Applications/microchip/xc8/v2.50/pic/include/c99/xc8debug.h" 1 3
 
 
-#pragma config CPB = OFF
-#pragma config CPD = OFF
+
+# 1 "/Applications/microchip/xc8/v2.50/pic/include/c99/stdlib.h" 1 3
 
 
-#pragma config WRT0 = OFF
-#pragma config WRT1 = OFF
-#pragma config WRT2 = OFF
-#pragma config WRT3 = OFF
 
-
-#pragma config WRTC = OFF
-#pragma config WRTB = OFF
-#pragma config WRTD = OFF
-
-
-#pragma config EBTR0 = OFF
-#pragma config EBTR1 = OFF
-#pragma config EBTR2 = OFF
-#pragma config EBTR3 = OFF
-
-
-#pragma config EBTRB = OFF
-
-
-# 1 "/Applications/microchip/xc8/v2.50/pic/include/c99/ctype.h" 1 3
-
-
+# 1 "/Applications/microchip/xc8/v2.50/pic/include/c99/musl_xc8.h" 1 3
+# 5 "/Applications/microchip/xc8/v2.50/pic/include/c99/stdlib.h" 2 3
 
 
 
 
 
 # 1 "/Applications/microchip/xc8/v2.50/pic/include/c99/features.h" 1 3
-# 9 "/Applications/microchip/xc8/v2.50/pic/include/c99/ctype.h" 2 3
+# 11 "/Applications/microchip/xc8/v2.50/pic/include/c99/stdlib.h" 2 3
+# 21 "/Applications/microchip/xc8/v2.50/pic/include/c99/stdlib.h" 3
+# 1 "/Applications/microchip/xc8/v2.50/pic/include/c99/bits/alltypes.h" 1 3
+# 24 "/Applications/microchip/xc8/v2.50/pic/include/c99/bits/alltypes.h" 3
+typedef long int wchar_t;
+# 128 "/Applications/microchip/xc8/v2.50/pic/include/c99/bits/alltypes.h" 3
+typedef unsigned size_t;
+# 174 "/Applications/microchip/xc8/v2.50/pic/include/c99/bits/alltypes.h" 3
+typedef __int24 int24_t;
+# 210 "/Applications/microchip/xc8/v2.50/pic/include/c99/bits/alltypes.h" 3
+typedef __uint24 uint24_t;
+# 22 "/Applications/microchip/xc8/v2.50/pic/include/c99/stdlib.h" 2 3
 
-int isalnum(int);
-int isalpha(int);
-int isblank(int);
-int iscntrl(int);
-int isdigit(int);
-int isgraph(int);
-int islower(int);
-int isprint(int);
-int ispunct(int);
-int isspace(int);
-int isupper(int);
-int isxdigit(int);
-int tolower(int);
-int toupper(int);
-# 57 "newmain.c" 2
+int atoi (const char *);
+long atol (const char *);
+
+long long atoll (const char *);
+
+double atof (const char *);
+
+
+float strtof (const char *restrict, char **restrict);
+double strtod (const char *restrict, char **restrict);
+long double strtold (const char *restrict, char **restrict);
+
+
+
+long strtol (const char *restrict, char **restrict, int);
+unsigned long strtoul (const char *restrict, char **restrict, int);
+
+long long strtoll (const char *restrict, char **restrict, int);
+unsigned long long strtoull (const char *restrict, char **restrict, int);
+
+
+unsigned long __strtoxl(const char * s, char ** endptr, int base, char is_signed);
+
+unsigned long long __strtoxll(const char * s, char ** endptr, int base, char is_signed);
+# 55 "/Applications/microchip/xc8/v2.50/pic/include/c99/stdlib.h" 3
+int rand (void);
+void srand (unsigned);
+
+void *malloc (size_t);
+void *calloc (size_t, size_t);
+void *realloc (void *, size_t);
+void free (void *);
+
+          void abort (void);
+int atexit (void (*) (void));
+          void exit (int);
+          void _Exit (int);
+
+void *bsearch (const void *, const void *, size_t, size_t, int (*)(const void *, const void *));
+
+
+
+
+
+
+
+__attribute__((nonreentrant)) void qsort (void *, size_t, size_t, int (*)(const void *, const void *));
+
+int abs (int);
+long labs (long);
+
+long long llabs (long long);
+
+
+typedef struct { int quot, rem; } div_t;
+typedef struct { long quot, rem; } ldiv_t;
+
+typedef struct { long long quot, rem; } lldiv_t;
+
+
+div_t div (int, int);
+ldiv_t ldiv (long, long);
+
+lldiv_t lldiv (long long, long long);
+
+
+typedef struct { unsigned int quot, rem; } udiv_t;
+typedef struct { unsigned long quot, rem; } uldiv_t;
+udiv_t udiv (unsigned int, unsigned int);
+uldiv_t uldiv (unsigned long, unsigned long);
+# 5 "/Applications/microchip/xc8/v2.50/pic/include/c99/xc8debug.h" 2 3
+
+
+
+
+
+
+
+#pragma intrinsic(__builtin_software_breakpoint)
+extern void __builtin_software_breakpoint(void);
+# 24 "/Applications/microchip/mplabx/v6.00/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8/pic/include/xc.h" 2 3
+# 1 "/Applications/microchip/mplabx/v6.00/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8/pic/include/builtins.h" 1 3
+
+
+
+# 1 "/Applications/microchip/xc8/v2.50/pic/include/c99/stdint.h" 1 3
+# 26 "/Applications/microchip/xc8/v2.50/pic/include/c99/stdint.h" 3
+# 1 "/Applications/microchip/xc8/v2.50/pic/include/c99/bits/alltypes.h" 1 3
+# 133 "/Applications/microchip/xc8/v2.50/pic/include/c99/bits/alltypes.h" 3
+typedef unsigned __int24 uintptr_t;
+# 148 "/Applications/microchip/xc8/v2.50/pic/include/c99/bits/alltypes.h" 3
+typedef __int24 intptr_t;
+# 164 "/Applications/microchip/xc8/v2.50/pic/include/c99/bits/alltypes.h" 3
+typedef signed char int8_t;
+
+
+
+
+typedef short int16_t;
+# 179 "/Applications/microchip/xc8/v2.50/pic/include/c99/bits/alltypes.h" 3
+typedef long int32_t;
+
+
+
+
+
+typedef long long int64_t;
+# 194 "/Applications/microchip/xc8/v2.50/pic/include/c99/bits/alltypes.h" 3
+typedef long long intmax_t;
+
+
+
+
+
+typedef unsigned char uint8_t;
+
+
+
+
+typedef unsigned short uint16_t;
+# 215 "/Applications/microchip/xc8/v2.50/pic/include/c99/bits/alltypes.h" 3
+typedef unsigned long uint32_t;
+
+
+
+
+
+typedef unsigned long long uint64_t;
+# 235 "/Applications/microchip/xc8/v2.50/pic/include/c99/bits/alltypes.h" 3
+typedef unsigned long long uintmax_t;
+# 27 "/Applications/microchip/xc8/v2.50/pic/include/c99/stdint.h" 2 3
+
+typedef int8_t int_fast8_t;
+
+typedef int64_t int_fast64_t;
+
+
+typedef int8_t int_least8_t;
+typedef int16_t int_least16_t;
+
+typedef int24_t int_least24_t;
+typedef int24_t int_fast24_t;
+
+typedef int32_t int_least32_t;
+
+typedef int64_t int_least64_t;
+
+
+typedef uint8_t uint_fast8_t;
+
+typedef uint64_t uint_fast64_t;
+
+
+typedef uint8_t uint_least8_t;
+typedef uint16_t uint_least16_t;
+
+typedef uint24_t uint_least24_t;
+typedef uint24_t uint_fast24_t;
+
+typedef uint32_t uint_least32_t;
+
+typedef uint64_t uint_least64_t;
+# 148 "/Applications/microchip/xc8/v2.50/pic/include/c99/stdint.h" 3
+# 1 "/Applications/microchip/xc8/v2.50/pic/include/c99/bits/stdint.h" 1 3
+typedef int16_t int_fast16_t;
+typedef int32_t int_fast32_t;
+typedef uint16_t uint_fast16_t;
+typedef uint32_t uint_fast32_t;
+# 149 "/Applications/microchip/xc8/v2.50/pic/include/c99/stdint.h" 2 3
+# 5 "/Applications/microchip/mplabx/v6.00/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8/pic/include/builtins.h" 2 3
+
+
+#pragma intrinsic(__nop)
+extern void __nop(void);
+
+
+#pragma intrinsic(_delay)
+extern __attribute__((nonreentrant)) void _delay(uint32_t);
+#pragma intrinsic(_delaywdt)
+extern __attribute__((nonreentrant)) void _delaywdt(uint32_t);
+
+#pragma intrinsic(_delay3)
+extern __attribute__((nonreentrant)) void _delay3(uint8_t);
+# 25 "/Applications/microchip/mplabx/v6.00/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8/pic/include/xc.h" 2 3
+
+
+
+
+
+
+
+
+# 1 "/Applications/microchip/mplabx/v6.00/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8/pic/include/pic18.h" 1 3
+
+
+
+
+# 1 "/Applications/microchip/mplabx/v6.00/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8/pic/include/htc.h" 1 3
+
+
+
+# 1 "/Applications/microchip/mplabx/v6.00/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8/pic/include/xc.h" 1 3
+# 5 "/Applications/microchip/mplabx/v6.00/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8/pic/include/htc.h" 2 3
+# 6 "/Applications/microchip/mplabx/v6.00/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8/pic/include/pic18.h" 2 3
+
+
+# 1 "/Applications/microchip/mplabx/v6.00/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8/pic/include/pic18_chip_select.h" 1 3
+# 320 "/Applications/microchip/mplabx/v6.00/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8/pic/include/pic18_chip_select.h" 3
 # 1 "/Applications/microchip/mplabx/v6.00/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8/pic/include/proc/pic18f4520.h" 1 3
 # 45 "/Applications/microchip/mplabx/v6.00/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8/pic/include/proc/pic18f4520.h" 3
 # 1 "/Applications/microchip/mplabx/v6.00/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8/pic/include/__at.h" 1 3
@@ -4437,468 +4608,7 @@ extern volatile __bit nWR __attribute__((address(0x7C21)));
 
 
 extern volatile __bit nWRITE __attribute__((address(0x7E3A)));
-# 58 "newmain.c" 2
-# 1 "./uart.h" 1
-
-
-
-void putch(char data);
-void ClearBuffer();
-void MyusartRead();
-int GetString(char *str);
-# 59 "newmain.c" 2
-# 1 "./init.h" 1
-
-
-
-void Initialize();
-# 60 "newmain.c" 2
-# 1 "./parsing.h" 1
-# 25 "./parsing.h"
-struct Data;
-struct Data ParsingData(char* s);
-# 61 "newmain.c" 2
-# 1 "/Applications/microchip/xc8/v2.50/pic/include/c99/stdbool.h" 1 3
-# 62 "newmain.c" 2
-# 1 "/Applications/microchip/xc8/v2.50/pic/include/c99/stdio.h" 1 3
-
-
-
-# 1 "/Applications/microchip/xc8/v2.50/pic/include/c99/musl_xc8.h" 1 3
-# 5 "/Applications/microchip/xc8/v2.50/pic/include/c99/stdio.h" 2 3
-# 24 "/Applications/microchip/xc8/v2.50/pic/include/c99/stdio.h" 3
-# 1 "/Applications/microchip/xc8/v2.50/pic/include/c99/bits/alltypes.h" 1 3
-# 12 "/Applications/microchip/xc8/v2.50/pic/include/c99/bits/alltypes.h" 3
-typedef void * va_list[1];
-
-
-
-
-typedef void * __isoc_va_list[1];
-# 128 "/Applications/microchip/xc8/v2.50/pic/include/c99/bits/alltypes.h" 3
-typedef unsigned size_t;
-# 143 "/Applications/microchip/xc8/v2.50/pic/include/c99/bits/alltypes.h" 3
-typedef __int24 ssize_t;
-# 174 "/Applications/microchip/xc8/v2.50/pic/include/c99/bits/alltypes.h" 3
-typedef __int24 int24_t;
-# 210 "/Applications/microchip/xc8/v2.50/pic/include/c99/bits/alltypes.h" 3
-typedef __uint24 uint24_t;
-# 255 "/Applications/microchip/xc8/v2.50/pic/include/c99/bits/alltypes.h" 3
-typedef long long off_t;
-# 409 "/Applications/microchip/xc8/v2.50/pic/include/c99/bits/alltypes.h" 3
-typedef struct _IO_FILE FILE;
-# 25 "/Applications/microchip/xc8/v2.50/pic/include/c99/stdio.h" 2 3
-# 52 "/Applications/microchip/xc8/v2.50/pic/include/c99/stdio.h" 3
-typedef union _G_fpos64_t {
- char __opaque[16];
- double __align;
-} fpos_t;
-
-extern FILE *const stdin;
-extern FILE *const stdout;
-extern FILE *const stderr;
-
-
-
-
-
-FILE *fopen(const char *restrict, const char *restrict);
-FILE *freopen(const char *restrict, const char *restrict, FILE *restrict);
-int fclose(FILE *);
-
-int remove(const char *);
-int rename(const char *, const char *);
-
-int feof(FILE *);
-int ferror(FILE *);
-int fflush(FILE *);
-void clearerr(FILE *);
-
-int fseek(FILE *, long, int);
-long ftell(FILE *);
-void rewind(FILE *);
-
-int fgetpos(FILE *restrict, fpos_t *restrict);
-int fsetpos(FILE *, const fpos_t *);
-
-size_t fread(void *restrict, size_t, size_t, FILE *restrict);
-size_t fwrite(const void *restrict, size_t, size_t, FILE *restrict);
-
-int fgetc(FILE *);
-int getc(FILE *);
-int getchar(void);
-
-
-
-
-
-int ungetc(int, FILE *);
-int getch(void);
-
-int fputc(int, FILE *);
-int putc(int, FILE *);
-int putchar(int);
-
-
-
-
-
-void putch(char);
-
-char *fgets(char *restrict, int, FILE *restrict);
-
-char *gets(char *);
-
-
-int fputs(const char *restrict, FILE *restrict);
-int puts(const char *);
-
-__attribute__((__format__(__printf__, 1, 2)))
-int printf(const char *restrict, ...);
-__attribute__((__format__(__printf__, 2, 3)))
-int fprintf(FILE *restrict, const char *restrict, ...);
-__attribute__((__format__(__printf__, 2, 3)))
-int sprintf(char *restrict, const char *restrict, ...);
-__attribute__((__format__(__printf__, 3, 4)))
-int snprintf(char *restrict, size_t, const char *restrict, ...);
-
-__attribute__((__format__(__printf__, 1, 0)))
-int vprintf(const char *restrict, __isoc_va_list);
-int vfprintf(FILE *restrict, const char *restrict, __isoc_va_list);
-__attribute__((__format__(__printf__, 2, 0)))
-int vsprintf(char *restrict, const char *restrict, __isoc_va_list);
-__attribute__((__format__(__printf__, 3, 0)))
-int vsnprintf(char *restrict, size_t, const char *restrict, __isoc_va_list);
-
-__attribute__((__format__(__scanf__, 1, 2)))
-int scanf(const char *restrict, ...);
-__attribute__((__format__(__scanf__, 2, 3)))
-int fscanf(FILE *restrict, const char *restrict, ...);
-__attribute__((__format__(__scanf__, 2, 3)))
-int sscanf(const char *restrict, const char *restrict, ...);
-
-__attribute__((__format__(__scanf__, 1, 0)))
-int vscanf(const char *restrict, __isoc_va_list);
-int vfscanf(FILE *restrict, const char *restrict, __isoc_va_list);
-__attribute__((__format__(__scanf__, 2, 0)))
-int vsscanf(const char *restrict, const char *restrict, __isoc_va_list);
-
-void perror(const char *);
-
-int setvbuf(FILE *restrict, char *restrict, int, size_t);
-void setbuf(FILE *restrict, char *restrict);
-
-char *tmpnam(char *);
-FILE *tmpfile(void);
-
-
-
-
-FILE *fmemopen(void *restrict, size_t, const char *restrict);
-FILE *open_memstream(char **, size_t *);
-FILE *fdopen(int, const char *);
-FILE *popen(const char *, const char *);
-int pclose(FILE *);
-int fileno(FILE *);
-int fseeko(FILE *, off_t, int);
-off_t ftello(FILE *);
-int dprintf(int, const char *restrict, ...);
-int vdprintf(int, const char *restrict, __isoc_va_list);
-void flockfile(FILE *);
-int ftrylockfile(FILE *);
-void funlockfile(FILE *);
-int getc_unlocked(FILE *);
-int getchar_unlocked(void);
-int putc_unlocked(int, FILE *);
-int putchar_unlocked(int);
-ssize_t getdelim(char **restrict, size_t *restrict, int, FILE *restrict);
-ssize_t getline(char **restrict, size_t *restrict, FILE *restrict);
-int renameat(int, const char *, int, const char *);
-char *ctermid(char *);
-
-
-
-
-
-
-
-char *tempnam(const char *, const char *);
-# 63 "newmain.c" 2
-# 1 "/Applications/microchip/xc8/v2.50/pic/include/c99/stdlib.h" 1 3
-# 21 "/Applications/microchip/xc8/v2.50/pic/include/c99/stdlib.h" 3
-# 1 "/Applications/microchip/xc8/v2.50/pic/include/c99/bits/alltypes.h" 1 3
-# 24 "/Applications/microchip/xc8/v2.50/pic/include/c99/bits/alltypes.h" 3
-typedef long int wchar_t;
-# 22 "/Applications/microchip/xc8/v2.50/pic/include/c99/stdlib.h" 2 3
-
-int atoi (const char *);
-long atol (const char *);
-
-long long atoll (const char *);
-
-double atof (const char *);
-
-
-float strtof (const char *restrict, char **restrict);
-double strtod (const char *restrict, char **restrict);
-long double strtold (const char *restrict, char **restrict);
-
-
-
-long strtol (const char *restrict, char **restrict, int);
-unsigned long strtoul (const char *restrict, char **restrict, int);
-
-long long strtoll (const char *restrict, char **restrict, int);
-unsigned long long strtoull (const char *restrict, char **restrict, int);
-
-
-unsigned long __strtoxl(const char * s, char ** endptr, int base, char is_signed);
-
-unsigned long long __strtoxll(const char * s, char ** endptr, int base, char is_signed);
-# 55 "/Applications/microchip/xc8/v2.50/pic/include/c99/stdlib.h" 3
-int rand (void);
-void srand (unsigned);
-
-void *malloc (size_t);
-void *calloc (size_t, size_t);
-void *realloc (void *, size_t);
-void free (void *);
-
-          void abort (void);
-int atexit (void (*) (void));
-          void exit (int);
-          void _Exit (int);
-
-void *bsearch (const void *, const void *, size_t, size_t, int (*)(const void *, const void *));
-
-
-
-
-
-
-
-__attribute__((nonreentrant)) void qsort (void *, size_t, size_t, int (*)(const void *, const void *));
-
-int abs (int);
-long labs (long);
-
-long long llabs (long long);
-
-
-typedef struct { int quot, rem; } div_t;
-typedef struct { long quot, rem; } ldiv_t;
-
-typedef struct { long long quot, rem; } lldiv_t;
-
-
-div_t div (int, int);
-ldiv_t ldiv (long, long);
-
-lldiv_t lldiv (long long, long long);
-
-
-typedef struct { unsigned int quot, rem; } udiv_t;
-typedef struct { unsigned long quot, rem; } uldiv_t;
-udiv_t udiv (unsigned int, unsigned int);
-uldiv_t uldiv (unsigned long, unsigned long);
-# 64 "newmain.c" 2
-# 1 "/Applications/microchip/xc8/v2.50/pic/include/c99/string.h" 1 3
-# 25 "/Applications/microchip/xc8/v2.50/pic/include/c99/string.h" 3
-# 1 "/Applications/microchip/xc8/v2.50/pic/include/c99/bits/alltypes.h" 1 3
-# 421 "/Applications/microchip/xc8/v2.50/pic/include/c99/bits/alltypes.h" 3
-typedef struct __locale_struct * locale_t;
-# 26 "/Applications/microchip/xc8/v2.50/pic/include/c99/string.h" 2 3
-
-void *memcpy (void *restrict, const void *restrict, size_t);
-void *memmove (void *, const void *, size_t);
-void *memset (void *, int, size_t);
-int memcmp (const void *, const void *, size_t);
-void *memchr (const void *, int, size_t);
-
-char *strcpy (char *restrict, const char *restrict);
-char *strncpy (char *restrict, const char *restrict, size_t);
-
-char *strcat (char *restrict, const char *restrict);
-char *strncat (char *restrict, const char *restrict, size_t);
-
-int strcmp (const char *, const char *);
-int strncmp (const char *, const char *, size_t);
-
-int strcoll (const char *, const char *);
-size_t strxfrm (char *restrict, const char *restrict, size_t);
-
-char *strchr (const char *, int);
-char *strrchr (const char *, int);
-
-size_t strcspn (const char *, const char *);
-size_t strspn (const char *, const char *);
-char *strpbrk (const char *, const char *);
-char *strstr (const char *, const char *);
-char *strtok (char *restrict, const char *restrict);
-
-size_t strlen (const char *);
-
-char *strerror (int);
-
-
-
-
-char *strtok_r (char *restrict, const char *restrict, char **restrict);
-int strerror_r (int, char *, size_t);
-char *stpcpy(char *restrict, const char *restrict);
-char *stpncpy(char *restrict, const char *restrict, size_t);
-size_t strnlen (const char *, size_t);
-char *strdup (const char *);
-char *strndup (const char *, size_t);
-char *strsignal(int);
-char *strerror_l (int, locale_t);
-int strcoll_l (const char *, const char *, locale_t);
-size_t strxfrm_l (char *restrict, const char *restrict, size_t, locale_t);
-
-
-
-
-void *memccpy (void *restrict, const void *restrict, int, size_t);
-# 65 "newmain.c" 2
-# 1 "/Applications/microchip/mplabx/v6.00/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8/pic/include/xc.h" 1 3
-# 18 "/Applications/microchip/mplabx/v6.00/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8/pic/include/xc.h" 3
-extern const char __xc8_OPTIM_SPEED;
-
-extern double __fpnormalize(double);
-
-
-
-# 1 "/Applications/microchip/xc8/v2.50/pic/include/c99/xc8debug.h" 1 3
-# 12 "/Applications/microchip/xc8/v2.50/pic/include/c99/xc8debug.h" 3
-#pragma intrinsic(__builtin_software_breakpoint)
-extern void __builtin_software_breakpoint(void);
-# 24 "/Applications/microchip/mplabx/v6.00/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8/pic/include/xc.h" 2 3
-# 1 "/Applications/microchip/mplabx/v6.00/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8/pic/include/builtins.h" 1 3
-
-
-
-# 1 "/Applications/microchip/xc8/v2.50/pic/include/c99/stdint.h" 1 3
-# 26 "/Applications/microchip/xc8/v2.50/pic/include/c99/stdint.h" 3
-# 1 "/Applications/microchip/xc8/v2.50/pic/include/c99/bits/alltypes.h" 1 3
-# 133 "/Applications/microchip/xc8/v2.50/pic/include/c99/bits/alltypes.h" 3
-typedef unsigned __int24 uintptr_t;
-# 148 "/Applications/microchip/xc8/v2.50/pic/include/c99/bits/alltypes.h" 3
-typedef __int24 intptr_t;
-# 164 "/Applications/microchip/xc8/v2.50/pic/include/c99/bits/alltypes.h" 3
-typedef signed char int8_t;
-
-
-
-
-typedef short int16_t;
-# 179 "/Applications/microchip/xc8/v2.50/pic/include/c99/bits/alltypes.h" 3
-typedef long int32_t;
-
-
-
-
-
-typedef long long int64_t;
-# 194 "/Applications/microchip/xc8/v2.50/pic/include/c99/bits/alltypes.h" 3
-typedef long long intmax_t;
-
-
-
-
-
-typedef unsigned char uint8_t;
-
-
-
-
-typedef unsigned short uint16_t;
-# 215 "/Applications/microchip/xc8/v2.50/pic/include/c99/bits/alltypes.h" 3
-typedef unsigned long uint32_t;
-
-
-
-
-
-typedef unsigned long long uint64_t;
-# 235 "/Applications/microchip/xc8/v2.50/pic/include/c99/bits/alltypes.h" 3
-typedef unsigned long long uintmax_t;
-# 27 "/Applications/microchip/xc8/v2.50/pic/include/c99/stdint.h" 2 3
-
-typedef int8_t int_fast8_t;
-
-typedef int64_t int_fast64_t;
-
-
-typedef int8_t int_least8_t;
-typedef int16_t int_least16_t;
-
-typedef int24_t int_least24_t;
-typedef int24_t int_fast24_t;
-
-typedef int32_t int_least32_t;
-
-typedef int64_t int_least64_t;
-
-
-typedef uint8_t uint_fast8_t;
-
-typedef uint64_t uint_fast64_t;
-
-
-typedef uint8_t uint_least8_t;
-typedef uint16_t uint_least16_t;
-
-typedef uint24_t uint_least24_t;
-typedef uint24_t uint_fast24_t;
-
-typedef uint32_t uint_least32_t;
-
-typedef uint64_t uint_least64_t;
-# 148 "/Applications/microchip/xc8/v2.50/pic/include/c99/stdint.h" 3
-# 1 "/Applications/microchip/xc8/v2.50/pic/include/c99/bits/stdint.h" 1 3
-typedef int16_t int_fast16_t;
-typedef int32_t int_fast32_t;
-typedef uint16_t uint_fast16_t;
-typedef uint32_t uint_fast32_t;
-# 149 "/Applications/microchip/xc8/v2.50/pic/include/c99/stdint.h" 2 3
-# 5 "/Applications/microchip/mplabx/v6.00/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8/pic/include/builtins.h" 2 3
-
-
-#pragma intrinsic(__nop)
-extern void __nop(void);
-
-
-#pragma intrinsic(_delay)
-extern __attribute__((nonreentrant)) void _delay(uint32_t);
-#pragma intrinsic(_delaywdt)
-extern __attribute__((nonreentrant)) void _delaywdt(uint32_t);
-
-#pragma intrinsic(_delay3)
-extern __attribute__((nonreentrant)) void _delay3(uint8_t);
-# 25 "/Applications/microchip/mplabx/v6.00/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8/pic/include/xc.h" 2 3
-
-
-
-
-
-
-
-
-# 1 "/Applications/microchip/mplabx/v6.00/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8/pic/include/pic18.h" 1 3
-
-
-
-
-# 1 "/Applications/microchip/mplabx/v6.00/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8/pic/include/htc.h" 1 3
-
-
-
-# 1 "/Applications/microchip/mplabx/v6.00/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8/pic/include/xc.h" 1 3
-# 5 "/Applications/microchip/mplabx/v6.00/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8/pic/include/htc.h" 2 3
-# 6 "/Applications/microchip/mplabx/v6.00/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8/pic/include/pic18.h" 2 3
-
-
-# 1 "/Applications/microchip/mplabx/v6.00/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8/pic/include/pic18_chip_select.h" 1 3
+# 321 "/Applications/microchip/mplabx/v6.00/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8/pic/include/pic18_chip_select.h" 2 3
 # 9 "/Applications/microchip/mplabx/v6.00/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8/pic/include/pic18.h" 2 3
 # 19 "/Applications/microchip/mplabx/v6.00/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8/pic/include/pic18.h" 3
 __attribute__((__unsupported__("The " "flash_write" " routine is no longer supported. Please use the MPLAB X MCC."))) void flash_write(const unsigned char *, unsigned int, __far unsigned char *);
@@ -4920,106 +4630,81 @@ __attribute__((__unsupported__("The " "Write_b_eep" " routine is no longer suppo
 unsigned char __t1rd16on(void);
 unsigned char __t3rd16on(void);
 # 34 "/Applications/microchip/mplabx/v6.00/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8/pic/include/xc.h" 2 3
-# 66 "newmain.c" 2
+# 10 "init.c" 2
+# 1 "./init.h" 1
 
 
 
+void Initialize();
+# 11 "init.c" 2
+
+void Initialize(void) {
+
+    OSCCONbits.IRCF = 0b110;
+
+    TRISAbits.RA0 = 1;
+    ADCON1bits.PCFG = 0b1110;
+    ADCON0bits.CHS = 0b0000;
+    ADCON1bits.VCFG0 = 0;
+    ADCON1bits.VCFG1 = 0;
+    ADCON2bits.ADCS = 0b000;
+    ADCON2bits.ACQT = 0b001;
+    ADCON0bits.ADON = 1;
+    ADCON2bits.ADFM = 1;
 
 
-_Bool btn_interr = 0;
-int cnt = 0;
-struct Data {
-    int step;
-    int heartRate;
-    int temp;
-};
-void __attribute__((picinterrupt(("low_priority")))) Lo_ISR(void) {
-    if (RCIF) {
-        if (RCSTAbits.OERR) {
-            CREN = 0;
-            __nop();
-            CREN = 1;
-        }
+    T2CONbits.TMR2ON = 0b1;
+    T2CONbits.T2CKPS = 0b11;
+    CCP1CONbits.CCP1M = 0b1100;
+    PR2 = 0x9b;
 
-        MyusartRead();
-    }
+    TRISCbits.TRISC2 = 0;
 
 
-    return;
-}
+    TRISA &= 0xF1;
+    TRISB = 1;
+    TRISC = 0;
+    LATA &= 0xF1;
+    LATC = 0;
+
+
+    INTCONbits.INT0IF = 0;
+    INTCONbits.INT0IE = 1;
+    PIE1bits.ADIE = 1;
+    PIR1bits.ADIF = 0;
+    INTCONbits.PEIE = 1;
+    INTCONbits.GIE = 1;
+    RCONbits.IPEN = 1;
+    INTCONbits.GIEH = 1;
+    INTCONbits.GIEL = 1;
+# 62 "init.c"
+    TRISCbits.TRISC6 = 1;
+    TRISCbits.TRISC7 = 1;
 
 
 
-void __attribute__((picinterrupt(("high_priority")))) H_ISR() {
+    TXSTAbits.SYNC = 0;
+    BAUDCONbits.BRG16 = 0;
+    TXSTAbits.BRGH = 0;
+    SPBRG = 51;
 
-    if (INTCONbits.INT0IF) {
-        _delay((unsigned long)((50)*(4000000/4000.0)));
-        btn_interr = 1;
-        INTCONbits.INT0IF = 0;
-    }
 
-    if (PIR1bits.TMR2IF) {
-        cnt++;
-        PIR1bits.TMR2IF = 0;
+    RCSTAbits.SPEN = 1;
+    PIR1bits.TXIF = 0;
+    PIR1bits.RCIF = 0;
+    TXSTAbits.TXEN = 1;
+    RCSTAbits.CREN = 1;
+    PIE1bits.TXIE = 0;
+    IPR1bits.TXIP = 0;
+    PIE1bits.RCIE = 1;
+    IPR1bits.RCIP = 0;
+# 93 "init.c"
+    ADCON0bits.GO = 1;
 
-    }
-}
-void reverse(char *first, char *last) {
-    for (;first < last; first++,last--) {
 
-        char tmp = *first;
-        *first = *last;
-        *last = tmp;
-    }
-}
-
-void itoa(int n, char *s) {
-    int sign = 1;
-    if (n < 0) {
-        sign = -1;
-        n = -n;
-    }
-    int i = 0;
-    while (n != 0) {
-        s[i++] = n%10 + '0';
-        n = n/10;
-    }
-
-    if (sign < 0)
-        s[i++] = '-';
-    s[i] = '\0';
-
-    reverse(s, s+i-1);
-}
-void Start_Timer() {
-    cnt = 0;
-}
-void Get_Timer_H(char* str) {
-    int result = cnt / 42;
-    int h = result / 60;
-    char str2[100];
-    itoa(h, str2);
-    if( h < 10 ) strcpy(str, "0");
-    strcat(str, str2);
-}
-void Get_Timer_M(char* str) {
-    int result = cnt / 42;
-    int m = result % 60;
-    char str2[100];
-    itoa(m, str2);
-    if( m < 10 ) strcpy(str, "0");
-    strcat(str, str2);
-}
-void main() {
-
-    Initialize();
-    char str[100];
-    ClearBuffer();
-
-    while (1) {
-        if( GetString(str) ) {
-            struct Data return_val = ParsingData(str);
-        }
-        if (ADCON0bits.GO == 0) ADCON0bits.GO = 1;
-    }
+    T2CON = 0b01111111;
+    PR2 = 122;
+    PIR1bits.TMR2IF = 0;
+    PIE1bits.TMR2IE = 1;
+    IPR1bits.TMR2IP = 1;
 }

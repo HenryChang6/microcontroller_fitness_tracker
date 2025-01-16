@@ -1,216 +1,39 @@
 Version 4.0 HI-TECH Software Intermediate Code
-[t ~ __interrupt . k ]
-[t T41 __interrupt low_priority ]
-"8181 /Applications/microchip/mplabx/v6.00/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8/pic/include/proc/pic18f4520.h
-[; ;/Applications/microchip/mplabx/v6.00/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8/pic/include/proc/pic18f4520.h: 8181: extern volatile __bit RCIF __attribute__((address(0x7CF5)));
-[v _RCIF `Vb ~T0 @X0 0 e@31989 ]
-"3122
-[; ;/Applications/microchip/mplabx/v6.00/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8/pic/include/proc/pic18f4520.h: 3122:     struct {
-[s S109 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S109 . RX9D OERR FERR ADDEN CREN SREN RX9 SPEN ]
-"3132
-[; ;/Applications/microchip/mplabx/v6.00/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8/pic/include/proc/pic18f4520.h: 3132:     struct {
-[s S110 :3 `uc 1 :1 `uc 1 ]
-[n S110 . . ADEN ]
-"3136
-[; ;/Applications/microchip/mplabx/v6.00/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8/pic/include/proc/pic18f4520.h: 3136:     struct {
-[s S111 :5 `uc 1 :1 `uc 1 ]
-[n S111 . . SRENA ]
-"3140
-[; ;/Applications/microchip/mplabx/v6.00/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8/pic/include/proc/pic18f4520.h: 3140:     struct {
-[s S112 :6 `uc 1 :1 `uc 1 ]
-[n S112 . . RC8_9 ]
-"3144
-[; ;/Applications/microchip/mplabx/v6.00/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8/pic/include/proc/pic18f4520.h: 3144:     struct {
-[s S113 :6 `uc 1 :1 `uc 1 ]
-[n S113 . . RC9 ]
-"3148
-[; ;/Applications/microchip/mplabx/v6.00/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8/pic/include/proc/pic18f4520.h: 3148:     struct {
-[s S114 :1 `uc 1 ]
-[n S114 . RCD8 ]
-"3121
-[; ;/Applications/microchip/mplabx/v6.00/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8/pic/include/proc/pic18f4520.h: 3121: typedef union {
-[u S108 `S109 1 `S110 1 `S111 1 `S112 1 `S113 1 `S114 1 ]
-[n S108 . . . . . . . ]
-"3152
-[; ;/Applications/microchip/mplabx/v6.00/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8/pic/include/proc/pic18f4520.h: 3152: extern volatile RCSTAbits_t RCSTAbits __attribute__((address(0xFAB)));
-[v _RCSTAbits `VS108 ~T0 @X0 0 e@4011 ]
-"7296
-[; ;/Applications/microchip/mplabx/v6.00/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8/pic/include/proc/pic18f4520.h: 7296: extern volatile __bit CREN __attribute__((address(0x7D5C)));
-[v _CREN `Vb ~T0 @X0 0 e@32092 ]
-"8 /Applications/microchip/mplabx/v6.00/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8/pic/include/builtins.h
-[v ___nop `(v ~T0 @X0 0 ef ]
-[p i ___nop ]
-"6 ./uart.h
-[; ;./uart.h: 6: void MyusartRead();
-[v _MyusartRead `(v ~T0 @X0 0 e? ]
-[t T42 __interrupt high_priority ]
-"6699 /Applications/microchip/mplabx/v6.00/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8/pic/include/proc/pic18f4520.h
-[; ;/Applications/microchip/mplabx/v6.00/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8/pic/include/proc/pic18f4520.h: 6699:     struct {
-[s S270 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S270 . RBIF INT0IF TMR0IF RBIE INT0IE TMR0IE PEIE_GIEL GIE_GIEH ]
-"6709
-[; ;/Applications/microchip/mplabx/v6.00/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8/pic/include/proc/pic18f4520.h: 6709:     struct {
-[s S271 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S271 . . INT0F T0IF . INT0E T0IE PEIE GIE ]
-"6719
-[; ;/Applications/microchip/mplabx/v6.00/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8/pic/include/proc/pic18f4520.h: 6719:     struct {
-[s S272 :6 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S272 . . GIEL GIEH ]
-"6698
-[; ;/Applications/microchip/mplabx/v6.00/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8/pic/include/proc/pic18f4520.h: 6698: typedef union {
-[u S269 `S270 1 `S271 1 `S272 1 ]
-[n S269 . . . . ]
-"6725
-[; ;/Applications/microchip/mplabx/v6.00/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8/pic/include/proc/pic18f4520.h: 6725: extern volatile INTCONbits_t INTCONbits __attribute__((address(0xFF2)));
-[v _INTCONbits `VS269 ~T0 @X0 0 e@4082 ]
-[v F3084 `(v ~T0 @X0 1 tf1`ul ]
-"12 /Applications/microchip/mplabx/v6.00/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8/pic/include/builtins.h
-[v __delay `JF3084 ~T0 @X0 0 e ]
-[p i __delay ]
-"2678 /Applications/microchip/mplabx/v6.00/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8/pic/include/proc/pic18f4520.h
-[; ;/Applications/microchip/mplabx/v6.00/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8/pic/include/proc/pic18f4520.h: 2678:     struct {
-[s S91 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S91 . TMR1IF TMR2IF CCP1IF SSPIF TXIF RCIF ADIF PSPIF ]
-"2688
-[; ;/Applications/microchip/mplabx/v6.00/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8/pic/include/proc/pic18f4520.h: 2688:     struct {
-[s S92 :4 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S92 . . TX1IF RC1IF ]
-"2677
-[; ;/Applications/microchip/mplabx/v6.00/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8/pic/include/proc/pic18f4520.h: 2677: typedef union {
-[u S90 `S91 1 `S92 1 ]
-[n S90 . . . ]
-"2694
-[; ;/Applications/microchip/mplabx/v6.00/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8/pic/include/proc/pic18f4520.h: 2694: extern volatile PIR1bits_t PIR1bits __attribute__((address(0xF9E)));
-[v _PIR1bits `VS90 ~T0 @X0 0 e@3998 ]
+"3332 /Applications/microchip/mplabx/v6.00/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8/pic/include/proc/pic18f4520.h
+[; ;/Applications/microchip/mplabx/v6.00/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8/pic/include/proc/pic18f4520.h: 3332:     struct {
+[s S128 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S128 . TX9D TRMT BRGH SENDB SYNC TXEN TX9 CSRC ]
+"3342
+[; ;/Applications/microchip/mplabx/v6.00/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8/pic/include/proc/pic18f4520.h: 3342:     struct {
+[s S129 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S129 . TX9D1 TRMT1 BRGH1 SENDB1 SYNC1 TXEN1 TX91 CSRC1 ]
+"3352
+[; ;/Applications/microchip/mplabx/v6.00/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8/pic/include/proc/pic18f4520.h: 3352:     struct {
+[s S130 :6 `uc 1 :1 `uc 1 ]
+[n S130 . . TX8_9 ]
+"3356
+[; ;/Applications/microchip/mplabx/v6.00/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8/pic/include/proc/pic18f4520.h: 3356:     struct {
+[s S131 :1 `uc 1 ]
+[n S131 . TXD8 ]
+"3331
+[; ;/Applications/microchip/mplabx/v6.00/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8/pic/include/proc/pic18f4520.h: 3331: typedef union {
+[u S127 `S128 1 `S129 1 `S130 1 `S131 1 ]
+[n S127 . . . . . ]
+"3360
+[; ;/Applications/microchip/mplabx/v6.00/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8/pic/include/proc/pic18f4520.h: 3360: extern volatile TXSTAbits_t TXSTAbits __attribute__((address(0xFAC)));
+[v _TXSTAbits `VS127 ~T0 @X0 0 e@4012 ]
+"3577
+[; ;/Applications/microchip/mplabx/v6.00/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8/pic/include/proc/pic18f4520.h: 3577: extern volatile unsigned char TXREG __attribute__((address(0xFAD)));
+[v _TXREG `Vuc ~T0 @X0 0 e@4013 ]
+"3589
+[; ;/Applications/microchip/mplabx/v6.00/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8/pic/include/proc/pic18f4520.h: 3589: extern volatile unsigned char RCREG __attribute__((address(0xFAE)));
+[v _RCREG `Vuc ~T0 @X0 0 e@4014 ]
+"38 uart.c
+[; ;uart.c: 38:     if (!isprint(data) && data != '\r') return;
+[v _isprint `(i ~T0 @X0 0 e? ]
 "33 /Applications/microchip/xc8/v2.50/pic/include/c99/string.h
 [; ;/Applications/microchip/xc8/v2.50/pic/include/c99/string.h: 33: char *strcpy (char *restrict, const char *restrict);
 [v _strcpy `(*uc ~T0 @X0 0 ef2`*uc`*Cuc ]
-"36
-[; ;/Applications/microchip/xc8/v2.50/pic/include/c99/string.h: 36: char *strcat (char *restrict, const char *restrict);
-[v _strcat `(*uc ~T0 @X0 0 ef2`*uc`*Cuc ]
-[p mainexit ]
-"4 ./init.h
-[; ;./init.h: 4: void Initialize();
-[v _Initialize `(v ~T0 @X0 0 e? ]
-"5 ./uart.h
-[; ;./uart.h: 5: void ClearBuffer();
-[v _ClearBuffer `(v ~T0 @X0 0 e? ]
-"7
-[; ;./uart.h: 7: int GetString(char *str);
-[v _GetString `(i ~T0 @X0 0 ef1`*uc ]
-"73 newmain.c
-[; ;newmain.c: 73: struct Data {
-[s S277 `i 1 `i 1 `i 1 ]
-[n S277 Data step heartRate temp ]
-"26 ./parsing.h
-[; ;./parsing.h: 26: struct Data ParsingData(char* s);
-[v _ParsingData `(S277 ~T0 @X0 0 ef1`*uc ]
-"4782 /Applications/microchip/mplabx/v6.00/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8/pic/include/proc/pic18f4520.h
-[; ;/Applications/microchip/mplabx/v6.00/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8/pic/include/proc/pic18f4520.h: 4782:     struct {
-[s S184 :1 `uc 1 :1 `uc 1 ]
-[n S184 . . GO_NOT_DONE ]
-"4786
-[; ;/Applications/microchip/mplabx/v6.00/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8/pic/include/proc/pic18f4520.h: 4786:     struct {
-[s S185 :1 `uc 1 :1 `uc 1 :4 `uc 1 ]
-[n S185 . ADON GO_nDONE CHS ]
-"4791
-[; ;/Applications/microchip/mplabx/v6.00/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8/pic/include/proc/pic18f4520.h: 4791:     struct {
-[s S186 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S186 . . GO CHS0 CHS1 CHS2 CHS3 ]
-"4799
-[; ;/Applications/microchip/mplabx/v6.00/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8/pic/include/proc/pic18f4520.h: 4799:     struct {
-[s S187 :1 `uc 1 :1 `uc 1 ]
-[n S187 . . DONE ]
-"4803
-[; ;/Applications/microchip/mplabx/v6.00/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8/pic/include/proc/pic18f4520.h: 4803:     struct {
-[s S188 :1 `uc 1 :1 `uc 1 ]
-[n S188 . . NOT_DONE ]
-"4807
-[; ;/Applications/microchip/mplabx/v6.00/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8/pic/include/proc/pic18f4520.h: 4807:     struct {
-[s S189 :1 `uc 1 :1 `uc 1 ]
-[n S189 . . nDONE ]
-"4811
-[; ;/Applications/microchip/mplabx/v6.00/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8/pic/include/proc/pic18f4520.h: 4811:     struct {
-[s S190 :1 `uc 1 :1 `uc 1 ]
-[n S190 . . GO_DONE ]
-"4815
-[; ;/Applications/microchip/mplabx/v6.00/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8/pic/include/proc/pic18f4520.h: 4815:     struct {
-[s S191 :1 `uc 1 :1 `uc 1 ]
-[n S191 . . GODONE ]
-"4781
-[; ;/Applications/microchip/mplabx/v6.00/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8/pic/include/proc/pic18f4520.h: 4781: typedef union {
-[u S183 `S184 1 `S185 1 `S186 1 `S187 1 `S188 1 `S189 1 `S190 1 `S191 1 ]
-[n S183 . . . . . . . . . ]
-"4820
-[; ;/Applications/microchip/mplabx/v6.00/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8/pic/include/proc/pic18f4520.h: 4820: extern volatile ADCON0bits_t ADCON0bits __attribute__((address(0xFC2)));
-[v _ADCON0bits `VS183 ~T0 @X0 0 e@4034 ]
-"2 newmain.c
-[p x OSC  =  INTIO67   ]
-"3
-[p x FCMEN  =  OFF     ]
-"4
-[p x IESO  =  ON       ]
-"7
-[p x PWRT  =  OFF        ]
-"8
-[p x BOREN  =  SBORDIS   ]
-"9
-[p x BORV  =  3          ]
-"12
-[p x WDT  =  OFF   ]
-"13
-[p x WDTPS  =  1   ]
-"16
-[p x CCP2MX  =  PORTC   ]
-"17
-[p x PBADEN  =  ON      ]
-"18
-[p x LPT1OSC  =  OFF    ]
-"19
-[p x MCLRE  =  ON       ]
-"22
-[p x STVREN  =  ON   ]
-"23
-[p x LVP  =  OFF     ]
-"24
-[p x XINST  =  OFF   ]
-"27
-[p x CP0  =  OFF   ]
-"28
-[p x CP1  =  OFF   ]
-"29
-[p x CP2  =  OFF   ]
-"30
-[p x CP3  =  OFF   ]
-"33
-[p x CPB  =  OFF   ]
-"34
-[p x CPD  =  OFF   ]
-"37
-[p x WRT0  =  OFF   ]
-"38
-[p x WRT1  =  OFF   ]
-"39
-[p x WRT2  =  OFF   ]
-"40
-[p x WRT3  =  OFF   ]
-"43
-[p x WRTC  =  OFF   ]
-"44
-[p x WRTB  =  OFF   ]
-"45
-[p x WRTD  =  OFF   ]
-"48
-[p x EBTR0  =  OFF   ]
-"49
-[p x EBTR1  =  OFF   ]
-"50
-[p x EBTR2  =  OFF   ]
-"51
-[p x EBTR3  =  OFF   ]
-"54
-[p x EBTRB  =  OFF   ]
 "55 /Applications/microchip/mplabx/v6.00/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8/pic/include/proc/pic18f4520.h
 [; ;/Applications/microchip/mplabx/v6.00/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8/pic/include/proc/pic18f4520.h: 55: __asm("PORTA equ 0F80h");
 [; <" PORTA equ 0F80h ;# ">
@@ -625,329 +448,165 @@ Version 4.0 HI-TECH Software Intermediate Code
 "7002
 [; ;/Applications/microchip/mplabx/v6.00/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8/pic/include/proc/pic18f4520.h: 7002: __asm("TOSU equ 0FFFh");
 [; <" TOSU equ 0FFFh ;# ">
-"71 newmain.c
-[; ;newmain.c: 71: _Bool btn_interr = 0;
-[v _btn_interr `a ~T0 @X0 1 e ]
-[i _btn_interr
--> -> 0 `i `a
-]
-"72
-[; ;newmain.c: 72: int cnt = 0;
-[v _cnt `i ~T0 @X0 1 e ]
-[i _cnt
+"15 uart.c
+[; ;uart.c: 15: static char buffer[100];
+[v _buffer `uc ~T0 @X0 -> 100 `i s ]
+"16
+[; ;uart.c: 16: static int buffer_size = 0;
+[v _buffer_size `i ~T0 @X0 1 s ]
+[i _buffer_size
 -> 0 `i
 ]
-[v $root$_Lo_ISR `(v ~T0 @X0 0 e ]
-"78
-[; ;newmain.c: 78: void __attribute__((picinterrupt(("low_priority")))) Lo_ISR(void) {
-[v _Lo_ISR `(v ~T41 @X0 1 ef ]
+"18
+[; ;uart.c: 18: void putch(char data) {
+[v _putch `(v ~T0 @X0 1 ef1`uc ]
 {
-[e :U _Lo_ISR ]
+[e :U _putch ]
+[v _data `uc ~T0 @X0 1 r1 ]
 [f ]
-"79
-[; ;newmain.c: 79:     if (RCIF) {
-[e $ ! _RCIF 288  ]
+"19
+[; ;uart.c: 19:     if (data == '\n' || data == '\r') {
+[e $ ! || == -> _data `ui -> 10 `ui == -> _data `ui -> 13 `ui 283  ]
 {
-"80
-[; ;newmain.c: 80:         if (RCSTAbits.OERR) {
-[e $ ! != -> . . _RCSTAbits 0 1 `i -> 0 `i 289  ]
-{
-"81
-[; ;newmain.c: 81:             CREN = 0;
-[e = _CREN -> -> 0 `i `b ]
-"82
-[; ;newmain.c: 82:             __nop();
-[e ( ___nop ..  ]
-"83
-[; ;newmain.c: 83:             CREN = 1;
-[e = _CREN -> -> 1 `i `b ]
-"84
-[; ;newmain.c: 84:         }
-}
-[e :U 289 ]
-"86
-[; ;newmain.c: 86:         MyusartRead();
-[e ( _MyusartRead ..  ]
-"87
-[; ;newmain.c: 87:     }
-}
+"20
+[; ;uart.c: 20:         while (!TXSTAbits.TRMT);
+[e $U 284  ]
+[e :U 285 ]
+[e :U 284 ]
+[e $ ! != -> . . _TXSTAbits 0 1 `i -> 0 `i 285  ]
+[e :U 286 ]
+"21
+[; ;uart.c: 21:         TXREG = '\r';
+[e = _TXREG -> -> 13 `ui `uc ]
+"22
+[; ;uart.c: 22:         while (!TXSTAbits.TRMT);
+[e $U 287  ]
 [e :U 288 ]
-"90
-[; ;newmain.c: 90:     return;
-[e $UE 287  ]
-"91
-[; ;newmain.c: 91: }
-[e :UE 287 ]
+[e :U 287 ]
+[e $ ! != -> . . _TXSTAbits 0 1 `i -> 0 `i 288  ]
+[e :U 289 ]
+"23
+[; ;uart.c: 23:         TXREG = '\n';
+[e = _TXREG -> -> 10 `ui `uc ]
+"24
+[; ;uart.c: 24:     } else {
 }
-[v $root$_H_ISR `(v ~T0 @X0 0 e ]
-"95
-[; ;newmain.c: 95: void __attribute__((picinterrupt(("high_priority")))) H_ISR() {
-[v _H_ISR `(v ~T42 @X0 1 ef ]
+[e $U 290  ]
+[e :U 283 ]
 {
-[e :U _H_ISR ]
-[f ]
-"97
-[; ;newmain.c: 97:     if (INTCONbits.INT0IF) {
-[e $ ! != -> . . _INTCONbits 0 1 `i -> 0 `i 291  ]
-{
-"98
-[; ;newmain.c: 98:         _delay((unsigned long)((50)*(4000000/4000.0)));
-[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
-"99
-[; ;newmain.c: 99:         btn_interr = 1;
-[e = _btn_interr -> -> 1 `i `a ]
-"100
-[; ;newmain.c: 100:         INTCONbits.INT0IF = 0;
-[e = . . _INTCONbits 0 1 -> -> 0 `i `uc ]
-"101
-[; ;newmain.c: 101:     }
-}
-[e :U 291 ]
-"103
-[; ;newmain.c: 103:     if (PIR1bits.TMR2IF) {
-[e $ ! != -> . . _PIR1bits 0 1 `i -> 0 `i 292  ]
-{
-"104
-[; ;newmain.c: 104:         cnt++;
-[e ++ _cnt -> 1 `i ]
-"105
-[; ;newmain.c: 105:         PIR1bits.TMR2IF = 0;
-[e = . . _PIR1bits 0 1 -> -> 0 `i `uc ]
-"107
-[; ;newmain.c: 107:     }
-}
+"25
+[; ;uart.c: 25:         while (!TXSTAbits.TRMT);
+[e $U 291  ]
 [e :U 292 ]
-"108
-[; ;newmain.c: 108: }
-[e :UE 290 ]
+[e :U 291 ]
+[e $ ! != -> . . _TXSTAbits 0 1 `i -> 0 `i 292  ]
+[e :U 293 ]
+"26
+[; ;uart.c: 26:         TXREG = data;
+[e = _TXREG -> _data `uc ]
+"27
+[; ;uart.c: 27:     }
 }
-"109
-[; ;newmain.c: 109: void reverse(char *first, char *last) {
-[v _reverse `(v ~T0 @X0 1 ef2`*uc`*uc ]
+[e :U 290 ]
+"28
+[; ;uart.c: 28: }
+[e :UE 282 ]
+}
+"30
+[; ;uart.c: 30: void ClearBuffer() {
+[v _ClearBuffer `(v ~T0 @X0 1 ef ]
 {
-[e :U _reverse ]
-[v _first `*uc ~T0 @X0 1 r1 ]
-[v _last `*uc ~T0 @X0 1 r2 ]
+[e :U _ClearBuffer ]
 [f ]
-"110
-[; ;newmain.c: 110:     for (;first < last; first++,last--) {
+"31
+[; ;uart.c: 31:     for (int i = 0; i < 100; i++)
 {
-[e $U 297  ]
-[e :U 294 ]
-{
-"112
-[; ;newmain.c: 112:         char tmp = *first;
-[v _tmp `uc ~T0 @X0 1 a ]
-[e = _tmp *U _first ]
-"113
-[; ;newmain.c: 113:         *first = *last;
-[e = *U _first *U _last ]
-"114
-[; ;newmain.c: 114:         *last = tmp;
-[e = *U _last _tmp ]
-"115
-[; ;newmain.c: 115:     }
-}
-[e ; ++ _first * -> -> 1 `i `x -> -> # *U _first `i `x -- _last * -> -> 1 `i `x -> -> # *U _last `i `x ]
-[e :U 297 ]
-[e $ < _first _last 294  ]
-[e :U 295 ]
-}
-"116
-[; ;newmain.c: 116: }
-[e :UE 293 ]
-}
-"118
-[; ;newmain.c: 118: void itoa(int n, char *s) {
-[v _itoa `(v ~T0 @X0 1 ef2`i`*uc ]
-{
-[e :U _itoa ]
-[v _n `i ~T0 @X0 1 r1 ]
-[v _s `*uc ~T0 @X0 1 r2 ]
-[f ]
-"119
-[; ;newmain.c: 119:     int sign = 1;
-[v _sign `i ~T0 @X0 1 a ]
-[e = _sign -> 1 `i ]
-"120
-[; ;newmain.c: 120:     if (n < 0) {
-[e $ ! < _n -> 0 `i 299  ]
-{
-"121
-[; ;newmain.c: 121:         sign = -1;
-[e = _sign -U -> 1 `i ]
-"122
-[; ;newmain.c: 122:         n = -n;
-[e = _n -U _n ]
-"123
-[; ;newmain.c: 123:     }
-}
-[e :U 299 ]
-"124
-[; ;newmain.c: 124:     int i = 0;
 [v _i `i ~T0 @X0 1 a ]
 [e = _i -> 0 `i ]
-"125
-[; ;newmain.c: 125:     while (n != 0) {
-[e $U 300  ]
-[e :U 301 ]
-{
-"126
-[; ;newmain.c: 126:         s[i++] = n%10 + '0';
-[e = *U + _s * -> ++ _i -> 1 `i `x -> -> # *U _s `i `x -> + -> % _n -> 10 `i `ui -> 48 `ui `uc ]
-"127
-[; ;newmain.c: 127:         n = n/10;
-[e = _n / _n -> 10 `i ]
-"128
-[; ;newmain.c: 128:     }
+[e $ < _i -> 100 `i 295  ]
+[e $U 296  ]
+[e :U 295 ]
+"32
+[; ;uart.c: 32:         buffer[i] = '\0';
+[e = *U + &U _buffer * -> -> _i `ui `ux -> -> # *U &U _buffer `ui `ux -> -> 0 `ui `uc ]
+[e ++ _i -> 1 `i ]
+[e $ < _i -> 100 `i 295  ]
+[e :U 296 ]
 }
-[e :U 300 ]
-"125
-[; ;newmain.c: 125:     while (n != 0) {
-[e $ != _n -> 0 `i 301  ]
-[e :U 302 ]
-"130
-[; ;newmain.c: 130:     if (sign < 0)
-[e $ ! < _sign -> 0 `i 303  ]
-"131
-[; ;newmain.c: 131:         s[i++] = '-';
-[e = *U + _s * -> ++ _i -> 1 `i `x -> -> # *U _s `i `x -> -> 45 `ui `uc ]
-[e :U 303 ]
-"132
-[; ;newmain.c: 132:     s[i] = '\0';
-[e = *U + _s * -> _i `x -> -> # *U _s `i `x -> -> 0 `ui `uc ]
-"134
-[; ;newmain.c: 134:     reverse(s, s+i-1);
-[e ( _reverse (2 , _s - + _s * -> _i `x -> -> # *U _s `i `x * -> -> 1 `i `x -> -> # *U + _s * -> _i `x -> -> # *U _s `i `x `i `x ]
-"135
-[; ;newmain.c: 135: }
+"33
+[; ;uart.c: 33:     buffer_size = 0;
+[e = _buffer_size -> 0 `i ]
+"34
+[; ;uart.c: 34: }
+[e :UE 294 ]
+}
+"36
+[; ;uart.c: 36: void MyusartRead() {
+[v _MyusartRead `(v ~T0 @X0 1 ef ]
+{
+[e :U _MyusartRead ]
+[f ]
+"37
+[; ;uart.c: 37:     char data = RCREG;
+[v _data `uc ~T0 @X0 1 a ]
+[e = _data -> _RCREG `uc ]
+"38
+[; ;uart.c: 38:     if (!isprint(data) && data != '\r') return;
+[e $ ! && ! != ( _isprint -> _data `i -> 0 `i != -> _data `ui -> 13 `ui 299  ]
+[e $UE 298  ]
+[e :U 299 ]
+"39
+[; ;uart.c: 39:     buffer[buffer_size++] = data;
+[e = *U + &U _buffer * -> -> ++ _buffer_size -> 1 `i `ui `ux -> -> # *U &U _buffer `ui `ux _data ]
+"40
+[; ;uart.c: 40:     putch(data);
+[e ( _putch (1 _data ]
+"41
+[; ;uart.c: 41: }
 [e :UE 298 ]
 }
-"136
-[; ;newmain.c: 136: void Start_Timer() {
-[v _Start_Timer `(v ~T0 @X0 1 ef ]
+"43
+[; ;uart.c: 43: int GetString(char *str) {
+[v _GetString `(i ~T0 @X0 1 ef1`*uc ]
 {
-[e :U _Start_Timer ]
-[f ]
-"137
-[; ;newmain.c: 137:     cnt = 0;
-[e = _cnt -> 0 `i ]
-"138
-[; ;newmain.c: 138: }
-[e :UE 304 ]
-}
-"139
-[; ;newmain.c: 139: void Get_Timer_H(char* str) {
-[v _Get_Timer_H `(v ~T0 @X0 1 ef1`*uc ]
-{
-[e :U _Get_Timer_H ]
+[e :U _GetString ]
 [v _str `*uc ~T0 @X0 1 r1 ]
 [f ]
-"140
-[; ;newmain.c: 140:     int result = cnt / 42;
-[v _result `i ~T0 @X0 1 a ]
-[e = _result / _cnt -> 42 `i ]
-"141
-[; ;newmain.c: 141:     int h = result / 60;
-[v _h `i ~T0 @X0 1 a ]
-[e = _h / _result -> 60 `i ]
-"142
-[; ;newmain.c: 142:     char str2[100];
-[v _str2 `uc ~T0 @X0 -> 100 `i a ]
-"143
-[; ;newmain.c: 143:     itoa(h, str2);
-[e ( _itoa (2 , _h &U _str2 ]
-"144
-[; ;newmain.c: 144:     if( h < 10 ) strcpy(str, "0");
-[e $ ! < _h -> 10 `i 306  ]
-[e ( _strcpy (2 , _str :s 1C ]
-[e :U 306 ]
-"145
-[; ;newmain.c: 145:     strcat(str, str2);
-[e ( _strcat (2 , _str -> &U _str2 `*Cuc ]
-"146
-[; ;newmain.c: 146: }
-[e :UE 305 ]
-}
-"147
-[; ;newmain.c: 147: void Get_Timer_M(char* str) {
-[v _Get_Timer_M `(v ~T0 @X0 1 ef1`*uc ]
+"44
+[; ;uart.c: 44:     if (buffer[buffer_size - 1] == '\r') {
+[e $ ! == -> *U + &U _buffer * -> -> - _buffer_size -> 1 `i `ui `ux -> -> # *U &U _buffer `ui `ux `ui -> 13 `ui 301  ]
 {
-[e :U _Get_Timer_M ]
-[v _str `*uc ~T0 @X0 1 r1 ]
-[f ]
-"148
-[; ;newmain.c: 148:     int result = cnt / 42;
-[v _result `i ~T0 @X0 1 a ]
-[e = _result / _cnt -> 42 `i ]
-"149
-[; ;newmain.c: 149:     int m = result % 60;
-[v _m `i ~T0 @X0 1 a ]
-[e = _m % _result -> 60 `i ]
-"150
-[; ;newmain.c: 150:     char str2[100];
-[v _str2 `uc ~T0 @X0 -> 100 `i a ]
-"151
-[; ;newmain.c: 151:     itoa(m, str2);
-[e ( _itoa (2 , _m &U _str2 ]
-"152
-[; ;newmain.c: 152:     if( m < 10 ) strcpy(str, "0");
-[e $ ! < _m -> 10 `i 308  ]
-[e ( _strcpy (2 , _str :s 2C ]
-[e :U 308 ]
-"153
-[; ;newmain.c: 153:     strcat(str, str2);
-[e ( _strcat (2 , _str -> &U _str2 `*Cuc ]
-"154
-[; ;newmain.c: 154: }
-[e :UE 307 ]
-}
-[v $root$_main `(v ~T0 @X0 0 e ]
-"155
-[; ;newmain.c: 155: void main() {
-[v _main `(v ~T0 @X0 1 ef ]
-{
-[e :U _main ]
-[f ]
-"157
-[; ;newmain.c: 157:     Initialize();
-[e ( _Initialize ..  ]
-"158
-[; ;newmain.c: 158:     char str[100];
-[v _str `uc ~T0 @X0 -> 100 `i a ]
-"159
-[; ;newmain.c: 159:     ClearBuffer();
+"45
+[; ;uart.c: 45:         buffer[--buffer_size] = '\0';
+[e = *U + &U _buffer * -> -> =- _buffer_size -> 1 `i `ui `ux -> -> # *U &U _buffer `ui `ux -> -> 0 `ui `uc ]
+"46
+[; ;uart.c: 46:         strcpy(str, buffer);
+[e ( _strcpy (2 , _str -> &U _buffer `*Cuc ]
+"47
+[; ;uart.c: 47:         ClearBuffer();
 [e ( _ClearBuffer ..  ]
-"161
-[; ;newmain.c: 161:     while (1) {
-[e :U 311 ]
+"48
+[; ;uart.c: 48:         return 1;
+[e ) -> 1 `i ]
+[e $UE 300  ]
+"49
+[; ;uart.c: 49:     } else {
+}
+[e $U 302  ]
+[e :U 301 ]
 {
-"162
-[; ;newmain.c: 162:         if( GetString(str) ) {
-[e $ ! != ( _GetString (1 &U _str -> 0 `i 313  ]
-{
-"163
-[; ;newmain.c: 163:             struct Data return_val = ParsingData(str);
-[v _return_val `S277 ~T0 @X0 1 a ]
-[e = _return_val ( _ParsingData (1 &U _str ]
-"164
-[; ;newmain.c: 164:         }
+"50
+[; ;uart.c: 50:         str[0] = '\0';
+[e = *U + _str * -> -> 0 `i `x -> -> # *U _str `i `x -> -> 0 `ui `uc ]
+"51
+[; ;uart.c: 51:         return 0;
+[e ) -> 0 `i ]
+[e $UE 300  ]
+"52
+[; ;uart.c: 52:     }
 }
-[e :U 313 ]
-"165
-[; ;newmain.c: 165:         if (ADCON0bits.GO == 0) ADCON0bits.GO = 1;
-[e $ ! == -> . . _ADCON0bits 2 1 `i -> 0 `i 314  ]
-[e = . . _ADCON0bits 2 1 -> -> 1 `i `uc ]
-[e :U 314 ]
-"166
-[; ;newmain.c: 166:     }
+[e :U 302 ]
+"53
+[; ;uart.c: 53: }
+[e :UE 300 ]
 }
-[e :U 310 ]
-[e $U 311  ]
-[e :U 312 ]
-"167
-[; ;newmain.c: 167: }
-[e :UE 309 ]
-}
-[a 1C 48 0 ]
-[a 2C 48 0 ]
