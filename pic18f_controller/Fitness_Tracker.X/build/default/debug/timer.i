@@ -4636,6 +4636,9 @@ unsigned char __t3rd16on(void);
 void Get_Timer_H(char* str);
 void Get_Timer_M(char* str);
 void update_time();
+void reverse(char *first, char *last);
+void itoa(int n, char *s);
+void init_time();
 # 2 "timer.c" 2
 
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.50\\pic\\include\\c99\\string.h" 1 3
@@ -4699,7 +4702,35 @@ void *memccpy (void *restrict, const void *restrict, int, size_t);
 
 
 int cnt = 0;
+void reverse(char *first, char *last) {
+    for (;first < last; first++,last--) {
 
+        char tmp = *first;
+        *first = *last;
+        *last = tmp;
+    }
+}
+void init_time() {
+    cnt = 0;
+}
+void itoa(int n, char *s) {
+    int sign = 1;
+    if (n < 0) {
+        sign = -1;
+        n = -n;
+    }
+    int i = 0;
+    while (n != 0) {
+        s[i++] = n%10 + '0';
+        n = n/10;
+    }
+
+    if (sign < 0)
+        s[i++] = '-';
+    s[i] = '\0';
+
+    reverse(s, s+i-1);
+}
 void update_time() {
     cnt++;
 }

@@ -4780,10 +4780,9 @@ void TIMER_Initialize(void) {
     IPR1bits.TMR2IP = 1;
 }
 void OLED_Initialize(void) {
-    OSCCON = 0b11110000;
     OSCTUNE = 0x00;
 
-    TRISC = 0b00111111;
+    TRISC = 0b11111111;
     LATC = 0;
 
 

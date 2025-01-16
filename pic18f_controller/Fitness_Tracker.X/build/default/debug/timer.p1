@@ -1,7 +1,4 @@
 Version 4.0 HI-TECH Software Intermediate Code
-"14 timer.c
-[; ;timer.c: 14:     itoa(h, str2);
-[v _itoa `(i ~T0 @X0 0 e? ]
 "33 C:\Program Files\Microchip\xc8\v2.50\pic\include\c99\string.h
 [; ;C:\Program Files\Microchip\xc8\v2.50\pic\include\c99\string.h: 33: char *strcpy (char *restrict, const char *restrict);
 [v _strcpy `(*uc ~T0 @X0 0 ef2`*uc`*Cuc ]
@@ -428,84 +425,199 @@ Version 4.0 HI-TECH Software Intermediate Code
 [i _cnt
 -> 0 `i
 ]
+"6
+[; ;timer.c: 6: void reverse(char *first, char *last) {
+[v _reverse `(v ~T0 @X0 1 ef2`*uc`*uc ]
+{
+[e :U _reverse ]
+[v _first `*uc ~T0 @X0 1 r1 ]
+[v _last `*uc ~T0 @X0 1 r2 ]
+[f ]
 "7
-[; ;timer.c: 7: void update_time() {
+[; ;timer.c: 7:     for (;first < last; first++,last--) {
+{
+[e $U 286  ]
+[e :U 283 ]
+{
+"9
+[; ;timer.c: 9:         char tmp = *first;
+[v _tmp `uc ~T0 @X0 1 a ]
+[e = _tmp *U _first ]
+"10
+[; ;timer.c: 10:         *first = *last;
+[e = *U _first *U _last ]
+"11
+[; ;timer.c: 11:         *last = tmp;
+[e = *U _last _tmp ]
+"12
+[; ;timer.c: 12:     }
+}
+[e ; ++ _first * -> -> 1 `i `x -> -> # *U _first `i `x -- _last * -> -> 1 `i `x -> -> # *U _last `i `x ]
+[e :U 286 ]
+[e $ < _first _last 283  ]
+[e :U 284 ]
+}
+"13
+[; ;timer.c: 13: }
+[e :UE 282 ]
+}
+"14
+[; ;timer.c: 14: void init_time() {
+[v _init_time `(v ~T0 @X0 1 ef ]
+{
+[e :U _init_time ]
+[f ]
+"15
+[; ;timer.c: 15:     cnt = 0;
+[e = _cnt -> 0 `i ]
+"16
+[; ;timer.c: 16: }
+[e :UE 287 ]
+}
+"17
+[; ;timer.c: 17: void itoa(int n, char *s) {
+[v _itoa `(v ~T0 @X0 1 ef2`i`*uc ]
+{
+[e :U _itoa ]
+[v _n `i ~T0 @X0 1 r1 ]
+[v _s `*uc ~T0 @X0 1 r2 ]
+[f ]
+"18
+[; ;timer.c: 18:     int sign = 1;
+[v _sign `i ~T0 @X0 1 a ]
+[e = _sign -> 1 `i ]
+"19
+[; ;timer.c: 19:     if (n < 0) {
+[e $ ! < _n -> 0 `i 289  ]
+{
+"20
+[; ;timer.c: 20:         sign = -1;
+[e = _sign -U -> 1 `i ]
+"21
+[; ;timer.c: 21:         n = -n;
+[e = _n -U _n ]
+"22
+[; ;timer.c: 22:     }
+}
+[e :U 289 ]
+"23
+[; ;timer.c: 23:     int i = 0;
+[v _i `i ~T0 @X0 1 a ]
+[e = _i -> 0 `i ]
+"24
+[; ;timer.c: 24:     while (n != 0) {
+[e $U 290  ]
+[e :U 291 ]
+{
+"25
+[; ;timer.c: 25:         s[i++] = n%10 + '0';
+[e = *U + _s * -> ++ _i -> 1 `i `x -> -> # *U _s `i `x -> + -> % _n -> 10 `i `ui -> 48 `ui `uc ]
+"26
+[; ;timer.c: 26:         n = n/10;
+[e = _n / _n -> 10 `i ]
+"27
+[; ;timer.c: 27:     }
+}
+[e :U 290 ]
+"24
+[; ;timer.c: 24:     while (n != 0) {
+[e $ != _n -> 0 `i 291  ]
+[e :U 292 ]
+"29
+[; ;timer.c: 29:     if (sign < 0)
+[e $ ! < _sign -> 0 `i 293  ]
+"30
+[; ;timer.c: 30:         s[i++] = '-';
+[e = *U + _s * -> ++ _i -> 1 `i `x -> -> # *U _s `i `x -> -> 45 `ui `uc ]
+[e :U 293 ]
+"31
+[; ;timer.c: 31:     s[i] = '\0';
+[e = *U + _s * -> _i `x -> -> # *U _s `i `x -> -> 0 `ui `uc ]
+"33
+[; ;timer.c: 33:     reverse(s, s+i-1);
+[e ( _reverse (2 , _s - + _s * -> _i `x -> -> # *U _s `i `x * -> -> 1 `i `x -> -> # *U + _s * -> _i `x -> -> # *U _s `i `x `i `x ]
+"34
+[; ;timer.c: 34: }
+[e :UE 288 ]
+}
+"35
+[; ;timer.c: 35: void update_time() {
 [v _update_time `(v ~T0 @X0 1 ef ]
 {
 [e :U _update_time ]
 [f ]
-"8
-[; ;timer.c: 8:     cnt++;
+"36
+[; ;timer.c: 36:     cnt++;
 [e ++ _cnt -> 1 `i ]
-"9
-[; ;timer.c: 9: }
-[e :UE 282 ]
+"37
+[; ;timer.c: 37: }
+[e :UE 294 ]
 }
-"10
-[; ;timer.c: 10: void Get_Timer_H(char* str) {
+"38
+[; ;timer.c: 38: void Get_Timer_H(char* str) {
 [v _Get_Timer_H `(v ~T0 @X0 1 ef1`*uc ]
 {
 [e :U _Get_Timer_H ]
 [v _str `*uc ~T0 @X0 1 r1 ]
 [f ]
-"11
-[; ;timer.c: 11:     int result = cnt / 42;
+"39
+[; ;timer.c: 39:     int result = cnt / 42;
 [v _result `i ~T0 @X0 1 a ]
 [e = _result / _cnt -> 42 `i ]
-"12
-[; ;timer.c: 12:     int h = result / 60;
+"40
+[; ;timer.c: 40:     int h = result / 60;
 [v _h `i ~T0 @X0 1 a ]
 [e = _h / _result -> 60 `i ]
-"13
-[; ;timer.c: 13:     char str2[100];
+"41
+[; ;timer.c: 41:     char str2[100];
 [v _str2 `uc ~T0 @X0 -> 100 `i a ]
-"14
-[; ;timer.c: 14:     itoa(h, str2);
-[e ( _itoa , _h &U _str2 ]
-"15
-[; ;timer.c: 15:     if( h < 10 ) strcpy(str, "0");
-[e $ ! < _h -> 10 `i 284  ]
+"42
+[; ;timer.c: 42:     itoa(h, str2);
+[e ( _itoa (2 , _h &U _str2 ]
+"43
+[; ;timer.c: 43:     if( h < 10 ) strcpy(str, "0");
+[e $ ! < _h -> 10 `i 296  ]
 [e ( _strcpy (2 , _str :s 1C ]
-[e :U 284 ]
-"16
-[; ;timer.c: 16:     strcat(str, str2);
+[e :U 296 ]
+"44
+[; ;timer.c: 44:     strcat(str, str2);
 [e ( _strcat (2 , _str -> &U _str2 `*Cuc ]
-"17
-[; ;timer.c: 17: }
-[e :UE 283 ]
+"45
+[; ;timer.c: 45: }
+[e :UE 295 ]
 }
-"18
-[; ;timer.c: 18: void Get_Timer_M(char* str) {
+"46
+[; ;timer.c: 46: void Get_Timer_M(char* str) {
 [v _Get_Timer_M `(v ~T0 @X0 1 ef1`*uc ]
 {
 [e :U _Get_Timer_M ]
 [v _str `*uc ~T0 @X0 1 r1 ]
 [f ]
-"19
-[; ;timer.c: 19:     int result = cnt / 42;
+"47
+[; ;timer.c: 47:     int result = cnt / 42;
 [v _result `i ~T0 @X0 1 a ]
 [e = _result / _cnt -> 42 `i ]
-"20
-[; ;timer.c: 20:     int m = result % 60;
+"48
+[; ;timer.c: 48:     int m = result % 60;
 [v _m `i ~T0 @X0 1 a ]
 [e = _m % _result -> 60 `i ]
-"21
-[; ;timer.c: 21:     char str2[100];
+"49
+[; ;timer.c: 49:     char str2[100];
 [v _str2 `uc ~T0 @X0 -> 100 `i a ]
-"22
-[; ;timer.c: 22:     itoa(m, str2);
-[e ( _itoa , _m &U _str2 ]
-"23
-[; ;timer.c: 23:     if( m < 10 ) strcpy(str, "0");
-[e $ ! < _m -> 10 `i 286  ]
+"50
+[; ;timer.c: 50:     itoa(m, str2);
+[e ( _itoa (2 , _m &U _str2 ]
+"51
+[; ;timer.c: 51:     if( m < 10 ) strcpy(str, "0");
+[e $ ! < _m -> 10 `i 298  ]
 [e ( _strcpy (2 , _str :s 2C ]
-[e :U 286 ]
-"24
-[; ;timer.c: 24:     strcat(str, str2);
+[e :U 298 ]
+"52
+[; ;timer.c: 52:     strcat(str, str2);
 [e ( _strcat (2 , _str -> &U _str2 `*Cuc ]
-"25
-[; ;timer.c: 25: }
-[e :UE 285 ]
+"53
+[; ;timer.c: 53: }
+[e :UE 297 ]
 }
 [a 1C 48 0 ]
 [a 2C 48 0 ]

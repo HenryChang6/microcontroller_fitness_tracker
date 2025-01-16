@@ -39,7 +39,7 @@ struct Data ParsingData(char* s) {
     val.step = num1;
     val.heartRate = num2;
     val.temp = num3;
-    
+    ClearBuffer();
     return val;
 }
 

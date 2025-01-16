@@ -43,16 +43,47 @@ Version 4.0 HI-TECH Software Intermediate Code
 [v __delay `JF205 ~T0 @X0 0 e ]
 [p i __delay ]
 [p mainexit ]
+"8 ./uart.h
+[; ;./uart.h: 8: void ClearBuffer();
+[v _ClearBuffer `(v ~T0 @X0 0 e? ]
+"7 ./setting.h
+[; ;./setting.h: 7: void SYSTEM_Initialize(void);
+[v _SYSTEM_Initialize `(v ~T0 @X0 0 ef ]
+"16 main.c
+[; ;main.c: 16: struct Data {
+[s S282 `i 1 `i 1 `i 1 ]
+[n S282 Data step heartRate temp ]
+"5 ./uart.h
+[; ;./uart.h: 5: int GetString(char* str);
+[v _GetString `(i ~T0 @X0 0 ef1`*uc ]
+"11
+[; ;./uart.h: 11: struct Data ParsingData(char* s);
+[v _ParsingData `(S282 ~T0 @X0 0 ef1`*uc ]
 "11 ./oled.h
 [; ;./oled.h: 11: void OLED_Clear();
 [v _OLED_Clear `(v ~T0 @X0 0 e? ]
-"12
+"9 ./timer.h
+[; ;./timer.h: 9: void init_time();
+[v _init_time `(v ~T0 @X0 0 e? ]
+"33 C:\Program Files\Microchip\xc8\v2.50\pic\include\c99\string.h
+[; ;C:\Program Files\Microchip\xc8\v2.50\pic\include\c99\string.h: 33: char *strcpy (char *restrict, const char *restrict);
+[v _strcpy `(*uc ~T0 @X0 0 ef2`*uc`*Cuc ]
+"12 ./oled.h
 [; ;./oled.h: 12: void OLED_Print(const uint8_t startPage, const uint8_t endPage, const uint8_t startColumn, const uint8_t endColumn, const uint8_t *bitmap, uint16_t bitmapSize);
 [v _OLED_Print `(v ~T0 @X0 0 ef6`Cuc`Cuc`Cuc`Cuc`*Cuc`us ]
-"14
+"4 ./timer.h
+[; ;./timer.h: 4: void Get_Timer_H(char* str);
+[v _Get_Timer_H `(v ~T0 @X0 0 ef1`*uc ]
+"5
+[; ;./timer.h: 5: void Get_Timer_M(char* str);
+[v _Get_Timer_M `(v ~T0 @X0 0 ef1`*uc ]
+"14 ./oled.h
 [; ;./oled.h: 14: void OLED_PrintNumber(const uint8_t startPage, const uint8_t endPage, const uint8_t startColumn, const uint8_t endColumn, const char* str);
 [v _OLED_PrintNumber `(v ~T0 @X0 0 ef5`Cuc`Cuc`Cuc`Cuc`*Cuc ]
-"13
+"8 ./timer.h
+[; ;./timer.h: 8: void itoa(int n, char *s);
+[v _itoa `(v ~T0 @X0 0 ef2`i`*uc ]
+"13 ./oled.h
 [; ;./oled.h: 13: void OLED_PrintChar(const uint8_t startPage, const uint8_t endPage, const uint8_t startColumn, const uint8_t endColumn, char c);
 [v _OLED_PrintChar `(v ~T0 @X0 0 ef5`Cuc`Cuc`Cuc`Cuc`uc ]
 "54 C:\Program Files\Microchip\xc8\v2.50\pic\include\proc\pic18f4520.h
@@ -469,14 +500,14 @@ Version 4.0 HI-TECH Software Intermediate Code
 "7001
 [; ;C:\Program Files\Microchip\xc8\v2.50\pic\include\proc\pic18f4520.h: 7001: __asm("TOSU equ 0FFFh");
 [; <" TOSU equ 0FFFh ;# ">
-"24 main.c
-[; ;main.c: 24: int which_heart = 1;
+"25 main.c
+[; ;main.c: 25: int which_heart = 1;
 [v _which_heart `i ~T0 @X0 1 e ]
 [i _which_heart
 -> 1 `i
 ]
-"25
-[; ;main.c: 25: const uint8_t heart1[] = {0xF0, 0x00, 0x08, 0x01, 0x04, 0x06, 0x02, 0x18, 0x02, 0x20, 0x04, 0x40, 0x08, 0x40, 0x10, 0x80, 0x10, 0x80, 0x08, 0x40, 0x04, 0x40, 0x02, 0x20, 0x02, 0x18, 0x04, 0x06, 0x08, 0x01, 0xF0, 0x00};
+"26
+[; ;main.c: 26: const uint8_t heart1[] = {0xF0, 0x00, 0x08, 0x01, 0x04, 0x06, 0x02, 0x18, 0x02, 0x20, 0x04, 0x40, 0x08, 0x40, 0x10, 0x80, 0x10, 0x80, 0x08, 0x40, 0x04, 0x40, 0x02, 0x20, 0x02, 0x18, 0x04, 0x06, 0x08, 0x01, 0xF0, 0x00};
 [v _heart1 `Cuc ~T0 @X0 -> 32 `i e ]
 [i _heart1
 :U ..
@@ -514,8 +545,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 -> -> 0 `i `uc
 ..
 ]
-"26
-[; ;main.c: 26: const uint8_t heart2[] = {0x00, 0x00, 0x00, 0x00, 0xE0, 0x00, 0x10, 0x03, 0x08, 0x04, 0x08, 0x08, 0x10, 0x10, 0x20, 0x20, 0x20, 0x20, 0x10, 0x10, 0x08, 0x08, 0x08, 0x04, 0x10, 0x03, 0xE0, 0x00, 0x00, 0x00, 0x00, 0x00};
+"27
+[; ;main.c: 27: const uint8_t heart2[] = {0x00, 0x00, 0x00, 0x00, 0xE0, 0x00, 0x10, 0x03, 0x08, 0x04, 0x08, 0x08, 0x10, 0x10, 0x20, 0x20, 0x20, 0x20, 0x10, 0x10, 0x08, 0x08, 0x08, 0x04, 0x10, 0x03, 0xE0, 0x00, 0x00, 0x00, 0x00, 0x00};
 [v _heart2 `Cuc ~T0 @X0 -> 32 `i e ]
 [i _heart2
 :U ..
@@ -553,8 +584,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 -> -> 0 `i `uc
 ..
 ]
-"29
-[; ;main.c: 29: const uint8_t foots[] = {0x40, 0x00, 0x18, 0x00, 0xD8, 0x01, 0xE6, 0x03, 0xF6, 0x0F, 0xF0, 0x1F, 0xF7, 0x1F, 0xF7, 0x39, 0x67, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x40, 0x1C, 0xE0, 0x9C, 0xF1, 0xDC, 0x7B, 0xE0, 0x3F, 0xEC, 0x1F, 0xCC, 0x0F, 0x80, 0x03, 0x18, 0x00, 0x58, 0x00};
+"30
+[; ;main.c: 30: const uint8_t foots[] = {0x40, 0x00, 0x18, 0x00, 0xD8, 0x01, 0xE6, 0x03, 0xF6, 0x0F, 0xF0, 0x1F, 0xF7, 0x1F, 0xF7, 0x39, 0x67, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x40, 0x1C, 0xE0, 0x9C, 0xF1, 0xDC, 0x7B, 0xE0, 0x3F, 0xEC, 0x1F, 0xCC, 0x0F, 0x80, 0x03, 0x18, 0x00, 0x58, 0x00};
 [v _foots `Cuc ~T0 @X0 -> 42 `i e ]
 [i _foots
 :U ..
@@ -602,8 +633,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 -> -> 0 `i `uc
 ..
 ]
-"32
-[; ;main.c: 32: const uint8_t clock[] = {0x00, 0x00, 0x80, 0x07, 0x60, 0x18, 0x10, 0x20, 0x08, 0x40, 0x08, 0x40, 0x04, 0x80, 0xE7, 0x83, 0x07, 0x82, 0x04, 0x82, 0x08, 0x42, 0x08, 0x40, 0x10, 0x20, 0x60, 0x18, 0x80, 0x07, 0x00, 0x00};
+"33
+[; ;main.c: 33: const uint8_t clock[] = {0x00, 0x00, 0x80, 0x07, 0x60, 0x18, 0x10, 0x20, 0x08, 0x40, 0x08, 0x40, 0x04, 0x80, 0xE7, 0x83, 0x07, 0x82, 0x04, 0x82, 0x08, 0x42, 0x08, 0x40, 0x10, 0x20, 0x60, 0x18, 0x80, 0x07, 0x00, 0x00};
 [v _clock `Cuc ~T0 @X0 -> 32 `i e ]
 [i _clock
 :U ..
@@ -641,8 +672,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 -> -> 0 `i `uc
 ..
 ]
-"33
-[; ;main.c: 33: const uint8_t dots[] = {0x00, 0x00, 0x00, 0x00, 0x3C, 0x3C, 0x3C, 0x3C, 0x3C, 0x3C, 0x3C, 0x3C, 0x00, 0x00, 0x00, 0x00};
+"34
+[; ;main.c: 34: const uint8_t dots[] = {0x00, 0x00, 0x00, 0x00, 0x3C, 0x3C, 0x3C, 0x3C, 0x3C, 0x3C, 0x3C, 0x3C, 0x00, 0x00, 0x00, 0x00};
 [v _dots `Cuc ~T0 @X0 -> 16 `i e ]
 [i _dots
 :U ..
@@ -664,8 +695,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 -> -> 0 `i `uc
 ..
 ]
-"36
-[; ;main.c: 36: const uint8_t thermometer[] = {0x00, 0x7F, 0x80, 0x80, 0x80, 0x80, 0x80, 0x98, 0x00, 0x99, 0x80, 0x84, 0x40, 0x82, 0x20, 0x89, 0x90, 0x74, 0x08, 0x02, 0x04, 0x01, 0x82, 0x00, 0x41, 0x00, 0x21, 0x00, 0x11, 0x00, 0x0F, 0x00};
+"37
+[; ;main.c: 37: const uint8_t thermometer[] = {0x00, 0x7F, 0x80, 0x80, 0x80, 0x80, 0x80, 0x98, 0x00, 0x99, 0x80, 0x84, 0x40, 0x82, 0x20, 0x89, 0x90, 0x74, 0x08, 0x02, 0x04, 0x01, 0x82, 0x00, 0x41, 0x00, 0x21, 0x00, 0x11, 0x00, 0x0F, 0x00};
 [v _thermometer `Cuc ~T0 @X0 -> 32 `i e ]
 [i _thermometer
 :U ..
@@ -703,8 +734,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 -> -> 0 `i `uc
 ..
 ]
-"37
-[; ;main.c: 37: const uint8_t temp[] = {0x3C, 0x00, 0x3C, 0x00, 0xC3, 0x00, 0xC3, 0x00, 0xC3, 0x00, 0xC3, 0x00, 0x3C, 0x00, 0x3C, 0x1F, 0x80, 0x31, 0xC0, 0x60, 0x60, 0xC0, 0x60, 0xC0, 0x60, 0xC0, 0xC0, 0x60, 0x80, 0x31, 0x00, 0x00};
+"38
+[; ;main.c: 38: const uint8_t temp[] = {0x3C, 0x00, 0x3C, 0x00, 0xC3, 0x00, 0xC3, 0x00, 0xC3, 0x00, 0xC3, 0x00, 0x3C, 0x00, 0x3C, 0x1F, 0x80, 0x31, 0xC0, 0x60, 0x60, 0xC0, 0x60, 0xC0, 0x60, 0xC0, 0xC0, 0x60, 0x80, 0x31, 0x00, 0x00};
 [v _temp `Cuc ~T0 @X0 -> 32 `i e ]
 [i _temp
 :U ..
@@ -742,10 +773,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 -> -> 0 `i `uc
 ..
 ]
-[v F2652 `Cuc ~T0 @X0 -> 24 `i t ]
-"41
-[; ;main.c: 41: const uint8_t number[][24] = {
-[v _number `F2652 ~T0 @X0 -> 10 `i e ]
+[v F2826 `Cuc ~T0 @X0 -> 24 `i t ]
+"42
+[; ;main.c: 42: const uint8_t number[][24] = {
+[v _number `F2826 ~T0 @X0 -> 10 `i e ]
 [i _number
 :U ..
 :U ..
@@ -1010,8 +1041,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 ..
 ..
 ]
-"63
-[; ;main.c: 63: const uint8_t dot[] = {0x00, 0xC0, 0x00, 0xC0};
+"64
+[; ;main.c: 64: const uint8_t dot[] = {0x00, 0xC0, 0x00, 0xC0};
 [v _dot `Cuc ~T0 @X0 -> 4 `i e ]
 [i _dot
 :U ..
@@ -1021,8 +1052,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 -> -> 192 `i `uc
 ..
 ]
-"66
-[; ;main.c: 66: const uint8_t b[] = {0x00, 0x00, 0x00, 0xFF, 0x00, 0x89, 0x00, 0x89, 0x00, 0x89, 0x00, 0x76, 0x00, 0x00, 0x00, 0x00};
+"67
+[; ;main.c: 67: const uint8_t b[] = {0x00, 0x00, 0x00, 0xFF, 0x00, 0x89, 0x00, 0x89, 0x00, 0x89, 0x00, 0x76, 0x00, 0x00, 0x00, 0x00};
 [v _b `Cuc ~T0 @X0 -> 16 `i e ]
 [i _b
 :U ..
@@ -1044,8 +1075,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 -> -> 0 `i `uc
 ..
 ]
-"67
-[; ;main.c: 67: const uint8_t p[] = {0x00, 0xFF, 0x00, 0x09, 0x00, 0x09, 0x00, 0x09, 0x00, 0x09, 0x00, 0x06, 0x00, 0x00, 0x00, 0x00};
+"68
+[; ;main.c: 68: const uint8_t p[] = {0x00, 0xFF, 0x00, 0x09, 0x00, 0x09, 0x00, 0x09, 0x00, 0x09, 0x00, 0x06, 0x00, 0x00, 0x00, 0x00};
 [v _p `Cuc ~T0 @X0 -> 16 `i e ]
 [i _p
 :U ..
@@ -1067,8 +1098,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 -> -> 0 `i `uc
 ..
 ]
-"68
-[; ;main.c: 68: const uint8_t m[] = {0x00, 0xFF, 0x00, 0x02, 0x00, 0x0C, 0x00, 0x10, 0x00, 0x10, 0x00, 0x0C, 0x00, 0x02, 0x00, 0xFF};
+"69
+[; ;main.c: 69: const uint8_t m[] = {0x00, 0xFF, 0x00, 0x02, 0x00, 0x0C, 0x00, 0x10, 0x00, 0x10, 0x00, 0x0C, 0x00, 0x02, 0x00, 0xFF};
 [v _m `Cuc ~T0 @X0 -> 16 `i e ]
 [i _m
 :U ..
@@ -1090,235 +1121,327 @@ Version 4.0 HI-TECH Software Intermediate Code
 -> -> 255 `i `uc
 ..
 ]
-"69
-[; ;main.c: 69: char state = '0';
+"70
+[; ;main.c: 70: char state = '0';
 [v _state `uc ~T0 @X0 1 e ]
 [i _state
 -> -> 48 `ui `uc
 ]
-"70
-[; ;main.c: 70: char pre_state = '9';
+"71
+[; ;main.c: 71: char pre_state = '9';
 [v _pre_state `uc ~T0 @X0 1 e ]
 [i _pre_state
 -> -> 57 `ui `uc
 ]
 [v $root$_H_ISR `(v ~T0 @X0 0 e ]
-"71
-[; ;main.c: 71: void __attribute__((picinterrupt(("high_priority")))) H_ISR() {
+"72
+[; ;main.c: 72: void __attribute__((picinterrupt(("high_priority")))) H_ISR() {
 [v _H_ISR `(v ~T41 @X0 1 ef ]
 {
 [e :U _H_ISR ]
 [f ]
-"72
-[; ;main.c: 72:     if (PIR1bits.TMR2IF) {
-[e $ ! != -> . . _PIR1bits 0 1 `i -> 0 `i 285  ]
-{
 "73
-[; ;main.c: 73:         update_time();
-[e ( _update_time ..  ]
-"74
-[; ;main.c: 74:         PIR1bits.TMR2IF = 0;
-[e = . . _PIR1bits 0 1 -> -> 0 `i `uc ]
-"76
-[; ;main.c: 76:     }
-}
-[e :U 285 ]
-"77
-[; ;main.c: 77:     if(INTCONbits.INT0IF) {
-[e $ ! != -> . . _INTCONbits 0 1 `i -> 0 `i 286  ]
+[; ;main.c: 73:     if (PIR1bits.TMR2IF) {
+[e $ ! != -> . . _PIR1bits 0 1 `i -> 0 `i 286  ]
 {
-"78
-[; ;main.c: 78:         if(state == '0')state = '1';
-[e $ ! == -> _state `ui -> 48 `ui 287  ]
-[e = _state -> -> 49 `ui `uc ]
-[e $U 288  ]
-"79
-[; ;main.c: 79:         else if(state == '1')state = '2';
-[e :U 287 ]
-[e $ ! == -> _state `ui -> 49 `ui 289  ]
-[e = _state -> -> 50 `ui `uc ]
-[e $U 290  ]
-"80
-[; ;main.c: 80:         else if(state == '2')state = '3';
-[e :U 289 ]
-[e $ ! == -> _state `ui -> 50 `ui 291  ]
-[e = _state -> -> 51 `ui `uc ]
-[e $U 292  ]
-"81
-[; ;main.c: 81:         else if(state == '3')state = '4';
-[e :U 291 ]
-[e $ ! == -> _state `ui -> 51 `ui 293  ]
-[e = _state -> -> 52 `ui `uc ]
-[e $U 294  ]
-"82
-[; ;main.c: 82:         else if(state == '4')state = '0';
-[e :U 293 ]
-[e $ ! == -> _state `ui -> 52 `ui 295  ]
-[e = _state -> -> 48 `ui `uc ]
-[e :U 295 ]
-[e :U 294 ]
-[e :U 292 ]
-[e :U 290 ]
-[e :U 288 ]
-"84
-[; ;main.c: 84:         INTCONbits.INT0IF = 0;
-[e = . . _INTCONbits 0 1 -> -> 0 `i `uc ]
-"85
-[; ;main.c: 85:         _delay((unsigned long)((500)*(8000000/4000.0)));
-[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
-"86
-[; ;main.c: 86:     }
+"74
+[; ;main.c: 74:         update_time();
+[e ( _update_time ..  ]
+"75
+[; ;main.c: 75:         PIR1bits.TMR2IF = 0;
+[e = . . _PIR1bits 0 1 -> -> 0 `i `uc ]
+"77
+[; ;main.c: 77:     }
 }
 [e :U 286 ]
+"78
+[; ;main.c: 78:     if(INTCONbits.INT0IF) {
+[e $ ! != -> . . _INTCONbits 0 1 `i -> 0 `i 287  ]
+{
+"79
+[; ;main.c: 79:         if(state == '0')state = '1';
+[e $ ! == -> _state `ui -> 48 `ui 288  ]
+[e = _state -> -> 49 `ui `uc ]
+[e $U 289  ]
+"80
+[; ;main.c: 80:         else if(state == '1')state = '2';
+[e :U 288 ]
+[e $ ! == -> _state `ui -> 49 `ui 290  ]
+[e = _state -> -> 50 `ui `uc ]
+[e $U 291  ]
+"81
+[; ;main.c: 81:         else if(state == '2')state = '3';
+[e :U 290 ]
+[e $ ! == -> _state `ui -> 50 `ui 292  ]
+[e = _state -> -> 51 `ui `uc ]
+[e $U 293  ]
+"82
+[; ;main.c: 82:         else if(state == '3')state = '4';
+[e :U 292 ]
+[e $ ! == -> _state `ui -> 51 `ui 294  ]
+[e = _state -> -> 52 `ui `uc ]
+[e $U 295  ]
+"83
+[; ;main.c: 83:         else if(state == '4')state = '0';
+[e :U 294 ]
+[e $ ! == -> _state `ui -> 52 `ui 296  ]
+[e = _state -> -> 48 `ui `uc ]
+[e :U 296 ]
+[e :U 295 ]
+[e :U 293 ]
+[e :U 291 ]
+[e :U 289 ]
+"85
+[; ;main.c: 85:         INTCONbits.INT0IF = 0;
+[e = . . _INTCONbits 0 1 -> -> 0 `i `uc ]
+"86
+[; ;main.c: 86:         _delay((unsigned long)((500)*(8000000/4000.0)));
+[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
 "87
-[; ;main.c: 87: }
-[e :UE 284 ]
+[; ;main.c: 87:     }
+}
+[e :U 287 ]
+"88
+[; ;main.c: 88: }
+[e :UE 285 ]
 }
 [v $root$_main `(v ~T0 @X0 0 e ]
-"88
-[; ;main.c: 88: void main(void) {
+"89
+[; ;main.c: 89: void main(void) {
 [v _main `(v ~T0 @X0 1 ef ]
 {
 [e :U _main ]
 [f ]
 "90
-[; ;main.c: 90:     while(1) {
-[e :U 298 ]
-{
-"98
-[; ;main.c: 98:         if(pre_state != state)OLED_Clear();
-[e $ ! != -> _pre_state `i -> _state `i 300  ]
-[e ( _OLED_Clear ..  ]
-[e :U 300 ]
-"99
-[; ;main.c: 99:         pre_state = state;
-[e = _pre_state _state ]
-"102
-[; ;main.c: 102:         switch(state){
-[e $U 302  ]
-{
-"103
-[; ;main.c: 103:             case '0':
-[e :U 303 ]
-"104
-[; ;main.c: 104:                 OLED_Print(0x01, 0x02, 0x00, 0x7F, clock, sizeof(clock));
-[e ( _OLED_Print (4 , , , , , -> -> 1 `i `uc -> -> 2 `i `uc -> -> 0 `i `uc -> -> 127 `i `uc &U _clock -> -> # _clock `ui `us ]
-"105
-[; ;main.c: 105:                 OLED_PrintNumber(0x01, 0x02, 0x1D, 0x7F, "01");
-[e ( _OLED_PrintNumber (4 , , , , -> -> 1 `i `uc -> -> 2 `i `uc -> -> 29 `i `uc -> -> 127 `i `uc :s 1C ]
-"106
-[; ;main.c: 106:                 OLED_Print(0x01, 0x02, 0x44, 0x7F, dots, sizeof(dots));
-[e ( _OLED_Print (4 , , , , , -> -> 1 `i `uc -> -> 2 `i `uc -> -> 68 `i `uc -> -> 127 `i `uc &U _dots -> -> # _dots `ui `us ]
-"107
-[; ;main.c: 107:                 OLED_PrintNumber(0x01, 0x02, 0x59, 0x7F, "01");
-[e ( _OLED_PrintNumber (4 , , , , -> -> 1 `i `uc -> -> 2 `i `uc -> -> 89 `i `uc -> -> 127 `i `uc :s 2C ]
-"108
-[; ;main.c: 108:                 break;
-[e $U 301  ]
-"109
-[; ;main.c: 109:             case'1':
-[e :U 304 ]
-"110
-[; ;main.c: 110:                 OLED_Print(0x01, 0x02, 0x00, 0x7F, thermometer, sizeof(thermometer));
-[e ( _OLED_Print (4 , , , , , -> -> 1 `i `uc -> -> 2 `i `uc -> -> 0 `i `uc -> -> 127 `i `uc &U _thermometer -> -> # _thermometer `ui `us ]
-"111
-[; ;main.c: 111:                 OLED_Print(0x01, 0x02, 0x70, 0x7F, temp, sizeof(temp));
-[e ( _OLED_Print (4 , , , , , -> -> 1 `i `uc -> -> 2 `i `uc -> -> 112 `i `uc -> -> 127 `i `uc &U _temp -> -> # _temp `ui `us ]
-"112
-[; ;main.c: 112:                 break;
-[e $U 301  ]
-"113
-[; ;main.c: 113:             case'2':
-[e :U 305 ]
-"114
-[; ;main.c: 114:                 OLED_Print(0x01, 0x02, 0x00, 0x7F, foots, sizeof(foots));
-[e ( _OLED_Print (4 , , , , , -> -> 1 `i `uc -> -> 2 `i `uc -> -> 0 `i `uc -> -> 127 `i `uc &U _foots -> -> # _foots `ui `us ]
-"115
-[; ;main.c: 115:                 break;
-[e $U 301  ]
-"116
-[; ;main.c: 116:             case'3':
-[e :U 306 ]
-"117
-[; ;main.c: 117:                 OLED_PrintChar(0x01, 0x02, 0x78, 0x7F, 'm');
-[e ( _OLED_PrintChar (4 , , , , -> -> 1 `i `uc -> -> 2 `i `uc -> -> 120 `i `uc -> -> 127 `i `uc -> -> 109 `ui `uc ]
-"118
-[; ;main.c: 118:                 break;
-[e $U 301  ]
-"119
-[; ;main.c: 119:             case'4':
-[e :U 307 ]
-"120
-[; ;main.c: 120:                 if(which_heart == 1){
-[e $ ! == _which_heart -> 1 `i 308  ]
-{
-"121
-[; ;main.c: 121:                     OLED_Print(0x01, 0x02, 0x00, 0x7F, heart1, sizeof(heart1));
-[e ( _OLED_Print (4 , , , , , -> -> 1 `i `uc -> -> 2 `i `uc -> -> 0 `i `uc -> -> 127 `i `uc &U _heart1 -> -> # _heart1 `ui `us ]
-"122
-[; ;main.c: 122:                     which_heart = 2;
-[e = _which_heart -> 2 `i ]
-"123
-[; ;main.c: 123:                 }
-}
-[e $U 309  ]
-"124
-[; ;main.c: 124:                 else{
-[e :U 308 ]
-{
-"125
-[; ;main.c: 125:                     OLED_Print(0x01, 0x02, 0x00, 0x7F, heart2, sizeof(heart2));
-[e ( _OLED_Print (4 , , , , , -> -> 1 `i `uc -> -> 2 `i `uc -> -> 0 `i `uc -> -> 127 `i `uc &U _heart2 -> -> # _heart2 `ui `us ]
-"126
-[; ;main.c: 126:                     which_heart = 1;
-[e = _which_heart -> 1 `i ]
-"127
-[; ;main.c: 127:                 }
-}
-[e :U 309 ]
-"129
-[; ;main.c: 129:                 OLED_PrintNumber(0x01, 0x02, 0x1C, 0x7F, "123.45");
-[e ( _OLED_PrintNumber (4 , , , , -> -> 1 `i `uc -> -> 2 `i `uc -> -> 28 `i `uc -> -> 127 `i `uc :s 3C ]
-"133
-[; ;main.c: 133:                 OLED_PrintChar(0x01, 0x02, 0x68, 0x7F, 'b');
-[e ( _OLED_PrintChar (4 , , , , -> -> 1 `i `uc -> -> 2 `i `uc -> -> 104 `i `uc -> -> 127 `i `uc -> -> 98 `ui `uc ]
-"134
-[; ;main.c: 134:                 OLED_PrintChar(0x01, 0x02, 0x70, 0x7F, 'p');
-[e ( _OLED_PrintChar (4 , , , , -> -> 1 `i `uc -> -> 2 `i `uc -> -> 112 `i `uc -> -> 127 `i `uc -> -> 112 `ui `uc ]
-"135
-[; ;main.c: 135:                 OLED_PrintChar(0x01, 0x02, 0x78, 0x7F, 'm');
-[e ( _OLED_PrintChar (4 , , , , -> -> 1 `i `uc -> -> 2 `i `uc -> -> 120 `i `uc -> -> 127 `i `uc -> -> 109 `ui `uc ]
-"136
-[; ;main.c: 136:                 _delay((unsigned long)((500)*(8000000/4000.0)));
-[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
-"137
-[; ;main.c: 137:                 break;
-[e $U 301  ]
-"138
-[; ;main.c: 138:         }
-}
-[e $U 301  ]
-[e :U 302 ]
-[e [\ _state , $ -> -> 48 `ui `i 303
- , $ -> -> 49 `ui `i 304
- , $ -> -> 50 `ui `i 305
- , $ -> -> 51 `ui `i 306
- , $ -> -> 52 `ui `i 307
- 301 ]
-[e :U 301 ]
-"139
-[; ;main.c: 139:     }
-}
-[e :U 297 ]
-[e $U 298  ]
+[; ;main.c: 90:     ClearBuffer();
+[e ( _ClearBuffer ..  ]
+"91
+[; ;main.c: 91:     SYSTEM_Initialize();
+[e ( _SYSTEM_Initialize ..  ]
+"92
+[; ;main.c: 92:     int last_step = 0, last_heart = 100;
+[v _last_step `i ~T0 @X0 1 a ]
+[e = _last_step -> 0 `i ]
+[v _last_heart `i ~T0 @X0 1 a ]
+[e = _last_heart -> 100 `i ]
+"93
+[; ;main.c: 93:     while(1) {
 [e :U 299 ]
-"141
-[; ;main.c: 141:     return;
-[e $UE 296  ]
-"142
-[; ;main.c: 142: }
-[e :UE 296 ]
+{
+"94
+[; ;main.c: 94:         char str[100];
+[v _str `uc ~T0 @X0 -> 100 `i a ]
+"95
+[; ;main.c: 95:         struct Data val;
+[v _val `S282 ~T0 @X0 1 a ]
+"96
+[; ;main.c: 96:         if( GetString(str) ) {
+[e $ ! != ( _GetString (1 &U _str -> 0 `i 301  ]
+{
+"97
+[; ;main.c: 97:             val = ParsingData(str);
+[e = _val ( _ParsingData (1 &U _str ]
+"98
+[; ;main.c: 98:         }
 }
-[a 3C 49 50 51 46 52 53 0 ]
-[a 1C 48 49 0 ]
-[a 2C 48 49 0 ]
+[e :U 301 ]
+"102
+[; ;main.c: 102:         if(pre_state != state) OLED_Clear(), init_time();
+[e $ ! != -> _pre_state `i -> _state `i 302  ]
+[e ; ( _OLED_Clear ..  ( _init_time ..  ]
+[e :U 302 ]
+"103
+[; ;main.c: 103:         pre_state = state;
+[e = _pre_state _state ]
+[v F2839 `uc ~T0 @X0 -> 100 `i s ]
+[i F2839
+:U ..
+..
+]
+"104
+[; ;main.c: 104:         char tmp[100] = {};
+[v _tmp `uc ~T0 @X0 -> 100 `i a ]
+[e = _tmp F2839 ]
+[v F2841 `uc ~T0 @X0 -> 100 `i s ]
+[i F2841
+:U ..
+..
+]
+"105
+[; ;main.c: 105:         char hh[100] = {};
+[v _hh `uc ~T0 @X0 -> 100 `i a ]
+[e = _hh F2841 ]
+[v F2843 `uc ~T0 @X0 -> 100 `i s ]
+[i F2843
+:U ..
+..
+]
+"106
+[; ;main.c: 106:         char mm[100] = {};
+[v _mm `uc ~T0 @X0 -> 100 `i a ]
+[e = _mm F2843 ]
+"107
+[; ;main.c: 107:         strcpy(tmp, "");
+[e ( _strcpy (2 , &U _tmp :s 1C ]
+"108
+[; ;main.c: 108:         strcpy(hh, "");
+[e ( _strcpy (2 , &U _hh :s 2C ]
+"109
+[; ;main.c: 109:         strcpy(mm, "");
+[e ( _strcpy (2 , &U _mm :s 3C ]
+"111
+[; ;main.c: 111:         switch(state){
+[e $U 304  ]
+{
+"112
+[; ;main.c: 112:             case '0':
+[e :U 305 ]
+"113
+[; ;main.c: 113:                 OLED_Print(0x01, 0x02, 0x00, 0x7F, clock, sizeof(clock));
+[e ( _OLED_Print (4 , , , , , -> -> 1 `i `uc -> -> 2 `i `uc -> -> 0 `i `uc -> -> 127 `i `uc &U _clock -> -> # _clock `ui `us ]
+"114
+[; ;main.c: 114:                 Get_Timer_H(hh);
+[e ( _Get_Timer_H (1 &U _hh ]
+"115
+[; ;main.c: 115:                 Get_Timer_M(mm);
+[e ( _Get_Timer_M (1 &U _mm ]
+"116
+[; ;main.c: 116:                 OLED_PrintNumber(0x01, 0x02, 0x1D, 0x7F, hh);
+[e ( _OLED_PrintNumber (4 , , , , -> -> 1 `i `uc -> -> 2 `i `uc -> -> 29 `i `uc -> -> 127 `i `uc -> &U _hh `*Cuc ]
+"117
+[; ;main.c: 117:                 OLED_Print(0x01, 0x02, 0x44, 0x7F, dots, sizeof(dots));
+[e ( _OLED_Print (4 , , , , , -> -> 1 `i `uc -> -> 2 `i `uc -> -> 68 `i `uc -> -> 127 `i `uc &U _dots -> -> # _dots `ui `us ]
+"118
+[; ;main.c: 118:                 OLED_PrintNumber(0x01, 0x02, 0x59, 0x7F, mm);
+[e ( _OLED_PrintNumber (4 , , , , -> -> 1 `i `uc -> -> 2 `i `uc -> -> 89 `i `uc -> -> 127 `i `uc -> &U _mm `*Cuc ]
+"119
+[; ;main.c: 119:                 break;
+[e $U 303  ]
+"120
+[; ;main.c: 120:             case'1':
+[e :U 306 ]
+"121
+[; ;main.c: 121:                 OLED_Print(0x01, 0x02, 0x00, 0x7F, thermometer, sizeof(thermometer));
+[e ( _OLED_Print (4 , , , , , -> -> 1 `i `uc -> -> 2 `i `uc -> -> 0 `i `uc -> -> 127 `i `uc &U _thermometer -> -> # _thermometer `ui `us ]
+"122
+[; ;main.c: 122:                 OLED_Print(0x01, 0x02, 0x70, 0x7F, temp, sizeof(temp));
+[e ( _OLED_Print (4 , , , , , -> -> 1 `i `uc -> -> 2 `i `uc -> -> 112 `i `uc -> -> 127 `i `uc &U _temp -> -> # _temp `ui `us ]
+"123
+[; ;main.c: 123:                 itoa(val.temp, tmp);
+[e ( _itoa (2 , . _val 2 &U _tmp ]
+"124
+[; ;main.c: 124:                 OLED_PrintNumber(0x01, 0x02, 0x1C, 0x7F, tmp);
+[e ( _OLED_PrintNumber (4 , , , , -> -> 1 `i `uc -> -> 2 `i `uc -> -> 28 `i `uc -> -> 127 `i `uc -> &U _tmp `*Cuc ]
+"125
+[; ;main.c: 125:                 break;
+[e $U 303  ]
+"126
+[; ;main.c: 126:             case'2':
+[e :U 307 ]
+"127
+[; ;main.c: 127:                 OLED_Print(0x01, 0x02, 0x00, 0x7F, foots, sizeof(foots));
+[e ( _OLED_Print (4 , , , , , -> -> 1 `i `uc -> -> 2 `i `uc -> -> 0 `i `uc -> -> 127 `i `uc &U _foots -> -> # _foots `ui `us ]
+"128
+[; ;main.c: 128:                 itoa(val.step, tmp);
+[e ( _itoa (2 , . _val 0 &U _tmp ]
+"129
+[; ;main.c: 129:                 OLED_PrintNumber(0x01, 0x02, 0x1C, 0x7F, tmp);
+[e ( _OLED_PrintNumber (4 , , , , -> -> 1 `i `uc -> -> 2 `i `uc -> -> 28 `i `uc -> -> 127 `i `uc -> &U _tmp `*Cuc ]
+"130
+[; ;main.c: 130:                 break;
+[e $U 303  ]
+"131
+[; ;main.c: 131:             case'3':
+[e :U 308 ]
+"132
+[; ;main.c: 132:                 itoa(val.step + val.step / 2, tmp);
+[e ( _itoa (2 , + . _val 0 / . _val 0 -> 2 `i &U _tmp ]
+"133
+[; ;main.c: 133:                 OLED_PrintNumber(0x01, 0x02, 0x1C, 0x7F, tmp);
+[e ( _OLED_PrintNumber (4 , , , , -> -> 1 `i `uc -> -> 2 `i `uc -> -> 28 `i `uc -> -> 127 `i `uc -> &U _tmp `*Cuc ]
+"134
+[; ;main.c: 134:                 OLED_PrintChar(0x01, 0x02, 0x78, 0x7F, 'm');
+[e ( _OLED_PrintChar (4 , , , , -> -> 1 `i `uc -> -> 2 `i `uc -> -> 120 `i `uc -> -> 127 `i `uc -> -> 109 `ui `uc ]
+"135
+[; ;main.c: 135:                 break;
+[e $U 303  ]
+"136
+[; ;main.c: 136:             case'4':
+[e :U 309 ]
+"137
+[; ;main.c: 137:                 if(which_heart == 1){
+[e $ ! == _which_heart -> 1 `i 310  ]
+{
+"138
+[; ;main.c: 138:                     OLED_Print(0x01, 0x02, 0x00, 0x7F, heart1, sizeof(heart1));
+[e ( _OLED_Print (4 , , , , , -> -> 1 `i `uc -> -> 2 `i `uc -> -> 0 `i `uc -> -> 127 `i `uc &U _heart1 -> -> # _heart1 `ui `us ]
+"139
+[; ;main.c: 139:                     which_heart = 2;
+[e = _which_heart -> 2 `i ]
+"140
+[; ;main.c: 140:                 }
+}
+[e $U 311  ]
+"141
+[; ;main.c: 141:                 else{
+[e :U 310 ]
+{
+"142
+[; ;main.c: 142:                     OLED_Print(0x01, 0x02, 0x00, 0x7F, heart2, sizeof(heart2));
+[e ( _OLED_Print (4 , , , , , -> -> 1 `i `uc -> -> 2 `i `uc -> -> 0 `i `uc -> -> 127 `i `uc &U _heart2 -> -> # _heart2 `ui `us ]
+"143
+[; ;main.c: 143:                     which_heart = 1;
+[e = _which_heart -> 1 `i ]
+"144
+[; ;main.c: 144:                 }
+}
+[e :U 311 ]
+"147
+[; ;main.c: 147:                 itoa(val.heartRate, tmp);
+[e ( _itoa (2 , . _val 1 &U _tmp ]
+"148
+[; ;main.c: 148:                 OLED_PrintNumber(0x01, 0x02, 0x1C, 0x7F, tmp);
+[e ( _OLED_PrintNumber (4 , , , , -> -> 1 `i `uc -> -> 2 `i `uc -> -> 28 `i `uc -> -> 127 `i `uc -> &U _tmp `*Cuc ]
+"150
+[; ;main.c: 150:                 OLED_PrintChar(0x01, 0x02, 0x68, 0x7F, 'b');
+[e ( _OLED_PrintChar (4 , , , , -> -> 1 `i `uc -> -> 2 `i `uc -> -> 104 `i `uc -> -> 127 `i `uc -> -> 98 `ui `uc ]
+"151
+[; ;main.c: 151:                 OLED_PrintChar(0x01, 0x02, 0x70, 0x7F, 'p');
+[e ( _OLED_PrintChar (4 , , , , -> -> 1 `i `uc -> -> 2 `i `uc -> -> 112 `i `uc -> -> 127 `i `uc -> -> 112 `ui `uc ]
+"152
+[; ;main.c: 152:                 OLED_PrintChar(0x01, 0x02, 0x78, 0x7F, 'm');
+[e ( _OLED_PrintChar (4 , , , , -> -> 1 `i `uc -> -> 2 `i `uc -> -> 120 `i `uc -> -> 127 `i `uc -> -> 109 `ui `uc ]
+"153
+[; ;main.c: 153:                 break;
+[e $U 303  ]
+"154
+[; ;main.c: 154:         }
+}
+[e $U 303  ]
+[e :U 304 ]
+[e [\ _state , $ -> -> 48 `ui `i 305
+ , $ -> -> 49 `ui `i 306
+ , $ -> -> 50 `ui `i 307
+ , $ -> -> 51 `ui `i 308
+ , $ -> -> 52 `ui `i 309
+ 303 ]
+[e :U 303 ]
+"156
+[; ;main.c: 156:         _delay((unsigned long)((300)*(8000000/4000.0)));
+[e ( __delay (1 -> * -> -> 300 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
+"157
+[; ;main.c: 157:     }
+}
+[e :U 298 ]
+[e $U 299  ]
+[e :U 300 ]
+"159
+[; ;main.c: 159:     return;
+[e $UE 297  ]
+"160
+[; ;main.c: 160: }
+[e :UE 297 ]
+}
+[a 1C 0 ]
+[a 2C 0 ]
+[a 3C 0 ]

@@ -620,6 +620,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 "41
 [; ;uart.c: 41:     val.temp = num3;
 [e = . _val 2 _num3 ]
+"42
+[; ;uart.c: 42:     ClearBuffer();
+[e ( _ClearBuffer ..  ]
 "43
 [; ;uart.c: 43:     return val;
 [e ) _val ]

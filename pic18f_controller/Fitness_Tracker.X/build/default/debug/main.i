@@ -4644,6 +4644,9 @@ unsigned char __t3rd16on(void);
 void Get_Timer_H(char* str);
 void Get_Timer_M(char* str);
 void update_time();
+void reverse(char *first, char *last);
+void itoa(int n, char *s);
+void init_time();
 # 10 "main.c" 2
 
 # 1 "./setting.h" 1
@@ -4691,6 +4694,65 @@ void putch(char data);
 struct Data ParsingData(char* s);
 # 12 "main.c" 2
 
+
+# 1 "C:\\Program Files\\Microchip\\xc8\\v2.50\\pic\\include\\c99\\string.h" 1 3
+# 25 "C:\\Program Files\\Microchip\\xc8\\v2.50\\pic\\include\\c99\\string.h" 3
+# 1 "C:\\Program Files\\Microchip\\xc8\\v2.50\\pic\\include\\c99\\bits/alltypes.h" 1 3
+# 421 "C:\\Program Files\\Microchip\\xc8\\v2.50\\pic\\include\\c99\\bits/alltypes.h" 3
+typedef struct __locale_struct * locale_t;
+# 26 "C:\\Program Files\\Microchip\\xc8\\v2.50\\pic\\include\\c99\\string.h" 2 3
+
+void *memcpy (void *restrict, const void *restrict, size_t);
+void *memmove (void *, const void *, size_t);
+void *memset (void *, int, size_t);
+int memcmp (const void *, const void *, size_t);
+void *memchr (const void *, int, size_t);
+
+char *strcpy (char *restrict, const char *restrict);
+char *strncpy (char *restrict, const char *restrict, size_t);
+
+char *strcat (char *restrict, const char *restrict);
+char *strncat (char *restrict, const char *restrict, size_t);
+
+int strcmp (const char *, const char *);
+int strncmp (const char *, const char *, size_t);
+
+int strcoll (const char *, const char *);
+size_t strxfrm (char *restrict, const char *restrict, size_t);
+
+char *strchr (const char *, int);
+char *strrchr (const char *, int);
+
+size_t strcspn (const char *, const char *);
+size_t strspn (const char *, const char *);
+char *strpbrk (const char *, const char *);
+char *strstr (const char *, const char *);
+char *strtok (char *restrict, const char *restrict);
+
+size_t strlen (const char *);
+
+char *strerror (int);
+
+
+
+
+char *strtok_r (char *restrict, const char *restrict, char **restrict);
+int strerror_r (int, char *, size_t);
+char *stpcpy(char *restrict, const char *restrict);
+char *stpncpy(char *restrict, const char *restrict, size_t);
+size_t strnlen (const char *, size_t);
+char *strdup (const char *);
+char *strndup (const char *, size_t);
+char *strsignal(int);
+char *strerror_l (int, locale_t);
+int strcoll_l (const char *, const char *, locale_t);
+size_t strxfrm_l (char *restrict, const char *restrict, size_t, locale_t);
+
+
+
+
+void *memccpy (void *restrict, const void *restrict, int, size_t);
+# 14 "main.c" 2
 
 
 struct Data {
@@ -4767,34 +4829,50 @@ void __attribute__((picinterrupt(("high_priority")))) H_ISR() {
     }
 }
 void main(void) {
-
+    ClearBuffer();
+    SYSTEM_Initialize();
+    int last_step = 0, last_heart = 100;
     while(1) {
+        char str[100];
+        struct Data val;
+        if( GetString(str) ) {
+            val = ParsingData(str);
+        }
 
 
 
-
-
-
-
-        if(pre_state != state)OLED_Clear();
+        if(pre_state != state) OLED_Clear(), init_time();
         pre_state = state;
-
+        char tmp[100] = {};
+        char hh[100] = {};
+        char mm[100] = {};
+        strcpy(tmp, "");
+        strcpy(hh, "");
+        strcpy(mm, "");
 
         switch(state){
             case '0':
                 OLED_Print(0x01, 0x02, 0x00, 0x7F, clock, sizeof(clock));
-                OLED_PrintNumber(0x01, 0x02, 0x1D, 0x7F, "01");
+                Get_Timer_H(hh);
+                Get_Timer_M(mm);
+                OLED_PrintNumber(0x01, 0x02, 0x1D, 0x7F, hh);
                 OLED_Print(0x01, 0x02, 0x44, 0x7F, dots, sizeof(dots));
-                OLED_PrintNumber(0x01, 0x02, 0x59, 0x7F, "01");
+                OLED_PrintNumber(0x01, 0x02, 0x59, 0x7F, mm);
                 break;
             case'1':
                 OLED_Print(0x01, 0x02, 0x00, 0x7F, thermometer, sizeof(thermometer));
                 OLED_Print(0x01, 0x02, 0x70, 0x7F, temp, sizeof(temp));
+                itoa(val.temp, tmp);
+                OLED_PrintNumber(0x01, 0x02, 0x1C, 0x7F, tmp);
                 break;
             case'2':
                 OLED_Print(0x01, 0x02, 0x00, 0x7F, foots, sizeof(foots));
+                itoa(val.step, tmp);
+                OLED_PrintNumber(0x01, 0x02, 0x1C, 0x7F, tmp);
                 break;
             case'3':
+                itoa(val.step + val.step / 2, tmp);
+                OLED_PrintNumber(0x01, 0x02, 0x1C, 0x7F, tmp);
                 OLED_PrintChar(0x01, 0x02, 0x78, 0x7F, 'm');
                 break;
             case'4':
@@ -4807,16 +4885,17 @@ void main(void) {
                     which_heart = 1;
                 }
 
-                OLED_PrintNumber(0x01, 0x02, 0x1C, 0x7F, "123.45");
 
-
+                itoa(val.heartRate, tmp);
+                OLED_PrintNumber(0x01, 0x02, 0x1C, 0x7F, tmp);
 
                 OLED_PrintChar(0x01, 0x02, 0x68, 0x7F, 'b');
                 OLED_PrintChar(0x01, 0x02, 0x70, 0x7F, 'p');
                 OLED_PrintChar(0x01, 0x02, 0x78, 0x7F, 'm');
-                _delay((unsigned long)((500)*(8000000/4000.0)));
                 break;
         }
+
+        _delay((unsigned long)((300)*(8000000/4000.0)));
     }
 
     return;

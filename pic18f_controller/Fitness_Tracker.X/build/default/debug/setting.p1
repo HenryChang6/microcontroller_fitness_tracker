@@ -238,9 +238,6 @@ Version 4.0 HI-TECH Software Intermediate Code
 "5413
 [; ;C:\Program Files\Microchip\xc8\v2.50\pic\include\proc\pic18f4520.h: 5413: extern volatile unsigned char PR2 __attribute__((address(0xFCB)));
 [v _PR2 `Vuc ~T0 @X0 0 e@4043 ]
-"6085
-[; ;C:\Program Files\Microchip\xc8\v2.50\pic\include\proc\pic18f4520.h: 6085: extern volatile unsigned char OSCCON __attribute__((address(0xFD3)));
-[v _OSCCON `Vuc ~T0 @X0 0 e@4051 ]
 "2529
 [; ;C:\Program Files\Microchip\xc8\v2.50\pic\include\proc\pic18f4520.h: 2529: extern volatile unsigned char OSCTUNE __attribute__((address(0xF9B)));
 [v _OSCTUNE `Vuc ~T0 @X0 0 e@3995 ]
@@ -927,138 +924,135 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U _OLED_Initialize ]
 [f ]
 "122
-[; ;setting.c: 122:     OSCCON = 0b11110000;
-[e = _OSCCON -> -> 240 `i `uc ]
-"123
-[; ;setting.c: 123:     OSCTUNE = 0x00;
+[; ;setting.c: 122:     OSCTUNE = 0x00;
 [e = _OSCTUNE -> -> 0 `i `uc ]
+"124
+[; ;setting.c: 124:     TRISC = 0b11111111;
+[e = _TRISC -> -> 255 `i `uc ]
 "125
-[; ;setting.c: 125:     TRISC = 0b00111111;
-[e = _TRISC -> -> 63 `i `uc ]
-"126
-[; ;setting.c: 126:     LATC = 0;
+[; ;setting.c: 125:     LATC = 0;
 [e = _LATC -> -> 0 `i `uc ]
-"129
-[; ;setting.c: 129:     ADCON1 = 0x0F;
+"128
+[; ;setting.c: 128:     ADCON1 = 0x0F;
 [e = _ADCON1 -> -> 15 `i `uc ]
-"130
-[; ;setting.c: 130:     TRISB = 0b00000001;
+"129
+[; ;setting.c: 129:     TRISB = 0b00000001;
 [e = _TRISB -> -> 1 `i `uc ]
-"131
-[; ;setting.c: 131:     RCONbits.IPEN = 1;
+"130
+[; ;setting.c: 130:     RCONbits.IPEN = 1;
 [e = . . _RCONbits 5 7 -> -> 1 `i `uc ]
-"132
-[; ;setting.c: 132:     INTCONbits.INT0IF = 0;
+"131
+[; ;setting.c: 131:     INTCONbits.INT0IF = 0;
 [e = . . _INTCONbits 0 1 -> -> 0 `i `uc ]
-"133
-[; ;setting.c: 133:     INTCONbits.GIE = 1;
+"132
+[; ;setting.c: 132:     INTCONbits.GIE = 1;
 [e = . . _INTCONbits 1 7 -> -> 1 `i `uc ]
-"134
-[; ;setting.c: 134:     INTCONbits.INT0IE = 1;
+"133
+[; ;setting.c: 133:     INTCONbits.INT0IE = 1;
 [e = . . _INTCONbits 0 4 -> -> 1 `i `uc ]
-"137
-[; ;setting.c: 137:     SSPCON1 = 0x28;
+"136
+[; ;setting.c: 136:     SSPCON1 = 0x28;
 [e = _SSPCON1 -> -> 40 `i `uc ]
-"138
-[; ;setting.c: 138:     SSPCON2 = 0x00;
+"137
+[; ;setting.c: 137:     SSPCON2 = 0x00;
 [e = _SSPCON2 -> -> 0 `i `uc ]
-"139
-[; ;setting.c: 139:     SSPADD = 19;
+"138
+[; ;setting.c: 138:     SSPADD = 19;
 [e = _SSPADD -> -> 19 `i `uc ]
-"140
-[; ;setting.c: 140:     SSPSTAT = 0x00;
+"139
+[; ;setting.c: 139:     SSPSTAT = 0x00;
 [e = _SSPSTAT -> -> 0 `i `uc ]
-"143
-[; ;setting.c: 143:     I2C_Start();
+"142
+[; ;setting.c: 142:     I2C_Start();
 [e ( _I2C_Start ..  ]
-"144
-[; ;setting.c: 144:     I2C_Write(0x3C << 1);
+"143
+[; ;setting.c: 143:     I2C_Write(0x3C << 1);
 [e ( _I2C_Write (1 -> << -> 60 `i -> 1 `i `uc ]
+"144
+[; ;setting.c: 144:     I2C_Write(0x00);
+[e ( _I2C_Write (1 -> -> 0 `i `uc ]
 "145
-[; ;setting.c: 145:     I2C_Write(0x00);
-[e ( _I2C_Write (1 -> -> 0 `i `uc ]
-"146
-[; ;setting.c: 146:     I2C_Write(0xAE);
+[; ;setting.c: 145:     I2C_Write(0xAE);
 [e ( _I2C_Write (1 -> -> 174 `i `uc ]
-"147
-[; ;setting.c: 147:     I2C_Write(0xD5);
+"146
+[; ;setting.c: 146:     I2C_Write(0xD5);
 [e ( _I2C_Write (1 -> -> 213 `i `uc ]
-"148
-[; ;setting.c: 148:     I2C_Write(0x80);
+"147
+[; ;setting.c: 147:     I2C_Write(0x80);
 [e ( _I2C_Write (1 -> -> 128 `i `uc ]
-"149
-[; ;setting.c: 149:     I2C_Write(0xA8);
+"148
+[; ;setting.c: 148:     I2C_Write(0xA8);
 [e ( _I2C_Write (1 -> -> 168 `i `uc ]
-"150
-[; ;setting.c: 150:     I2C_Write(0x1F);
+"149
+[; ;setting.c: 149:     I2C_Write(0x1F);
 [e ( _I2C_Write (1 -> -> 31 `i `uc ]
-"151
-[; ;setting.c: 151:     I2C_Write(0xD3);
+"150
+[; ;setting.c: 150:     I2C_Write(0xD3);
 [e ( _I2C_Write (1 -> -> 211 `i `uc ]
-"152
-[; ;setting.c: 152:     I2C_Write(0x00);
+"151
+[; ;setting.c: 151:     I2C_Write(0x00);
 [e ( _I2C_Write (1 -> -> 0 `i `uc ]
-"153
-[; ;setting.c: 153:     I2C_Write(0x40);
+"152
+[; ;setting.c: 152:     I2C_Write(0x40);
 [e ( _I2C_Write (1 -> -> 64 `i `uc ]
-"154
-[; ;setting.c: 154:     I2C_Write(0x8D);
+"153
+[; ;setting.c: 153:     I2C_Write(0x8D);
 [e ( _I2C_Write (1 -> -> 141 `i `uc ]
-"155
-[; ;setting.c: 155:     I2C_Write(0x14);
+"154
+[; ;setting.c: 154:     I2C_Write(0x14);
 [e ( _I2C_Write (1 -> -> 20 `i `uc ]
+"155
+[; ;setting.c: 155:     I2C_Write(0x20);
+[e ( _I2C_Write (1 -> -> 32 `i `uc ]
 "156
-[; ;setting.c: 156:     I2C_Write(0x20);
-[e ( _I2C_Write (1 -> -> 32 `i `uc ]
-"157
-[; ;setting.c: 157:     I2C_Write(0x01);
+[; ;setting.c: 156:     I2C_Write(0x01);
 [e ( _I2C_Write (1 -> -> 1 `i `uc ]
-"158
-[; ;setting.c: 158:     I2C_Write(0xA0);
+"157
+[; ;setting.c: 157:     I2C_Write(0xA0);
 [e ( _I2C_Write (1 -> -> 160 `i `uc ]
-"159
-[; ;setting.c: 159:     I2C_Write(0xC0);
+"158
+[; ;setting.c: 158:     I2C_Write(0xC0);
 [e ( _I2C_Write (1 -> -> 192 `i `uc ]
-"160
-[; ;setting.c: 160:     I2C_Write(0xDA);
+"159
+[; ;setting.c: 159:     I2C_Write(0xDA);
 [e ( _I2C_Write (1 -> -> 218 `i `uc ]
-"161
-[; ;setting.c: 161:     I2C_Write(0x02);
+"160
+[; ;setting.c: 160:     I2C_Write(0x02);
 [e ( _I2C_Write (1 -> -> 2 `i `uc ]
-"162
-[; ;setting.c: 162:     I2C_Write(0x81);
+"161
+[; ;setting.c: 161:     I2C_Write(0x81);
 [e ( _I2C_Write (1 -> -> 129 `i `uc ]
-"163
-[; ;setting.c: 163:     I2C_Write(0x8F);
+"162
+[; ;setting.c: 162:     I2C_Write(0x8F);
 [e ( _I2C_Write (1 -> -> 143 `i `uc ]
-"164
-[; ;setting.c: 164:     I2C_Write(0xD9);
+"163
+[; ;setting.c: 163:     I2C_Write(0xD9);
 [e ( _I2C_Write (1 -> -> 217 `i `uc ]
-"165
-[; ;setting.c: 165:     I2C_Write(0xF1);
+"164
+[; ;setting.c: 164:     I2C_Write(0xF1);
 [e ( _I2C_Write (1 -> -> 241 `i `uc ]
-"166
-[; ;setting.c: 166:     I2C_Write(0xDB);
+"165
+[; ;setting.c: 165:     I2C_Write(0xDB);
 [e ( _I2C_Write (1 -> -> 219 `i `uc ]
-"167
-[; ;setting.c: 167:     I2C_Write(0x20);
+"166
+[; ;setting.c: 166:     I2C_Write(0x20);
 [e ( _I2C_Write (1 -> -> 32 `i `uc ]
-"168
-[; ;setting.c: 168:     I2C_Write(0xA4);
+"167
+[; ;setting.c: 167:     I2C_Write(0xA4);
 [e ( _I2C_Write (1 -> -> 164 `i `uc ]
-"169
-[; ;setting.c: 169:     I2C_Write(0xA6);
+"168
+[; ;setting.c: 168:     I2C_Write(0xA6);
 [e ( _I2C_Write (1 -> -> 166 `i `uc ]
-"170
-[; ;setting.c: 170:     I2C_Write(0x2E);
+"169
+[; ;setting.c: 169:     I2C_Write(0x2E);
 [e ( _I2C_Write (1 -> -> 46 `i `uc ]
-"171
-[; ;setting.c: 171:     I2C_Write(0xAF);
+"170
+[; ;setting.c: 170:     I2C_Write(0xAF);
 [e ( _I2C_Write (1 -> -> 175 `i `uc ]
-"172
-[; ;setting.c: 172:     I2C_Stop();
+"171
+[; ;setting.c: 171:     I2C_Stop();
 [e ( _I2C_Stop ..  ]
-"173
-[; ;setting.c: 173: }
+"172
+[; ;setting.c: 172: }
 [e :UE 286 ]
 }

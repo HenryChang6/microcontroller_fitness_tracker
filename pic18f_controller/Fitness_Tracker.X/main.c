@@ -11,6 +11,7 @@
 #include "setting.h"
 #include "uart.h"
 #include <stdint.h> 
+#include <string.h>
 #define _XTAL_FREQ 8000000 // Define the oscillator frequency (8 MHz)
 struct Data {
     int step;
@@ -86,34 +87,50 @@ void __interrupt(high_priority) H_ISR() {
     }
 }
 void main(void) {
-
+    ClearBuffer();
+    SYSTEM_Initialize();
+    int last_step = 0, last_heart = 100;
     while(1) {
-      /*  char str[100];
+        char str[100];
+        struct Data val;
         if( GetString(str) ) {
-            struct Data val = ParsingData(str);
-        } */
+            val = ParsingData(str);
+        }
 
         //Main loop
         //check state change and clean screen
-        if(pre_state != state)OLED_Clear();    // Clear OLED screen
+        if(pre_state != state) OLED_Clear(), init_time();    // Clear OLED screen
         pre_state = state;
-            
+        char tmp[100] = {};
+        char hh[100] = {};
+        char mm[100] = {};
+        strcpy(tmp, "");
+        strcpy(hh, "");
+        strcpy(mm, "");
         //display with mode(state)
         switch(state){
             case '0'://time
                 OLED_Print(0x01, 0x02, 0x00, 0x7F, clock, sizeof(clock));
-                OLED_PrintNumber(0x01, 0x02, 0x1D, 0x7F, "01");
+                Get_Timer_H(hh);
+                Get_Timer_M(mm);
+                OLED_PrintNumber(0x01, 0x02, 0x1D, 0x7F, hh);
                 OLED_Print(0x01, 0x02, 0x44, 0x7F, dots, sizeof(dots));
-                OLED_PrintNumber(0x01, 0x02, 0x59, 0x7F, "01");
+                OLED_PrintNumber(0x01, 0x02, 0x59, 0x7F, mm);
                 break;
             case'1'://temperature
                 OLED_Print(0x01, 0x02, 0x00, 0x7F, thermometer, sizeof(thermometer));
                 OLED_Print(0x01, 0x02, 0x70, 0x7F, temp, sizeof(temp));
+                itoa(val.temp, tmp);
+                OLED_PrintNumber(0x01, 0x02, 0x1C, 0x7F, tmp); 
                 break;
             case'2'://steps
                 OLED_Print(0x01, 0x02, 0x00, 0x7F, foots, sizeof(foots));
+                itoa(val.step, tmp); 
+                OLED_PrintNumber(0x01, 0x02, 0x1C, 0x7F, tmp);
                 break;
             case'3'://how far
+                itoa(val.step + val.step / 2, tmp);
+                OLED_PrintNumber(0x01, 0x02, 0x1C, 0x7F, tmp);
                 OLED_PrintChar(0x01, 0x02, 0x78, 0x7F, 'm');
                 break;
             case'4'://heart rate
@@ -126,16 +143,17 @@ void main(void) {
                     which_heart = 1;
                 }
                 //how many numbers
-                OLED_PrintNumber(0x01, 0x02, 0x1C, 0x7F, "123.45");
-                //OLED_PrintNumber(0x01, 0x02, 0x2A, 0x7F, "23.45");
-                //OLED_PrintNumber(0x01, 0x02, 0x38, 0x7F, "3.45");
+               // OLED_PrintNumber(0x01, 0x02, 0x1C, 0x7F, "123.45"); 
+                itoa(val.heartRate, tmp);
+                OLED_PrintNumber(0x01, 0x02, 0x1C, 0x7F, tmp);
                 
                 OLED_PrintChar(0x01, 0x02, 0x68, 0x7F, 'b');
                 OLED_PrintChar(0x01, 0x02, 0x70, 0x7F, 'p');
                 OLED_PrintChar(0x01, 0x02, 0x78, 0x7F, 'm');
-                __delay_ms(500);
                 break;
         }
+
+        __delay_ms(300);
     }
 
     return;
