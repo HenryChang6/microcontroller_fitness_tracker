@@ -143,3 +143,6 @@ This project is the final project of the NCKU CSIE Microcontroller Course. It sh
 - ESP8266 WiFi NodeMCU 無線模組 
 - GY-521 MPU-6050 模組（功能：三軸陀螺儀 + 三軸加速度計）
 - MAX30102 血氧、心跳測量模組
+
+## Demo Video Link
+[demo video link](https://youtu.be/ahNSJyOjpVY)
