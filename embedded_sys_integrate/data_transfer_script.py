@@ -5,7 +5,7 @@ import time
 import serial 
 
 url = 'http://172.20.10.2:80/test' 
-ser = serial.Serial('COM6', 9600) 
+ser = serial.Serial('COM7', 9600) 
 
 while True:
     response = requests.get(url)
@@ -24,6 +24,6 @@ while True:
     print("temp: " + str(temp))
 
     # adjust according to real port num and baud rate
-    ser.write(f'{step} {heartRate} {temp}\n')
+    ser.write(f'{step} {heartRate} {temp}\n'.encode())
 
     time.sleep(1)
