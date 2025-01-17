@@ -154,4 +154,4 @@ This project is the final project of the NCKU CSIE Microcontroller Course. It sh
 ## Reference 
 - [MAX30102串接方式](https://microcontrollerslab.com/esp8266-heart-rate-pulse-oximeter-max30102/)
 - [MPU-6050串接方式1](https://randomnerdtutorials.com/esp8266-nodemcu-mpu-6050-accelerometer-gyroscope-arduino/)
-- [MPU-6050串接方式1](https://arduinokitproject.com/esp8266-nodemcu-mpu-6050-accelerometer-gyroscope-arduino/)
+- [MPU-6050串接方式2](https://arduinokitproject.com/esp8266-nodemcu-mpu-6050-accelerometer-gyroscope-arduino/)
