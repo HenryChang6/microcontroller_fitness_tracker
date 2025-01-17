@@ -119,6 +119,7 @@ This project is the final project of the NCKU CSIE Microcontroller Course. It sh
 - embedded_sys_integrate directory
     - `embedded_sys_integrate.ino` : integrate two sensors with ESP8266 and establish REST API for data transmission.
     - `data_transfer_script.py` : a python script that fetch the API every second and send data via UART to pic18f4520 by writing into serial port. 
+- `oled controller` in pic18f project : To interact with OLED, we send a byte to it each time. Bytes transmission is based on I2C, and bytes are for commands or data. Thus, we send bytes for commands to it to set up OLED first, and then we start to send bytes for data. Finally , define bitmap and make sure it won’t overflow.
 
 ## Wire Connection Info
 
@@ -135,7 +136,10 @@ This project is the final project of the NCKU CSIE Microcontroller Course. It sh
 - connect SDA in max30102 to D2(GPIO4) in ESP8266
 
 ### OLED x pic18f4520
-// TODO: Awaited Edit
+- connect VCC in OLED to VDD in pic18f4520
+- connect GND in OLED to VSS in pic18f4520
+- connect SCL in OLED to RC3/SCK/SCL in pic18f4520
+- connect SDA in OLED to RC4/SDI/SDA in pic18f4520
 
 ## Hardware Info
 - 0.96吋 4Pin IIC-I2C 白/藍/黃色 OLED 顯示器
