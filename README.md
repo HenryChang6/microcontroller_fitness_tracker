@@ -114,12 +114,12 @@ This project is the final project of the NCKU CSIE Microcontroller Course. It sh
         └── uart.h
 ```
 ### Explaination
-- Gyroscope_controller directory: trying to connect gyroscope sensor (the one-and-only sensor) with ESP8266. It's a testing directory, which can be ommitted in the final system.
-- max30102_controller directory: trying to connect max30102 sensor (the one-and-only sensor) with ESP8266. It's a testing directory, which can be ommitted in the final system.
-- embedded_sys_integrate directory
+- **Gyroscope_controller directory**: trying to connect gyroscope sensor (the one-and-only sensor) with ESP8266. It's a testing directory, which can be ommitted in the final system.
+- **max30102_controller directory**: trying to connect max30102 sensor (the one-and-only sensor) with ESP8266. It's a testing directory, which can be ommitted in the final system.
+- **embedded_sys_integrate directory**
     - `embedded_sys_integrate.ino` : integrate two sensors with ESP8266 and establish REST API for data transmission.
     - `data_transfer_script.py` : a python script that fetch the API every second and send data via UART to pic18f4520 by writing into serial port. 
-- `oled controller` in pic18f project : To interact with OLED, we send a byte to it each time. Bytes transmission is based on I2C, and bytes are for commands or data. Thus, we send bytes for commands to it to set up OLED first, and then we start to send bytes for data. Finally , define bitmap and make sure it won’t overflow.
+- **oled.c in pic18f controller** : To interact with OLED, we send a byte to it each time. Bytes transmission is based on I2C, and bytes are for commands or data. Thus, we send bytes for commands to it to set up OLED first, and then we start to send bytes for data. Finally , define bitmap and make sure it won’t overflow.
 
 ## Wire Connection Info
 
