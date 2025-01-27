@@ -29,7 +29,7 @@ This project is the final project of the NCKU CSIE Microcontroller Course. It sh
 
 
 ## System Structure
-![Diagram of the system structure](System_Structure.jpg)
+![Diagram of the system structure](System_Structure.png)
 
 ## Directory/File explaination
 
